@@ -30,4 +30,15 @@
     outline: 1px solid $tile-border-bg;
     position: relative;
   }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    left: 0;
+    line-height: 1vw;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 12%;
+  }
 }
