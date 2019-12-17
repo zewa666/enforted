@@ -1,0 +1,33 @@
+.tile {
+	flex-grow: 1;
+  outline: 1px solid $tile-border-bg;
+  position: relative;
+
+  &__container {
+    
+  }
+
+  &--wood {
+    background-color: $tile-bg--wood;
+  }
+
+  &--gold {
+    background-color: $tile-bg--gold;
+  }
+
+  &--stone {
+    background-color: $tile-bg--stone;
+  }
+
+  &--iron {
+    background-color: $tile-bg--iron;
+  }
+
+  &--corner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    outline: 1px solid $tile-border-bg;
+    position: relative;
+  }
+}

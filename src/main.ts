@@ -4,7 +4,8 @@ import environment from './environment';
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature('resources');
+    .plugin("aurelia-bem")
+    .feature('board');
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
 

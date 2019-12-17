@@ -1,0 +1,33 @@
+.board {
+  height: 100%;
+
+  &__row {
+    display: flex;    
+    width: 100%;
+
+    &--top,
+    &--bottom {
+      height: 15.384615385%;
+    }
+
+    &--center {
+      height: 69.23076923%;
+    }
+  }
+
+  &__col {
+    outline: 1px solid $tile-border-bg;
+    position: relative;
+
+    &--left,
+    &--right {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 2;
+    }
+
+    &--center {
+      flex-grow: 9;
+    }
+  }
+}

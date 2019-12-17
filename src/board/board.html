@@ -1,0 +1,23 @@
+<template class="board">
+  <div class="board__row board__row--top">
+    <tile repeat.for="tile of tilesTop"
+          type.bind="tile.type"
+          is-corner.bind="tile.isCorner"></tile>
+  </div>
+  <div class="board__row board__row--center">
+    <div class="${bem('board', 'col', 'left')}">
+      <tile repeat.for="tile of tilesLeft"
+            type.bind="tile.type"></tile>
+    </div>
+    <div class="${bem('board', 'col', 'center')}"></div>
+    <div class="${bem('board', 'col', 'right')}">
+      <tile repeat.for="tile of tilesRight"
+            type.bind="tile.type"></tile>
+    </div>
+  </div>
+  <div class="board__row board__row--bottom">
+    <tile repeat.for="tile of tilesBottom"
+          type.bind="tile.type"
+          is-corner.bind="tile.isCorner"></tile>
+  </div>
+</template>

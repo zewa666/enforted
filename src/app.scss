@@ -1,0 +1,14 @@
+@import "../style/colors";
+
+.body {
+  background-color: $body-bg;
+  margin: 0;
+}
+
+.main {
+  height: 80vw;
+  margin: 10px auto;
+  width: 80vw;
+}
+
+@import "./board/index.scss";
