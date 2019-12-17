@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  enforted:
+    image: enforted:0.1.0
+    build:
+      context: . # relative to docker-compose.yml
+      dockerfile: Dockerfile
+    ports:
+      - "5050:80"
+    restart: unless-stopped

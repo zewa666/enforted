@@ -1,0 +1,102 @@
+{
+  "name": "enforted",
+  "type": "project:application",
+  "paths": {
+    "root": "src",
+    "resources": "resources",
+    "elements": "resources/elements",
+    "attributes": "resources/attributes",
+    "valueConverters": "resources/value-converters",
+    "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "transpiler": {
+    "id": "typescript",
+    "fileExtension": ".ts",
+    "dtsSource": [
+      "./types/**/*.d.ts"
+    ],
+    "source": [
+      "src/**/*.ts"
+    ]
+  },
+  "markupProcessor": {
+    "source": [
+      "src/**/*.html"
+    ]
+  },
+  "cssProcessor": {
+    "source": [
+      "src/**/*.scss"
+    ]
+  },
+  "jsonProcessor": {
+    "source": [
+      "src/**/*.json"
+    ]
+  },
+  "platform": {
+    "port": 9000,
+    "host": "localhost",
+    "open": false,
+    "index": "index.html",
+    "baseDir": ".",
+    "output": "scripts"
+  },
+  "build": {
+    "targets": [
+      {
+        "port": 9000,
+        "index": "index.html",
+        "baseDir": ".",
+        "output": "scripts"
+      }
+    ],
+    "options": {
+      "minify": "stage & prod",
+      "sourcemaps": "dev & stage",
+      "rev": "prod",
+      "cache": "dev & stage"
+    },
+    "bundles": [
+      {
+        "name": "app-bundle.js",
+        "source": [
+          "**/*.{js,json,css,html}"
+        ]
+      },
+      {
+        "name": "vendor-bundle.js",
+        "prepend": [
+          "node_modules/promise-polyfill/dist/polyfill.min.js",
+          "node_modules/requirejs/require.js"
+        ],
+        "dependencies": [
+          "aurelia-bootstrapper",
+          "aurelia-loader-default",
+          "aurelia-pal-browser",
+          {
+            "name": "aurelia-testing",
+            "env": "dev"
+          },
+          "text"
+        ]
+      }
+    ],
+    "loader": {
+      "type": "require",
+      "configTarget": "vendor-bundle.js",
+      "includeBundleMetadataInConfig": "auto",
+      "plugins": [
+        {
+          "name": "text",
+          "extensions": [
+            ".html",
+            ".css"
+          ],
+          "stub": false
+        }
+      ]
+    }
+  },
+  "packageManager": "npm"
+}
