@@ -1,22 +1,56 @@
 <template class="board">
   <div class="board__row board__row--top">
-    <tile repeat.for="tile of tilesTop"
+    <tile repeat.for="tile of getTiles('outer', 'top')"
           type.bind="tile.type"
           is-corner.bind="tile.isCorner"></tile>
   </div>
   <div class="board__row board__row--center">
     <div class="${bem('board', 'col', 'left')}">
-      <tile repeat.for="tile of tilesLeft"
+      <tile repeat.for="tile of getTiles('outer', 'left')"
             type.bind="tile.type"></tile>
     </div>
-    <div class="${bem('board', 'col', 'center')}"></div>
+    <div class="${bem('board', 'col', 'center')}">
+
+      <!-- Inner circle -->
+      <div class="board__row board__row--top">
+        <tile repeat.for="tile of getTiles('inner', 'top')"
+              type.bind="tile.type"
+              is-corner.bind="tile.isCorner"></tile>
+      </div>
+      <div class="board__row board__row--center">
+        <div class="${bem('board', 'col', 'left')}">
+          <tile repeat.for="tile of getTiles('inner', 'left')"
+                type.bind="tile.type"></tile>
+        </div>
+        <div class="${bem('board', 'col', 'center')}">
+
+          <!-- Fortress -->
+          <div class="board__fortress fortress">
+            <span class="fortress__caption">Fortress</span>
+          </div>
+          <!-- /Fortress -->
+
+        </div>
+        <div class="${bem('board', 'col', 'right')}">
+          <tile repeat.for="tile of getTiles('inner', 'right')"
+                type.bind="tile.type"></tile>
+        </div>
+      </div>
+      <div class="board__row board__row--bottom">
+        <tile repeat.for="tile of getTiles('inner', 'bottom')"
+              type.bind="tile.type"
+              is-corner.bind="tile.isCorner"></tile>
+      </div>
+      <!-- /Inner circle -->
+
+    </div>
     <div class="${bem('board', 'col', 'right')}">
-      <tile repeat.for="tile of tilesRight"
+      <tile repeat.for="tile of getTiles('outer', 'right')"
             type.bind="tile.type"></tile>
     </div>
   </div>
   <div class="board__row board__row--bottom">
-    <tile repeat.for="tile of tilesBottom"
+    <tile repeat.for="tile of getTiles('outer', 'bottom')"
           type.bind="tile.type"
           is-corner.bind="tile.isCorner"></tile>
   </div>

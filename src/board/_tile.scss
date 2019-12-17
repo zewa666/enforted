@@ -23,6 +23,22 @@
     background-color: $tile-bg--iron;
   }
 
+  &--food {
+    background-color: $tile-bg--food;
+  }
+
+  &--mana {
+    background-color: $tile-bg--mana;
+  }
+
+  &--coal {
+    background-color: $tile-bg--coal;
+  }
+
+  &--blood {
+    background-color: $tile-bg--blood;
+  }
+
   &--corner {
     display: flex;
     flex-direction: column;
