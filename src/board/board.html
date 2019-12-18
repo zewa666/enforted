@@ -4,8 +4,9 @@
           type.bind="tile.type"
           is-corner.bind="tile.isCorner"
           ring.bind="tile.ring"
+          id.bind="tile.id"
           placement.bind="tile.placement"
-          players.bind="getPlayersOnTile(tile)"></tile>
+          players.bind="state.players"></tile>
   </div>
   <div class="board__row board__row--center">
     <div class="${bem('board', 'col', 'left')}">
@@ -13,8 +14,9 @@
             type.bind="tile.type"
             is-corner.bind="tile.isCorner"
             ring.bind="tile.ring"
+            id.bind="tile.id"
             placement.bind="tile.placement"
-            players.bind="getPlayersOnTile(tile)"></tile>
+            players.bind="state.players"></tile>
     </div>
     <div class="${bem('board', 'col', 'center')}">
 
@@ -24,8 +26,9 @@
               type.bind="tile.type"
               is-corner.bind="tile.isCorner"
               ring.bind="tile.ring"
+              id.bind="tile.id"
               placement.bind="tile.placement"
-              players.bind="getPlayersOnTile(tile)"></tile>
+              players.bind="state.players"></tile>
       </div>
       <div class="board__row board__row--center">
         <div class="${bem('board', 'col', 'left')}">
@@ -33,8 +36,9 @@
                 type.bind="tile.type"
                 is-corner.bind="tile.isCorner"
                 ring.bind="tile.ring"
+                id.bind="tile.id"
                 placement.bind="tile.placement"
-                players.bind="getPlayersOnTile(tile)"></tile>
+                players.bind="state.players"></tile>
         </div>
         <div class="${bem('board', 'col', 'center')}">
 
@@ -50,8 +54,9 @@
                 type.bind="tile.type"
                 is-corner.bind="tile.isCorner"
                 ring.bind="tile.ring"
+                id.bind="tile.id"
                 placement.bind="tile.placement"
-                players.bind="getPlayersOnTile(tile)"></tile>
+                players.bind="state.players"></tile>
         </div>
       </div>
       <div class="board__row board__row--bottom">
@@ -59,8 +64,9 @@
               type.bind="tile.type"
               is-corner.bind="tile.isCorner"
               ring.bind="tile.ring"
+              id.bind="tile.id"
               placement.bind="tile.placement"
-              players.bind="getPlayersOnTile(tile)"></tile>
+              players.bind="state.players"></tile>
       </div>
       <!-- /Inner circle -->
 
@@ -70,8 +76,9 @@
             type.bind="tile.type"
             is-corner.bind="tile.isCorner"
             ring.bind="tile.ring"
+            id.bind="tile.id"
             placement.bind="tile.placement"
-            players.bind="getPlayersOnTile(tile)"></tile>
+            players.bind="state.players"></tile>
     </div>
   </div>
   <div class="board__row board__row--bottom">
@@ -79,7 +86,8 @@
           type.bind="tile.type"
           is-corner.bind="tile.isCorner"
           ring.bind="tile.ring"
+          id.bind="tile.id"
           placement.bind="tile.placement"
-          players.bind="getPlayersOnTile(tile)"></tile>
+          players.bind="state.players"></tile>
   </div>
 </template>

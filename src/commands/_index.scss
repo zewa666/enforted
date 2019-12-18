@@ -12,3 +12,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.dice {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &__last-roll {
+    font-size: 20px;
+  }
+}

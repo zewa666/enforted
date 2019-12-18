@@ -15,11 +15,7 @@ export class Board {
   }
 
   public getTiles(ring: TileRing, placement: TilePlacement) {
-    return this.state.tiles.filter(t => t.placement === placement && t.ring === ring);
-  }
-
-  public getPlayersOnTile(tile: Tile) {
-    return this.state.players.filter(p => p.currentTile === tile);
+    return this.state?.tiles?.filter(t => t.placement === placement && t.ring === ring);
   }
 
   public detached() {
