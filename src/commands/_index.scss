@@ -1,5 +1,4 @@
 .command {
-  cursor: pointer;
   margin: 20px 0;
 
   &__icon {
@@ -19,12 +18,16 @@
   flex-direction: column;
   justify-content: center;
   
+  &__icon {
+    cursor: pointer;
+  }
+  
   &__last-roll {
     background-color: $dice-text-bg;
     font-size: 20px;
     margin-top: 5px;
     text-align: center;
-    width: 40px;
+    width: 50px;
   }
 }
 
