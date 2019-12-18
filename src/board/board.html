@@ -52,6 +52,7 @@
   <div class="board__row board__row--bottom">
     <tile repeat.for="tile of getTiles('outer', 'bottom')"
           type.bind="tile.type"
-          is-corner.bind="tile.isCorner"></tile>
+          is-corner.bind="tile.isCorner"
+          players.bind="$index === 0 ? players : []"></tile>
   </div>
 </template>

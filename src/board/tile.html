@@ -1,3 +1,8 @@
 <template class="${bem('tile', '', [type, isCorner && 'corner'])}">
   <div class="tile__text">${type}</div>
+
+  <player if.bind="players && players.length"
+          repeat.for="player of players"
+          class="tile__player"
+          current-tile.bind="this"></player>
 </template>

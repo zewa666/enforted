@@ -1,11 +1,9 @@
 .tile {
+  align-items: center;
 	flex-grow: 1;
+  justify-content: center;
   outline: 1px solid $tile-border-bg;
   position: relative;
-
-  &__container {
-    
-  }
 
   &--wood {
     background-color: $tile-bg--wood;

@@ -5,7 +5,8 @@ export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .plugin("aurelia-bem")
-    .feature('board');
+    .feature('board')
+    .feature('player');
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
 

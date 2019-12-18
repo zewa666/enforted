@@ -1,0 +1,12 @@
+.player {
+  align-items: center;
+  background-color: $player-bg-border;
+  border: 1px solid $player-bg-border;
+  border-radius: 30px;
+  display: flex;
+  font-size: 10px;
+  height: 50px;
+  justify-content: center;
+  position: absolute;
+  width: 50px;
+}

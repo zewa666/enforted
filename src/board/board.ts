@@ -1,8 +1,10 @@
-import { computedFrom } from "aurelia-framework";
-
 import { Tile, TilePlacement, TileRing } from "./tile";
+import { Player } from "../player/player";
 
 export class Board {
+  public players: Player[] = [
+    new Player()
+  ];
   private tiles: Tile[] = [
     ...Array.from<Tile, Tile>(Array(11), (_, idx) => ({
       type: "wood",

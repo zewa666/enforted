@@ -3,6 +3,7 @@
 .body {
   background-color: $body-bg;
   margin: 0;
+  user-select: none;
 }
 
 .main {
@@ -12,3 +13,4 @@
 }
 
 @import "./board/index.scss";
+@import "./player/player";
