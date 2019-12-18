@@ -1,5 +1,6 @@
 .tile {
   align-items: center;
+  display: flex;
 	flex-grow: 1;
   justify-content: center;
   outline: 1px solid $tile-border-bg;
@@ -38,7 +39,6 @@
   }
 
   &--corner {
-    display: flex;
     flex-direction: column;
     flex-grow: 2;
     outline: 1px solid $tile-border-bg;
