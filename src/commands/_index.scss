@@ -20,6 +20,10 @@
   justify-content: center;
   
   &__last-roll {
+    background-color: $dice-text-bg;
     font-size: 20px;
+    margin-top: 5px;
+    text-align: center;
+    width: 40px;
   }
 }
