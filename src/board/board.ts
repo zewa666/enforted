@@ -1,71 +1,28 @@
+import { autoinject } from "aurelia-framework";
+import { Store } from "aurelia-store";
+import { Subscription } from "rxjs";
+
 import { Tile, TilePlacement, TileRing } from "./tile";
-import { Player } from "../player/player";
+import { State } from "../store/index";
 
+@autoinject()
 export class Board {
-  private players: Player[] = [];
-  private tiles: Tile[] = [
-    ...Array.from<Tile, Tile>(Array(11), (_, idx) => ({
-      type: "wood",
-      placement: "bottom",
-      isCorner: idx === 0 || idx === 10,
-      ring: "outer"
-    })),
-    ...Array.from<Tile, Tile>(Array(9), () => ({
-      type: "food",
-      placement: "left",
-      isCorner: false,
-      ring: "outer"
-    })),
-    ...Array.from<Tile, Tile>(Array(11), (_, idx) => ({
-      type: "stone",
-      placement: "top",
-      isCorner: idx === 0 || idx === 10,
-      ring: "outer"
-    })),
-    ...Array.from<Tile, Tile>(Array(9), () => ({
-      type: "gold",
-      placement: "right",
-      isCorner: false,
-      ring: "outer"
-    })),
-    ...Array.from<Tile, Tile>(Array(11), (_, idx) => ({
-      type: "iron",
-      placement: "bottom",
-      isCorner: idx === 0 || idx === 10,
-      ring: "inner"
-    })),
-    ...Array.from<Tile, Tile>(Array(9), () => ({
-      type: "mana",
-      placement: "left",
-      isCorner: false,
-      ring: "inner"
-    })),
-    ...Array.from<Tile, Tile>(Array(11), (_, idx) => ({
-      type: "coal",
-      placement: "top",
-      isCorner: idx === 0 || idx === 10,
-      ring: "inner"
-    })),
-    ...Array.from<Tile, Tile>(Array(9), () => ({
-      type: "blood",
-      placement: "right",
-      isCorner: false,
-      ring: "inner"
-    })),
-  ];
+  public state: State;
+  private subscription: Subscription;
 
-  constructor() {
-    const player = new Player();
-    player.name = "zewa";
-    player.currentTile = this.tiles[0];
-    this.players.push(player);
+  constructor(private store: Store<State>) {
+    this.subscription = this.store.state.subscribe((state) => this.state = state);
   }
 
   public getTiles(ring: TileRing, placement: TilePlacement) {
-    return this.tiles.filter(t => t.placement === placement && t.ring === ring);
+    return this.state.tiles.filter(t => t.placement === placement && t.ring === ring);
   }
 
   public getPlayersOnTile(tile: Tile) {
-    return this.players.filter(p => p.currentTile === tile);
+    return this.state.players.filter(p => p.currentTile === tile);
+  }
+
+  public detached() {
+    this.subscription.unsubscribe();
   }
 }
