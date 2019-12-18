@@ -1,11 +1,17 @@
-import { Tile } from "../board/tile";
+import { Tile, TileType } from "../board/tile";
 import { Player } from "../player/player";
 import { guid } from "./helper";
+
+export type Resources = {
+  [key in TileType]: number;
+}
 
 export interface State {
   tiles: Tile[];
   players: Player[];
   lastDiceRoll?: number;
+  resources: Resources;
+  turn: number;
 }
 
 export const initialState = {
@@ -76,7 +82,18 @@ export const initialState = {
     })),
   ],
   players: [],
-  lastDiceRoll: undefined
+  lastDiceRoll: undefined,
+  resources: {
+    blood: 0,
+    coal: 0,
+    iron: 0,
+    mana: 0,
+    stone: 0,
+    food: 15,
+    wood: 20,
+    gold: 30,
+  },
+  turn: 1
 } as State;
 
 const player = new Player();

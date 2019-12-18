@@ -1,8 +1,9 @@
 <template class="command dice"
           title="Roll the dice">
+  <h2 class="dice__turn">Turn ${state.turn}</h2>
   <img src="assets/icons/dice.svg"
        click.trigger="rollDice()"
        class="command__icon" />
-      
-  <span class="dice__last-roll">${state || 'none'}</span>
+
+  <span class="dice__last-roll">${state.lastDiceRoll || 'none'}</span>
 </template>

@@ -27,3 +27,18 @@
     width: 40px;
   }
 }
+
+.resources {
+  &__overview {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    max-width: 100px;
+    padding: 0;
+  }
+  
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}
