@@ -2,15 +2,19 @@
   height: 100%;
 
   &__row {
-    display: flex;    
+    display: flex;
     width: 100%;
-
+    
     &--top,
     &--bottom {
       height: 15.384615385%;
     }
 
-    &--center {
+    &--bottom {
+      flex-flow: row-reverse;
+    }
+
+    &--center {    
       height: 69.23076923%;
     }
   }
@@ -24,6 +28,10 @@
       display: flex;
       flex-direction: column;
       flex-grow: 2;
+    }
+
+    &--left {
+      flex-flow: column-reverse;
     }
 
     &--center {
