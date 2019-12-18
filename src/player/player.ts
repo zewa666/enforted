@@ -4,4 +4,5 @@ import { Tile } from "../board/tile";
 @autoinject()
 export class Player {
   @bindable public currentTile: Tile;
+  @bindable public name: string;
 }

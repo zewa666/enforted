@@ -2,12 +2,19 @@
   <div class="board__row board__row--top">
     <tile repeat.for="tile of getTiles('outer', 'top')"
           type.bind="tile.type"
-          is-corner.bind="tile.isCorner"></tile>
+          is-corner.bind="tile.isCorner"
+          ring.bind="tile.ring"
+          placement.bind="tile.placement"
+          players.bind="getPlayersOnTile(tile)"></tile>
   </div>
   <div class="board__row board__row--center">
     <div class="${bem('board', 'col', 'left')}">
       <tile repeat.for="tile of getTiles('outer', 'left')"
-            type.bind="tile.type"></tile>
+            type.bind="tile.type"
+            is-corner.bind="tile.isCorner"
+            ring.bind="tile.ring"
+            placement.bind="tile.placement"
+            players.bind="getPlayersOnTile(tile)"></tile>
     </div>
     <div class="${bem('board', 'col', 'center')}">
 
@@ -15,12 +22,19 @@
       <div class="board__row board__row--top">
         <tile repeat.for="tile of getTiles('inner', 'top')"
               type.bind="tile.type"
-              is-corner.bind="tile.isCorner"></tile>
+              is-corner.bind="tile.isCorner"
+              ring.bind="tile.ring"
+              placement.bind="tile.placement"
+              players.bind="getPlayersOnTile(tile)"></tile>
       </div>
       <div class="board__row board__row--center">
         <div class="${bem('board', 'col', 'left')}">
           <tile repeat.for="tile of getTiles('inner', 'left')"
-                type.bind="tile.type"></tile>
+                type.bind="tile.type"
+                is-corner.bind="tile.isCorner"
+                ring.bind="tile.ring"
+                placement.bind="tile.placement"
+                players.bind="getPlayersOnTile(tile)"></tile>
         </div>
         <div class="${bem('board', 'col', 'center')}">
 
@@ -33,26 +47,39 @@
         </div>
         <div class="${bem('board', 'col', 'right')}">
           <tile repeat.for="tile of getTiles('inner', 'right')"
-                type.bind="tile.type"></tile>
+                type.bind="tile.type"
+                is-corner.bind="tile.isCorner"
+                ring.bind="tile.ring"
+                placement.bind="tile.placement"
+                players.bind="getPlayersOnTile(tile)"></tile>
         </div>
       </div>
       <div class="board__row board__row--bottom">
         <tile repeat.for="tile of getTiles('inner', 'bottom')"
               type.bind="tile.type"
-              is-corner.bind="tile.isCorner"></tile>
+              is-corner.bind="tile.isCorner"
+              ring.bind="tile.ring"
+              placement.bind="tile.placement"
+              players.bind="getPlayersOnTile(tile)"></tile>
       </div>
       <!-- /Inner circle -->
 
     </div>
     <div class="${bem('board', 'col', 'right')}">
       <tile repeat.for="tile of getTiles('outer', 'right')"
-            type.bind="tile.type"></tile>
+            type.bind="tile.type"
+            is-corner.bind="tile.isCorner"
+            ring.bind="tile.ring"
+            placement.bind="tile.placement"
+            players.bind="getPlayersOnTile(tile)"></tile>
     </div>
   </div>
   <div class="board__row board__row--bottom">
     <tile repeat.for="tile of getTiles('outer', 'bottom')"
           type.bind="tile.type"
           is-corner.bind="tile.isCorner"
-          players.bind="$index === 0 ? players : []"></tile>
+          ring.bind="tile.ring"
+          placement.bind="tile.placement"
+          players.bind="getPlayersOnTile(tile)"></tile>
   </div>
 </template>
