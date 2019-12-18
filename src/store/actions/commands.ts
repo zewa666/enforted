@@ -8,7 +8,9 @@ export function rollDice(state: State): State {
   return {
     ...state,
     lastDiceRoll: roll,
-    turn: state.turn + 1,
+    turn: newPosition > state.tiles.length - 1
+      ? state.turn + 1
+      : state.turn,
     players: [
       { ...state.players[0],
         currentTile: newPosition > state.tiles.length - 1
