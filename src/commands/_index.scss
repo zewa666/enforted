@@ -1,0 +1,14 @@
+.command {
+  cursor: pointer;
+  margin: 20px 0;
+
+  &__icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.command-bar {
+  display: flex;
+  flex-direction: column;
+}

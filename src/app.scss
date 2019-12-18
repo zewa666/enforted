@@ -7,10 +7,20 @@
 }
 
 .main {
+  display: flex;
   height: 50vw;
   margin: 10px auto;
   width: 70vw;
+
+  &__command-bar {
+    flex-grow: 1;
+  }
+
+  &__board {
+    flex-grow: 9;
+  }
 }
 
-@import "./board/index.scss";
+@import "./board/index";
 @import "./player/player";
+@import "./commands/index";
