@@ -31,6 +31,13 @@ export function openPurchaseForTile(state: State, tile: Tile): State {
   };
 }
 
+export function closePurchasePanel(state: State) {
+  return {
+    ...state,
+    purchaseInProgress: undefined
+  };
+}
+
 export function buyBuilding(state: State, building: TileBuilding): State {
   return {
     ...state,

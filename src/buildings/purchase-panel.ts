@@ -3,7 +3,7 @@ import { Store } from "aurelia-store";
 
 import { Tile } from "../board/tile";
 
-import { State, buyBuilding } from "../store/index";
+import { State, buyBuilding, closePurchasePanel } from "../store/index";
 import { TileBuildingsMap, TileBuilding } from "./tile-building";
 
 @autoinject()
@@ -22,5 +22,9 @@ export class PurchasePanel {
     const newBuilding = new TileBuilding();
     newBuilding.tile = this.tile;
     this.store.dispatch(buyBuilding, newBuilding);
+  }
+
+  public closePanel() {
+    this.store.dispatch(closePurchasePanel);
   }
 }

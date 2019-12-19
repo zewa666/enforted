@@ -34,6 +34,8 @@ export class Tile {
   }
 
   public openPurchasePanel() {
-    this.store.dispatch(openPurchaseForTile, this);
+    if (this.isPlayerOnTile) {
+      this.store.dispatch(openPurchaseForTile, this);
+    }
   }
 }
