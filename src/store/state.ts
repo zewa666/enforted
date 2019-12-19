@@ -47,28 +47,28 @@ export const initialState = {
       ring: "outer",
       id: guid()
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(11), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
       type: "iron",
       placement: "bottom",
-      isCorner: idx === 0 || idx === 10,
+      isCorner: idx === 0 || idx === 8,
       ring: "inner",
       id: guid()
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(9), () => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(7), () => ({
       type: "mana",
       placement: "left",
       isCorner: false,
       ring: "inner",
       id: guid()
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(11), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
       type: "coal",
       placement: "top",
-      isCorner: idx === 0 || idx === 10,
+      isCorner: idx === 0 || idx === 8,
       ring: "inner",
       id: guid()
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(9), () => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(7), () => ({
       type: "blood",
       placement: "right",
       isCorner: false,
