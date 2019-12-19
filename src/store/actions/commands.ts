@@ -4,7 +4,7 @@ import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-bui
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
-  const roll = Math.floor(Math.random() * (6 - 1)) + 1;
+  const roll = Math.floor(Math.random() * 6) + 1;
   const newPosition = idxOfTile + roll;
 
   return {
