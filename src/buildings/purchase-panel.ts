@@ -3,19 +3,30 @@ import { Store } from "aurelia-store";
 
 import { Tile } from "../board/tile";
 
-import { State, buyBuilding, closePurchasePanel } from "../store/index";
-import { TileBuildingsMap, TileBuilding } from "./tile-building";
+import { State, buyBuilding, closePurchasePanel, Resources } from "../store/index";
+import { TileBuildingsMap, TileBuilding, TileBuildingResourceCost } from "./tile-building";
 
 @autoinject()
 export class PurchasePanel {
   @bindable() public tile: Tile;
   @bindable() public tileBuilding?: TileBuilding;
+  @bindable() public resources: Resources;
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) { }
 
   @computedFrom("tile")
   public get building() {
     return TileBuildingsMap[this.tile.type];
+  }
+
+  @computedFrom("tile")
+  public get costs() {
+    return Object.entries(TileBuildingResourceCost[this.building]).filter(r => r[1] !== 0);
+  }
+
+  @computedFrom("resources")
+  public get sufficientResources() {
+    return !this.costs.some(([res, val]) => this.resources[res] - val < 0);
   }
 
   public buyBuilding() {

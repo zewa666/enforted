@@ -1,6 +1,6 @@
 import { State } from "../index";
 import { Tile } from "../../board/tile";
-import { TileBuilding } from "../../buildings/tile-building";
+import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
@@ -39,11 +39,23 @@ export function closePurchasePanel(state: State) {
 }
 
 export function buyBuilding(state: State, building: TileBuilding): State {
+  const costs = TileBuildingResourceCost[building.type];
+
   return {
     ...state,
     tileBuildings: [
       ...state.tileBuildings, building
     ],
+    resources: {
+      blood: state.resources.blood - costs.blood,
+      stone: state.resources.stone - costs.stone,
+      food: state.resources.food - costs.food,
+      mana: state.resources.mana - costs.mana,
+      iron: state.resources.iron - costs.iron,
+      coal: state.resources.coal - costs.coal,
+      wood: state.resources.wood - costs.wood,
+      gold: state.resources.gold - costs.gold,
+    },
     purchaseInProgress: undefined
   };
 }

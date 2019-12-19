@@ -4,9 +4,13 @@
   <ul class="purchase-panel__list">
     <li class="purchase-panel__item">
       <span class="purchase-panel__building-name">${building}</span>
+      <ul class="purchase-panel__cost">
+        <li repeat.for="cost of costs">${cost}</li>
+      </ul>
       <button class="purchase-panel__buy"
               click.trigger="buyBuilding()"
-              disabled.bind="tileBuilding">Buy</button>
+              disabled.bind="tileBuilding || !sufficientResources"
+              title.bind="!sufficientResources ? 'Not enough resources' : 'Buy'">Buy</button>
     </li>
   </ul>
 
