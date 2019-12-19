@@ -7,4 +7,7 @@
           class="tile__player"
           name.bind="player.name"
           current-tile.bind="$parent"></player>
+
+  <tile-building if.bind="isBuildingOnTile"
+                 tile.bind="$this"></tile-building>
 </template>

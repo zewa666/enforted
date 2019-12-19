@@ -2,7 +2,7 @@ import { autoinject } from "aurelia-framework";
 import { Store } from "aurelia-store";
 import { Subscription } from "rxjs";
 
-import { Tile, TilePlacement, TileRing } from "./tile";
+import { TilePlacement, TileRing } from "./tile";
 import { State } from "../store/index";
 
 @autoinject()

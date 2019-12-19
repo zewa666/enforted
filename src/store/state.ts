@@ -1,6 +1,7 @@
 import { Tile, TileType } from "../board/tile";
 import { Player } from "../player/player";
 import { guid } from "./helper";
+import { TileBuilding } from "buildings/tile-building";
 
 export type Resources = {
   [key in TileType]: number;
@@ -9,6 +10,7 @@ export type Resources = {
 export interface State {
   tiles: Tile[];
   players: Player[];
+  tileBuildings: TileBuilding[],
   lastDiceRoll?: number;
   resources: Resources;
   turn: number;
@@ -87,7 +89,8 @@ export const initialState = {
     gold: 30,
   },
   turn: 1,
-  purchaseInProgress: undefined
+  purchaseInProgress: undefined,
+  tileBuildings: []
 } as State;
 
 const player = new Player();

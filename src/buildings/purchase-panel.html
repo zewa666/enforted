@@ -2,6 +2,11 @@
   <h4 class="purchase-panel__header">What do you want to build?</h4>
 
   <ul class="purchase-panel__list">
-    <li class="purchase-panel__item">${building}</li>
+    <li class="purchase-panel__item">
+      <span class="purchase-panel__building-name">${building}</span>
+      <button class="purchase-panel__buy"
+              click.trigger="buyBuilding()"
+              disabled.bind="tileBuilding">Buy</button>
+    </li>
   </ul>
 </template>

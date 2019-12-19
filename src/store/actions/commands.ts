@@ -1,5 +1,6 @@
 import { State } from "../index";
 import { Tile } from "../../board/tile";
+import { TileBuilding } from "../../buildings/tile-building";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
@@ -27,5 +28,15 @@ export function openPurchaseForTile(state: State, tile: Tile): State {
   return {
     ...state,
     purchaseInProgress: tile.id
+  };
+}
+
+export function buyBuilding(state: State, building: TileBuilding): State {
+  return {
+    ...state,
+    tileBuildings: [
+      ...state.tileBuildings, building
+    ],
+    purchaseInProgress: undefined
   };
 }
