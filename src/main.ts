@@ -12,7 +12,8 @@ export function configure(aurelia: Aurelia) {
     })
     .feature('board')
     .feature('player')
-    .feature('commands');
+    .feature('commands')
+    .feature("buildings");
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
 

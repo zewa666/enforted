@@ -10,6 +10,8 @@
 .command-bar {
   display: flex;
   flex-direction: column;
+  margin-right: 30px;
+  width: 200px;
 }
 
 .dice {
@@ -36,7 +38,6 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-    max-width: 100px;
     padding: 0;
   }
   

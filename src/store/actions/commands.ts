@@ -1,4 +1,5 @@
 import { State } from "../index";
+import { Tile } from "../../board/tile";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
@@ -18,5 +19,13 @@ export function rollDice(state: State): State {
           : state.tiles[newPosition]
       }
     ]
+  };
+}
+
+
+export function openPurchaseForTile(state: State, tile: Tile): State {
+  return {
+    ...state,
+    purchaseInProgress: tile.id
   };
 }

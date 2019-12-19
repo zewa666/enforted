@@ -1,4 +1,6 @@
 <template class="command-bar">
   <dice></dice>
   <resources></resources>
+  <purchase-panel if.bind="state.purchaseInProgress"
+    tile.bind="purchaseTargetTile"></purchase-panel>
 </template>
