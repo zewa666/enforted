@@ -6,7 +6,7 @@ export default function lint() {
   return gulp.src(project.transpiler.source)
     .pipe(tslint({
       tslint: require("tslint"),
-      formatter: 'prose'
+      formatter: 'stylish'
     }))
-    .pipe(tslint.report());
+    .pipe(tslint.report({summarizeFailureOutput: true}));
 }

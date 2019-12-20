@@ -1,8 +1,8 @@
-import { autoinject } from "aurelia-framework";
-import { Store, connectTo } from "aurelia-store";
+import { autoinject } from "aurelia-framework";
+import { connectTo, Store } from "aurelia-store";
 import { map } from "rxjs/operators";
 
-import { State, rollDice } from "../store/index";
+import { rollDice, State } from "../store/index";
 
 @autoinject()
 @connectTo((state: Store<State>) => state.state.pipe(
@@ -11,9 +11,9 @@ import { State, rollDice } from "../store/index";
 export class Dice {
 
   constructor(private store: Store<State>) {
-    
+
   }
-  
+
   public rollDice() {
     this.store.dispatch(rollDice);
   }

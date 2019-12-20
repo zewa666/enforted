@@ -1,6 +1,6 @@
-import { State } from "../index";
 import { Tile } from "../../board/tile";
 import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
+import { State } from "../index";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
@@ -10,19 +10,19 @@ export function rollDice(state: State): State {
   return {
     ...state,
     lastDiceRoll: roll,
-    turn: newPosition > state.tiles.length - 1
-      ? state.turn + 1
-      : state.turn,
     players: [
-      { ...state.players[0],
+      {
+        ...state.players[0],
         currentTile: newPosition > state.tiles.length - 1
           ? state.tiles[Math.abs(newPosition - state.tiles.length)]
           : state.tiles[newPosition]
       }
-    ]
+    ],
+    turn: newPosition > state.tiles.length - 1
+      ? state.turn + 1
+      : state.turn,
   };
 }
-
 
 export function openPurchaseForTile(state: State, tile: Tile): State {
   return {
@@ -43,19 +43,19 @@ export function buyBuilding(state: State, building: TileBuilding): State {
 
   return {
     ...state,
-    tileBuildings: [
-      ...state.tileBuildings, building
-    ],
+    purchaseInProgress: undefined,
     resources: {
       blood: state.resources.blood - costs.blood,
-      stone: state.resources.stone - costs.stone,
-      food: state.resources.food - costs.food,
-      mana: state.resources.mana - costs.mana,
-      iron: state.resources.iron - costs.iron,
       coal: state.resources.coal - costs.coal,
-      wood: state.resources.wood - costs.wood,
+      food: state.resources.food - costs.food,
       gold: state.resources.gold - costs.gold,
+      iron: state.resources.iron - costs.iron,
+      mana: state.resources.mana - costs.mana,
+      stone: state.resources.stone - costs.stone,
+      wood: state.resources.wood - costs.wood,
     },
-    purchaseInProgress: undefined
+    tileBuildings: [
+      ...state.tileBuildings, building
+    ]
   };
 }

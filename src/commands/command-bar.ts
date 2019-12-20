@@ -9,12 +9,12 @@ export class CommandBar {
   @computedFrom("state.tiles")
   public get purchaseTargetTile() {
     if (this.state.purchaseInProgress) {
-      return this.state.tiles.find(t => t.id === this.state.purchaseInProgress);
+      return this.state.tiles.find((t) => t.id === this.state.purchaseInProgress);
     }
   }
 
   @computedFrom("state.tileBuildings")
   public get existingTileBuilding() {
-    return this.state.tileBuildings.find(b => b.tile.id === (this.purchaseTargetTile && this.purchaseTargetTile.id));
+    return this.state.tileBuildings.find((b) => b.tile.id === (this.purchaseTargetTile && this.purchaseTargetTile.id));
   }
 }

@@ -3,8 +3,8 @@ import { Store } from "aurelia-store";
 
 import { Tile } from "../board/tile";
 
-import { State, buyBuilding, closePurchasePanel, Resources } from "../store/index";
-import { TileBuildingsMap, TileBuilding, TileBuildingResourceCost } from "./tile-building";
+import { buyBuilding, closePurchasePanel, Resources, State } from "../store/index";
+import { TileBuilding, TileBuildingResourceCost, TileBuildingsMap } from "./tile-building";
 
 @autoinject()
 export class PurchasePanel {
@@ -21,7 +21,7 @@ export class PurchasePanel {
 
   @computedFrom("tile")
   public get costs() {
-    return Object.entries(TileBuildingResourceCost[this.building]).filter(r => r[1] !== 0);
+    return Object.entries(TileBuildingResourceCost[this.building]).filter((r) => r[1] !== 0);
   }
 
   @computedFrom("resources")

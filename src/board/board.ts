@@ -2,8 +2,8 @@ import { autoinject } from "aurelia-framework";
 import { Store } from "aurelia-store";
 import { Subscription } from "rxjs";
 
-import { TilePlacement, TileRing } from "./tile";
 import { State } from "../store/index";
+import { TilePlacement, TileRing } from "./tile";
 
 @autoinject()
 export class Board {
@@ -15,7 +15,7 @@ export class Board {
   }
 
   public getTiles(ring: TileRing, placement: TilePlacement) {
-    return this.state?.tiles?.filter(t => t.placement === placement && t.ring === ring);
+    return this.state?.tiles?.filter((t) => t.placement === placement && t.ring === ring);
   }
 
   public detached() {

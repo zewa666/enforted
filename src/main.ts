@@ -1,5 +1,5 @@
-import {Aurelia} from 'aurelia-framework'
-import environment from './environment';
+import {Aurelia} from "aurelia-framework";
+import environment from "./environment";
 
 import { initialState } from "./store/index";
 
@@ -10,15 +10,15 @@ export function configure(aurelia: Aurelia) {
     .plugin("aurelia-store", {
       initialState
     })
-    .feature('board')
-    .feature('player')
-    .feature('commands')
+    .feature("board")
+    .feature("player")
+    .feature("commands")
     .feature("buildings");
 
-  aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
+  aurelia.use.developmentLogging(environment.debug ? "debug" : "warn");
 
   if (environment.testing) {
-    aurelia.use.plugin('aurelia-testing');
+    aurelia.use.plugin("aurelia-testing");
   }
 
   aurelia.start().then(() => aurelia.setRoot());

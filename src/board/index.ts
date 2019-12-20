@@ -1,6 +1,6 @@
-import { FrameworkConfiguration } from 'aurelia-framework';
-import { Tile } from './tile';
-import { Board } from './board';
+import { FrameworkConfiguration } from "aurelia-framework";
+import { Board } from "./board";
+import { Tile } from "./tile";
 
 export function configure(config: FrameworkConfiguration) {
   config.globalResources([

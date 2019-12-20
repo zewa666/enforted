@@ -1,12 +1,12 @@
-import { autoinject } from "aurelia-framework";
+import { autoinject } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
 import {
-  State,
-  rollDice,
-  openPurchaseForTile,
   buyBuilding,
-  closePurchasePanel
+  closePurchasePanel,
+  openPurchaseForTile,
+  rollDice,
+  State
 } from "./store/index";
 
 @autoinject()

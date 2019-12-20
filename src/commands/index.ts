@@ -1,4 +1,4 @@
-import { FrameworkConfiguration } from 'aurelia-framework';
+import { FrameworkConfiguration } from "aurelia-framework";
 
 import { CommandBar } from "./command-bar";
 import { Dice } from "./dice";
