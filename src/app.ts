@@ -17,4 +17,18 @@ export class App {
     this.store.registerAction("close the purchase panel", closePurchasePanel);
     this.store.registerAction("buy a tile building", buyBuilding);
   }
+
+  public attached() {
+    window.addEventListener("keyup", this.handleGlobalKeys);
+  }
+
+  public detached() {
+    window.removeEventListener("keyup", this.handleGlobalKeys);
+  }
+
+  private handleGlobalKeys = (event: KeyboardEvent) => {
+    if (event.keyCode === 13) {
+      this.store.dispatch(rollDice);
+    }
+  }
 }
