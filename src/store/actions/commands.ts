@@ -1,11 +1,13 @@
 import { Tile } from "../../board/tile";
 import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 import { State } from "../index";
+import { Resources } from "../state";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
   const roll = Math.floor(Math.random() * 6) + 1;
   const newPosition = idxOfTile + roll;
+  const isNextTurn = newPosition > state.tiles.length - 1;
 
   return {
     ...state,
@@ -18,9 +20,24 @@ export function rollDice(state: State): State {
           : state.tiles[newPosition]
       }
     ],
-    turn: newPosition > state.tiles.length - 1
+    resources: isNextTurn
+      ? gatherResources(state).resources
+      : state.resources,
+    turn: isNextTurn
       ? state.turn + 1
       : state.turn,
+  };
+}
+
+export function gatherResources(state: State): State {
+  const resources = state.tileBuildings.reduce((prev, curr) => {
+    prev[curr.tile.type] += 3;
+    return prev;
+  }, state.resources as Resources);
+
+  return {
+    ...state,
+    resources
   };
 }
 
