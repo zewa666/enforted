@@ -1,41 +1,67 @@
 .tile {
   align-items: center;
+  background-repeat: no-repeat;
   display: flex;
 	flex-grow: 1;
   justify-content: center;
   outline: 1px solid $tile-border-bg;
   position: relative;
 
+  &--bottom {
+    background-position: bottom center;
+  }
+
+  &--top {
+    background-position: top center;
+  }
+
+  &--left {
+    background-position: left center;
+  }
+
+  &--right {
+    background-position: right center;
+  }
+
   &--wood {
     background-color: $tile-bg--wood;
+    background-image: url("assets/icons/forest.svg");
   }
 
   &--gold {
     background-color: $tile-bg--gold;
+    background-image: url("assets/icons/two-coins.svg");
   }
 
   &--stone {
     background-color: $tile-bg--stone;
+    background-image: url("assets/icons/stone-block.svg");
   }
 
   &--iron {
     background-color: $tile-bg--iron;
+    background-image: url("assets/icons/ore.svg");
   }
 
   &--food {
     background-color: $tile-bg--food;
+    background-image: url("assets/icons/wheat.svg");
+
   }
 
   &--mana {
     background-color: $tile-bg--mana;
+    background-image: url("assets/icons/vortex.svg");
   }
 
   &--coal {
     background-color: $tile-bg--coal;
+    background-image: url("assets/icons/brick-pile.svg");
   }
 
   &--blood {
     background-color: $tile-bg--blood;
+    background-image: url("assets/icons/bloody-stash.svg");
   }
 
   &--start {

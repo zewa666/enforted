@@ -1,7 +1,6 @@
-<template dblclick.delegate="openPurchasePanel()"
+<template title.bind="type"
+          dblclick.delegate="openPurchasePanel()"
           class="${bem('tile', '', [type, isCorner && 'corner'])}">
-  <div class="tile__text">${type}</div>
-
   <player repeat.for="player of players"
           if.bind="isPlayerOnTile"
           class="tile__player"

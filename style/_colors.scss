@@ -1,17 +1,26 @@
 /* stylelint-disable */
+$graphite: #2A2708;
+$stonewall: #928573;
+$beaver: #896552;
+$gold: #FFD700;
+$iron: #D4D7D9;
+$charcoal: #36454F;
+$blood: #8a0303;
+$eastbay: #3C4777;
 
+/* General */
 $body-bg: darkslategrey;
 
 /* Tiles */
 $tile-border-bg: black;
-$tile-bg--wood: #4c2a12;
-$tile-bg--stone: gray;
-$tile-bg--iron: lightslategray;
-$tile-bg--gold: gold;
-$tile-bg--food: pink;
-$tile-bg--mana: darkblue;
-$tile-bg--coal: #36454f;
-$tile-bg--blood: #8a0303;
+$tile-bg--wood: $graphite;
+$tile-bg--stone: $stonewall;
+$tile-bg--iron: $iron;
+$tile-bg--gold: $gold;
+$tile-bg--food: $beaver;
+$tile-bg--mana: $eastbay;
+$tile-bg--coal: $charcoal;
+$tile-bg--blood: $blood;
 $tile-bg--start: white;
 
 
