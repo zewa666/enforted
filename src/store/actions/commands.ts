@@ -7,7 +7,7 @@ export function rollDice(state: State): State {
   const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
   const roll = Math.floor(Math.random() * 6) + 1;
   const newPosition = idxOfTile + roll;
-  const isNextTurn = newPosition > state.tiles.length - 1;
+  const isNextRound = newPosition > state.tiles.length - 1;
 
   return {
     ...state,
@@ -21,12 +21,12 @@ export function rollDice(state: State): State {
       }
     ],
     purchaseInProgress: undefined,
-    resources: isNextTurn
+    resources: isNextRound
       ? gatherResources(state).resources
       : state.resources,
-    turn: isNextTurn
-      ? state.turn + 1
-      : state.turn,
+    round: isNextRound
+      ? state.round + 1
+      : state.round,
   };
 }
 

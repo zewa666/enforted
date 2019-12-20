@@ -6,7 +6,7 @@ import { rollDice, State } from "../store/index";
 
 @autoinject()
 @connectTo((state: Store<State>) => state.state.pipe(
-  map((value) => ({ lastDiceRoll: value.lastDiceRoll, turn: value.turn }))
+  map((value) => ({ lastDiceRoll: value.lastDiceRoll, round: value.round }))
 ))
 export class Dice {
 

@@ -13,7 +13,7 @@ export interface State {
   tileBuildings: TileBuilding[];
   lastDiceRoll?: number;
   resources: Resources;
-  turn: number;
+  round: number;
   /**
    * Setting this to undefined closes the purchase panel
    */
@@ -33,6 +33,7 @@ export const initialState = {
     stone: 0,
     wood: 20,
   },
+  round: 1,
   tileBuildings: [],
   tiles: [
     ...Array.from<Tile, Partial<Tile>>(Array(11), (_, idx) => ({
@@ -92,8 +93,7 @@ export const initialState = {
       ring: "inner",
       type: "blood",
     })),
-  ],
-  turn: 1,
+  ]
 } as State;
 
 const player = new Player();
