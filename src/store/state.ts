@@ -4,7 +4,7 @@ import { Player } from "../player/player";
 import { guid } from "./helper";
 
 export type Resources = {
-  [key in TileType]: number;
+  [key in Exclude<TileType, "start">]: number;
 };
 
 export interface State {
@@ -36,11 +36,17 @@ export const initialState = {
   round: 1,
   tileBuildings: [],
   tiles: [
-    ...Array.from<Tile, Partial<Tile>>(Array(11), (_, idx) => ({
+    {
       id: guid(),
-      isCorner: idx === 0 || idx === 10,
+      isCorner: true,
       placement: "bottom",
-      purchaseInProgress: undefined,
+      ring: "outer",
+      type: "start"
+    },
+    ...Array.from<Tile, Partial<Tile>>(Array(10), (_, idx) => ({
+      id: guid(),
+      isCorner: idx === 9,
+      placement: "bottom",
       ring: "outer",
       type: "wood",
     })),

@@ -5,7 +5,7 @@ import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { openPurchaseForTile, State } from "../store/index";
 
-export type TileType = "wood" | "stone" | "food" | "gold" | "iron" | "coal" | "mana" | "blood";
+export type TileType = "wood" | "stone" | "food" | "gold" | "iron" | "coal" | "mana" | "blood" | "start";
 export type TilePlacement = "bottom" | "left" | "top" | "right";
 export type TileRing = "inner" | "outer";
 
@@ -34,7 +34,7 @@ export class Tile {
   }
 
   public openPurchasePanel() {
-    if (this.isPlayerOnTile) {
+    if (this.type !== "start" && this.isPlayerOnTile) {
       this.store.dispatch(openPurchaseForTile, this);
     }
   }

@@ -38,6 +38,10 @@
     background-color: $tile-bg--blood;
   }
 
+  &--start {
+    background-color: $tile-bg--start;
+  }
+
   &--corner {
     flex-direction: column;
     flex-grow: 2;
