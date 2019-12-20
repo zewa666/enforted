@@ -14,6 +14,9 @@ export interface State {
   lastDiceRoll?: number;
   resources: Resources;
   turn: number;
+  /**
+   * Setting this to undefined closes the purchase panel
+   */
   purchaseInProgress?: string;
 }
 

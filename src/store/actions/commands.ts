@@ -16,10 +16,11 @@ export function rollDice(state: State): State {
       {
         ...state.players[0],
         currentTile: newPosition > state.tiles.length - 1
-          ? state.tiles[Math.abs(newPosition - state.tiles.length)]
-          : state.tiles[newPosition]
+        ? state.tiles[Math.abs(newPosition - state.tiles.length)]
+        : state.tiles[newPosition]
       }
     ],
+    purchaseInProgress: undefined,
     resources: isNextTurn
       ? gatherResources(state).resources
       : state.resources,
