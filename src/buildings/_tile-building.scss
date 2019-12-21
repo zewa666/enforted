@@ -1,11 +1,83 @@
 .tile-building {
-  &__indicator {
-    background-color: $building-indicator-bg;
-    display: block;
-    height: 20px;
-    left: 0;
-    position: absolute;
-    top: calc(100% - 20px);
-    width: 100%;
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  &--bottom {
+    justify-content: center;
+  }
+
+  &--top {
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  &--left {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &--right {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__display {
+    background-repeat: no-repeat;
+    
+    &--sawmill {
+      background-image: url("assets/icons/crosscut-saw.svg");
+    }
+
+    &--iron_mine {
+      background-image: url("assets/icons/mining.svg");
+    }
+
+    &--farm {
+      background-image: url("assets/icons/windmill.svg");
+    }
+
+    &--quarry {
+      background-image: url("assets/icons/stone-crafting.svg");
+    }
+
+    &--gold_mine {
+      background-image: url("assets/icons/gold-mine.svg");
+    }
+
+    &--mana_rift {
+      background-image: url("assets/icons/magic-portal.svg");
+    }
+
+    &--coal_mine {
+      background-image: url("assets/icons/coal-wagon.svg");
+    }
+
+    &--butchery {
+      background-image: url("assets/icons/meat-cleaver.svg");
+    }
+
+    &--bottom {
+      margin-top: 10%;
+      width: 45%;
+    }
+
+    &--top {
+      height: 30%;
+      margin-bottom: 10%;
+      width: 45%;
+    }
+
+    &--left {
+      height: 60%;
+      margin-right: 5%;
+      width: 27%;
+    }
+
+    &--right {
+      height: 60%;
+      margin-left: 5%;
+      width: 27%;
+    }
   }
 }
