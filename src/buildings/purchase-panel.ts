@@ -21,7 +21,7 @@ export class PurchasePanel {
 
   @computedFrom("tile")
   public get costs() {
-    return Object.entries(TileBuildingResourceCost[this.building]).filter((r) => r[1] !== 0);
+    return Object.entries<number>(TileBuildingResourceCost[this.building]).filter((r) => r[1] !== 0);
   }
 
   @computedFrom("resources")
