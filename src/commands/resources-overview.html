@@ -1,52 +1,11 @@
 <template class="resources-overview">
   <ul class="resources-overview__list">
-    <li class="resources-overview__item">
-      <img title="Wood"
+    <li class="resources-overview__item"
+        repeat.for="res of resources">
+      <img title.bind="res.name"
            class="resources-overview__image"
-           src="assets/icons/forest.svg" />
-      <span class="resources-overview__value">${state.wood}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Food"
-           class="resources-overview__image"
-           src="assets/icons/wheat.svg" />
-      <span class="resources-overview__value">${state.food}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Stone"
-           class="resources-overview__image"
-           src="assets/icons/stone-block.svg" />
-      <span class="resources-overview__value">${state.stone}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Gold"
-           class="resources-overview__image"
-           src="assets/icons/two-coins.svg" />
-      <span class="resources-overview__value">${state.gold}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Iron"
-           class="resources-overview__image"
-           src="assets/icons/ore.svg" />
-      <span class="resources-overview__value">${state.iron}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Mana"
-           class="resources-overview__image"
-           src="assets/icons/vortex.svg" />
-      <span class="resources-overview__value">${state.mana}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Coal"
-           class="resources-overview__image"
-           src="assets/icons/brick-pile.svg" />
-      <span class="resources-overview__value">${state.coal}</span>
-    </li>
-    <li class="resources-overview__item">
-      <img title="Blood"
-           class="resources-overview__image"
-           src="assets/icons/bloody-stash.svg" />
-      <span class="resources-overview__value">${state.blood}</span>
+           src="assets/icons/${res.icon}.svg" />
+      <span class="resources-overview__value">${res.value}</span>
     </li>
   </ul>
 </template>
