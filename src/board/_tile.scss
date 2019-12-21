@@ -10,10 +10,12 @@
 
   &--bottom {
     background-position: bottom center;
+    background-size: 80%;
   }
 
   &--top {
     background-position: top center;
+    background-size: 80%;
   }
 
   &--left {
@@ -62,6 +64,7 @@
   }
 
   &--corner {
+    background-size: initial;
     flex-direction: column;
     flex-grow: 2;
     outline: 1px solid $tile-border-bg;

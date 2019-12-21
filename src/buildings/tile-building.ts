@@ -13,6 +13,17 @@ export enum AvailableTileBuildings {
   coal_mine = "coal_mine"
 }
 
+export enum TileBuildingsIcon {
+  butchery = "meat-cleaver",
+  coal_mine = "coal-wagon",
+  farm = "windmill",
+  gold_mine = "gold-mine",
+  iron_mine = "mining",
+  mana_rift = "magic-portal",
+  quarry = "stone-crafting",
+  sawmill = "crosscut-saw",
+}
+
 export const TileBuildingResourceCost: {
   [key in AvailableTileBuildings]: Resources;
 } = {

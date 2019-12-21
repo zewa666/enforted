@@ -1,16 +1,35 @@
 .purchase-panel {
   border: 1px dotted $purchase-panel-bg;
   padding: 0 15px;
+  width: 80px;
 
   &__list {
     list-style: none;
+    padding: 0;
   }
 
   &__buy {
     margin-top: 10px;
   }
 
+  &__cost {
+    list-style: none;
+    padding: 0 0 0 5px;
+  }
+
   &__close {
     margin-bottom: 15px;
+  }
+}
+
+.cost {
+  &__item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    width: 30px;
   }
 }

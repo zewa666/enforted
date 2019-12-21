@@ -1,11 +1,20 @@
 <template class="purchase-panel">
-  <h4 class="purchase-panel__header">What do you want to build?</h4>
+  <h4 class="purchase-panel__header">Building</h4>
 
   <ul class="purchase-panel__list">
     <li class="purchase-panel__item">
-      <span class="purchase-panel__building-name">${building}</span>
-      <ul class="purchase-panel__cost">
-        <li repeat.for="cost of costs">${cost}</li>
+      <span class="purchase-panel__building-name">
+        <img title.bind="building"
+             src="assets/icons/${buildingIcon}.svg" />
+      </span>
+      <ul class="purchase-panel__cost cost">
+        <li repeat.for="cost of costs"
+            class="cost__item">
+          <img src="assets/icons/${cost.icon}.svg"
+               title="cost.resource"
+               class="cost__icon" />
+          <span class="cost__value">${cost.value}</span>
+        </li>
       </ul>
       <button class="purchase-panel__buy"
               click.trigger="buyBuilding()"

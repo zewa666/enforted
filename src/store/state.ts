@@ -7,6 +7,19 @@ export type Resources = {
   [key in Exclude<TileType, "start">]: number;
 };
 
+export const ResourcesIcons: {
+  [key in Exclude<TileType, "start">]: string
+} = {
+  blood: "bloody-stash",
+  coal: "brick-pile",
+  food: "wheat",
+  gold: "two-coins",
+  iron: "ore",
+  mana: "vortex",
+  stone: "stone-block",
+  wood: "forest"
+};
+
 export interface State {
   tiles: Tile[];
   players: Player[];
