@@ -1,0 +1,14 @@
+{
+  "start_url": "/",
+  "orientation":  "landscape",
+  "display": "standalone",
+  "name": "Enforted Game",
+  "short_name": "Enforted",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
