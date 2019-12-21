@@ -11,7 +11,6 @@
   display: flex;
   flex-direction: column;
   margin-right: 30px;
-  width: 200px;
 }
 
 .dice {
@@ -39,10 +38,16 @@
     flex-direction: column;
     list-style: none;
     padding: 0;
+    width: 70px;
   }
   
   &__item {
+    align-items: center;
     display: flex;
     justify-content: space-between;
+  }
+
+  &__image {
+    width: 30px;
   }
 }
