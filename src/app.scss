@@ -8,9 +8,9 @@
 
 .main {
   display: flex;
-  height: 50vw;
-  margin: 10px auto;
-  width: 80vw;
+  height: 100vh;
+  margin: 0 auto;
+  width: 100vw;
 
   &__command-bar {
     flex-grow: 1;
@@ -19,6 +19,27 @@
   &__board {
     flex-grow: 22;
   }
+
+  &__toggle-command-bar {
+    background-color: $toggle-cbar-btn-bg;
+    border: none;
+    color: $toggle-cbar-btn-fg;
+
+    &::-moz-focus-inner { 
+      border: 0;
+    }
+    &:focus { outline: none; }
+
+    @media (min-width: 1281px) { 
+      display: none;
+    }
+  }
+
+  @media (min-width: 1281px) { 
+    height: 50vw;
+    margin: 10px auto;
+    width: 80vw;
+  } 
 }
 
 @import "./board/index";

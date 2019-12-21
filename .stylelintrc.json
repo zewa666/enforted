@@ -1,3 +1,17 @@
 {
-  "extends": "./node_modules/aurelia-bem/.stylelintrc.json"
+  "extends": "./node_modules/aurelia-bem/.stylelintrc.json",
+  "rules": {
+    "selector-max-specificity": [
+      "0,1,0",
+      {
+        "ignoreSelectors": [
+          ":visited",
+          ":active",
+          ":hover",
+          ":focus",
+          "::-moz-focus-inner"
+        ]
+      }
+    ]
+  }
 }

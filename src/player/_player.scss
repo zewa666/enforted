@@ -2,12 +2,12 @@
   align-items: center;
   background-color: $player-bg-border;
   border: 1px solid $player-bg-border;
-  border-radius: 30px;
+  border-radius: 50%;
   display: flex;
   font-size: 10px;
-  height: 50px;
+  height: 4vw;
   justify-content: center;
   position: absolute;
-  width: 50px;
+  width: 4vw;
   z-index: 1;
 }

@@ -11,7 +11,9 @@ $cod-gray: #0f0f0e;
 $tuatara: #292927;
 
 /* General */
-$body-bg: darkslategrey;
+$body-bg: $tuatara;
+$toggle-cbar-btn-bg: $cod-gray;
+$toggle-cbar-btn-fg: $stonewall;
 
 /* Tiles */
 $tile-bg: $cod-gray;

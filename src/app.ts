@@ -11,6 +11,8 @@ import {
 
 @autoinject()
 export class App {
+  public commandBarVisible: boolean = true;
+
   constructor(private store: Store<State>) {
     this.store.registerAction("roll the dice", rollDice);
     this.store.registerAction("open the purchase panel", openPurchaseForTile);
