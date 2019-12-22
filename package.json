@@ -11,6 +11,7 @@
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bem": "^0.3.0",
     "aurelia-bootstrapper": "^2.3.2",
+    "aurelia-dialog": "^2.0.0-rc.8",
     "aurelia-store": "^1.4.0",
     "rxjs": "^6.5.3"
   },

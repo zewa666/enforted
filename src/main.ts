@@ -1,4 +1,4 @@
-import {Aurelia} from "aurelia-framework";
+import { Aurelia } from "aurelia-framework";
 import environment from "./environment";
 
 import { initialState } from "./store/index";
@@ -10,6 +10,7 @@ export function configure(aurelia: Aurelia) {
     .plugin("aurelia-store", {
       initialState
     })
+    .plugin("aurelia-dialog")
     .feature("board")
     .feature("player")
     .feature("commands")

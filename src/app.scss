@@ -42,6 +42,12 @@
   } 
 }
 
+// stylelint-disable-next-line
+ux-dialog-overlay.active {
+  background-color: $dialog-overlay-bg;
+  opacity: .5;
+}
+
 @import "./board/index";
 @import "./player/player";
 @import "./commands/index";
