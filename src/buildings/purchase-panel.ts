@@ -1,3 +1,4 @@
+import { DialogController } from "aurelia-dialog";
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
@@ -10,6 +11,7 @@ import {
   ResourcesIcons,
   State
 } from "../store/index";
+import { DialogModel } from "../utils/utils";
 import {
   TileBuilding,
   TileBuildingResourceCost,
@@ -22,8 +24,19 @@ export class PurchasePanel {
   @bindable() public tile: Tile;
   @bindable() public tileBuilding?: TileBuilding;
   @bindable() public resources: Resources;
+  public dialogView?: string;
 
-  constructor(private store: Store<State>) { }
+  constructor(
+    private store: Store<State>,
+    public controller: DialogController
+  ) { }
+
+  public activate(model: PurchasePanel & DialogModel) {
+    this.tile = model.tile;
+    this.tileBuilding = model.tileBuilding;
+    this.resources = model.resources;
+    this.dialogView = model.view;
+  }
 
   @computedFrom("tile")
   public get building() {
@@ -55,9 +68,11 @@ export class PurchasePanel {
     const newBuilding = new TileBuilding();
     newBuilding.tile = this.tile;
     this.store.dispatch(buyBuilding, newBuilding);
+    this.controller.ok();
   }
 
   public closePanel() {
     this.store.dispatch(closePurchasePanel);
+    this.controller.cancel();
   }
 }

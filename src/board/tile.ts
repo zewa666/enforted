@@ -1,9 +1,11 @@
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
+import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
-import { openPurchaseForTile, State } from "../store/index";
+import { openPurchaseForTile, Resources, State } from "../store/index";
+import { openDialog } from "../utils/utils";
 
 export type TileType = "wood" | "stone" | "food" | "gold" | "iron" | "coal" | "mana" | "blood" | "start";
 export type TilePlacement = "bottom" | "left" | "top" | "right";
@@ -18,6 +20,7 @@ export class Tile {
   @bindable public players?: Player[] = [];
   @bindable public tileBuildings?: TileBuilding[] = [];
   @bindable public id: string;
+  @bindable public resources: Resources;
 
   constructor(private store: Store<State>) {
 
@@ -33,9 +36,16 @@ export class Tile {
     return this.tileBuildings?.filter((b) => b.tile.id === this.id).length > 0;
   }
 
-  public openPurchasePanel() {
+  public async openPurchasePanel() {
     if (this.type !== "start" && this.isPlayerOnTile) {
-      this.store.dispatch(openPurchaseForTile, this);
+      await this.store.dispatch(openPurchaseForTile, this);
+
+      openDialog(PurchasePanel, {
+        resources: this.resources,
+        tile: this,
+        tileBuilding: this.tileBuildings?.find((b) => b.tile.id === this.id),
+        view: "buildings/purchase-panel.html",
+      });
     }
   }
 }
