@@ -25,6 +25,7 @@ export class PurchasePanel {
   @bindable() public tileBuilding?: TileBuilding;
   @bindable() public resources: Resources;
   public dialogView?: string;
+  public bemclasses?: string;
 
   constructor(
     private store: Store<State>,
@@ -36,6 +37,7 @@ export class PurchasePanel {
     this.tileBuilding = model.tileBuilding;
     this.resources = model.resources;
     this.dialogView = model.view;
+    this.bemclasses = model.bem;
   }
 
   @computedFrom("tile")

@@ -1,9 +1,9 @@
 import { computedFrom } from "aurelia-framework";
 import { connectTo } from "aurelia-store";
+import { upperFirst } from "lodash";
 import { pluck } from "rxjs/operators";
 
 import { Resources, ResourcesIcons } from "../store/state";
-import { ucFirst } from "../utils/utils";
 
 @connectTo((store) => store.state.pipe(pluck("resources")))
 export class ResourcesOverview {
@@ -18,7 +18,7 @@ export class ResourcesOverview {
     return Object.entries(this.state)
       .map((e) => ({
         icon: ResourcesIcons[e[0]],
-        name: ucFirst(e[0]),
+        name: upperFirst(e[0]),
         value: e[1],
       }));
   }

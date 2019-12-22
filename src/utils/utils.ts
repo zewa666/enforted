@@ -1,17 +1,22 @@
 import { DialogService } from "aurelia-dialog";
 import { Container } from "aurelia-framework";
-
-export function ucFirst(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
+import { kebabCase } from "lodash";
 
 export interface DialogModel {
   [key: string]: any;
+  /**
+   * the view url (relative to src/)
+   */
   view: string;
+  /**
+   * any BEM classes to attach
+   */
+  bem?: string;
 }
 
 export function openDialog(viewModel: any, model: DialogModel) {
   const dialogService = Container.instance.get(DialogService);
+  model.bem = model.bem || kebabCase(viewModel.name);
 
   return dialogService.open({
     centerHorizontalOnly: true,
