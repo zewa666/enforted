@@ -34,7 +34,7 @@ export function gatherResources(state: State): State {
   const resources = state.tileBuildings.reduce((prev, curr) => {
     prev[curr.tile.type] += 3;
     return prev;
-  }, state.resources as Resources);
+  }, Object.assign({}, state.resources) as Resources);
 
   return {
     ...state,
