@@ -4,11 +4,11 @@ import { Player } from "../player/player";
 import { guid } from "./helper";
 
 export type Resources = {
-  [key in Exclude<TileType, "start">]: number;
+  [key in Exclude<TileType, "start" | "sacred_grounds">]: number;
 };
 
 export const ResourcesIcons: {
-  [key in Exclude<TileType, "start">]: string
+  [key in Exclude<TileType, "start" | "sacred_grounds">]: string
 } = {
   blood: "bloody-stash",
   coal: "brick-pile",
@@ -56,13 +56,20 @@ export const initialState = {
       ring: "outer",
       type: "start"
     },
-    ...Array.from<Tile, Partial<Tile>>(Array(10), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
       id: guid(),
-      isCorner: idx === 9,
+      isCorner: false,
       placement: "bottom",
       ring: "outer",
       type: "wood",
     })),
+    {
+      id: guid(),
+      isCorner: true,
+      placement: "bottom",
+      ring: "outer",
+      type: "sacred_grounds"
+    },
     ...Array.from<Tile, Partial<Tile>>(Array(9), () => ({
       id: guid(),
       isCorner: false,
@@ -70,13 +77,20 @@ export const initialState = {
       ring: "outer",
       type: "food",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(11), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(10), (_, idx) => ({
       id: guid(),
-      isCorner: idx === 0 || idx === 10,
+      isCorner: idx === 0,
       placement: "top",
       ring: "outer",
       type: "stone",
     })),
+    {
+      id: guid(),
+      isCorner: true,
+      placement: "top",
+      ring: "outer",
+      type: "sacred_grounds"
+    },
     ...Array.from<Tile, Partial<Tile>>(Array(9), () => ({
       id: guid(),
       isCorner: false,
@@ -91,12 +105,12 @@ export const initialState = {
       ring: "inner",
       type: "iron",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(7), () => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
       id: guid(),
       isCorner: false,
       placement: "left",
       ring: "inner",
-      type: "mana",
+      type: idx === 4 ? "sacred_grounds" : "mana",
     })),
     ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
       id: guid(),
@@ -105,12 +119,12 @@ export const initialState = {
       ring: "inner",
       type: "coal",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(7), () => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
       id: guid(),
       isCorner: false,
       placement: "right",
       ring: "inner",
-      type: "blood",
+      type: idx === 6 ? "sacred_grounds" : "blood",
     })),
   ]
 } as State;

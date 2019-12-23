@@ -1,5 +1,5 @@
 import { bindable, computedFrom } from "aurelia-framework";
-import { Tile } from "../board/tile";
+import { Tile, TileType } from "../board/tile";
 import { Resources } from "../store/state";
 
 export enum AvailableTileBuildings {
@@ -10,7 +10,8 @@ export enum AvailableTileBuildings {
   iron_mine = "iron_mine",
   mana_rift = "mana_rift",
   butchery = "butchery",
-  coal_mine = "coal_mine"
+  coal_mine = "coal_mine",
+  shrine = "shrine"
 }
 
 export enum TileBuildingsIcon {
@@ -22,6 +23,7 @@ export enum TileBuildingsIcon {
   mana_rift = "magic-portal",
   quarry = "stone-crafting",
   sawmill = "crosscut-saw",
+  shrine = "fire-shrine"
 }
 
 export const TileBuildingResourceCost: {
@@ -107,15 +109,28 @@ export const TileBuildingResourceCost: {
     stone: 0,
     wood: 5
   },
+  shrine: {
+    blood: 0,
+    coal: 0,
+    food: 10,
+    gold: 15,
+    iron: 0,
+    mana: 0,
+    stone: 10,
+    wood: 10
+  }
 };
 
-export const TileBuildingsMap = {
+export const TileBuildingsMap: {
+  [key in Exclude<TileType, "start">]: AvailableTileBuildings
+} = {
   blood: AvailableTileBuildings.butchery,
   coal: AvailableTileBuildings.coal_mine,
   food: AvailableTileBuildings.farm,
   gold: AvailableTileBuildings.gold_mine,
   iron: AvailableTileBuildings.iron_mine,
   mana: AvailableTileBuildings.mana_rift,
+  sacred_grounds: AvailableTileBuildings.shrine,
   stone: AvailableTileBuildings.quarry,
   wood: AvailableTileBuildings.sawmill,
 };

@@ -7,7 +7,17 @@ import { Player } from "../player/player";
 import { openPurchaseForTile, Resources, State } from "../store/index";
 import { openDialog } from "../utils/utils";
 
-export type TileType = "wood" | "stone" | "food" | "gold" | "iron" | "coal" | "mana" | "blood" | "start";
+export type TileType = "wood"
+  | "stone"
+  | "food"
+  | "gold"
+  | "iron"
+  | "coal"
+  | "mana"
+  | "blood"
+  | "start"
+  | "sacred_grounds";
+
 export type TilePlacement = "bottom" | "left" | "top" | "right";
 export type TileRing = "inner" | "outer";
 

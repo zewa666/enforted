@@ -63,6 +63,10 @@
     background-image: url("assets/icons/direction-signs.svg");
   }
 
+  &--sacred_grounds {
+    background-image: url("assets/icons/tumulus.svg");
+  }
+
   &--corner {
     background-size: initial;
     flex-direction: column;
