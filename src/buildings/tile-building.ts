@@ -2,17 +2,15 @@ import { bindable, computedFrom } from "aurelia-framework";
 import { Tile, TileType } from "../board/tile";
 import { Resources } from "../store/state";
 
-export enum AvailableTileBuildings {
-  sawmill = "sawmill",
-  quarry = "quarry",
-  farm = "farm",
-  gold_mine = "gold_mine",
-  iron_mine = "iron_mine",
-  mana_rift = "mana_rift",
-  butchery = "butchery",
-  coal_mine = "coal_mine",
-  shrine = "shrine"
-}
+export type AvailableTileBuildings = "sawmill"
+  | "quarry"
+  | "farm"
+  | "gold_mine"
+  | "iron_mine"
+  | "mana_rift"
+  | "butchery"
+  | "coal_mine"
+  | "shrine";
 
 export enum TileBuildingsIcon {
   butchery = "meat-cleaver",
@@ -124,22 +122,22 @@ export const TileBuildingResourceCost: {
 export const TileBuildingsMap: {
   [key in Exclude<TileType, "start">]: AvailableTileBuildings
 } = {
-  blood: AvailableTileBuildings.butchery,
-  coal: AvailableTileBuildings.coal_mine,
-  food: AvailableTileBuildings.farm,
-  gold: AvailableTileBuildings.gold_mine,
-  iron: AvailableTileBuildings.iron_mine,
-  mana: AvailableTileBuildings.mana_rift,
-  sacred_grounds: AvailableTileBuildings.shrine,
-  stone: AvailableTileBuildings.quarry,
-  wood: AvailableTileBuildings.sawmill,
+  blood: "butchery",
+  coal: "coal_mine",
+  food: "farm",
+  gold: "gold_mine",
+  iron: "iron_mine",
+  mana: "mana_rift",
+  sacred_grounds: "shrine",
+  stone: "quarry",
+  wood: "sawmill",
 };
 
 export class TileBuilding {
   @bindable public tile: Tile;
 
   @computedFrom("tile")
-  public get type() {
+  public get type(): AvailableTileBuildings {
     if (this.tile) {
       return TileBuildingsMap[this.tile.type];
     }
