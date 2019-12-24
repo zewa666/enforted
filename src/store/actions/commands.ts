@@ -4,7 +4,7 @@ import { State } from "../index";
 import { Resources } from "../state";
 
 export function rollDice(state: State): State {
-  const idxOfTile = state.tiles.indexOf(state.players[0].currentTile);
+  const idxOfTile = state.tiles.findIndex((t) => t.id === state.players[0].currentTileId);
   const roll = Math.floor(Math.random() * 6) + 1;
   const newPosition = idxOfTile + roll;
   const isNextRound = newPosition > state.tiles.length - 1;
@@ -15,10 +15,10 @@ export function rollDice(state: State): State {
     players: [
       {
         ...state.players[0],
-        currentTile: newPosition > state.tiles.length - 1
-        ? state.tiles[Math.abs(newPosition - state.tiles.length)]
-        : state.tiles[newPosition]
-      }
+        currentTileId: newPosition > state.tiles.length - 1
+        ? state.tiles[Math.abs(newPosition - state.tiles.length)].id
+        : state.tiles[newPosition].id
+      } as any
     ],
     purchaseInProgress: undefined,
     resources: isNextRound

@@ -38,7 +38,7 @@ export class Tile {
 
   @computedFrom("players")
   public get isPlayerOnTile() {
-    return this.players?.filter((p) => p.currentTile.id === this.id).length > 0;
+    return this.players?.filter((p) => p.currentTileId === this.id).length > 0;
   }
 
   @computedFrom("tileBuildings")

@@ -131,7 +131,7 @@ export const initialState = {
   ]
 } as State;
 
-const player = new Player();
+const player = {} as Player;
 player.name = "zewa";
-player.currentTile = initialState.tiles[0];
+player.currentTileId = initialState.tiles[0].id;
 initialState.players.push(player);
