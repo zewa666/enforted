@@ -52,3 +52,10 @@
     width: 30px;
   }
 }
+
+.save {
+  &__actions {
+    display: flex;
+    flex-direction: column;
+  }
+}

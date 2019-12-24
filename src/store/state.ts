@@ -3,6 +3,8 @@ import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { guid } from "./helper";
 
+export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
+
 export type Resources = {
   [key in Exclude<TileType, "start" | "sacred_grounds">]: number;
 };
