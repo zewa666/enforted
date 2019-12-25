@@ -2,6 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "Firefox launch",
+      "url": "http://localhost:9000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "firefox",
+      "request": "attach",
+      "name": "Firefox attach",
+      "pathMappings": [
+        {
+          "url": "http://localhost:9000/src",
+          "path": "${workspaceFolder}/src"
+        }
+      ]
+    },
+
+    {
       "name": "Chrome Debugger",
       "type": "chrome",
       "request": "launch",
