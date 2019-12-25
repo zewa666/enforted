@@ -8,5 +8,7 @@
           current-tile-id.bind="$parent.id"></player>
 
   <tile-building if.bind="isBuildingOnTile"
-                 tile.bind="$this"></tile-building>
+                 tile-id.bind="id"
+                 type.bind="tileBuilding.type"
+                 placement.bind="placement"></tile-building>
 </template>

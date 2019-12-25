@@ -34,7 +34,7 @@ export function gatherResources(state: State): State {
   const resources = state.tileBuildings
     .filter((b) => b.type !== "shrine")
     .reduce((prev, curr) => {
-    prev[curr.tile.type] += 3;
+    prev[state.tiles.find((t) => t.id === curr.tileId).type] += 3;
     return prev;
   }, Object.assign({}, state.resources) as Resources);
 

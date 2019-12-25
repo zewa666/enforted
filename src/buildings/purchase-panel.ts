@@ -67,8 +67,11 @@ export class PurchasePanel {
   }
 
   public buyBuilding() {
-    const newBuilding = new TileBuilding();
-    newBuilding.tile = this.tile;
+    const newBuilding = {} as TileBuilding;
+    newBuilding.tileId = this.tile.id;
+    newBuilding.type = TileBuildingsMap[this.tile.type];
+    newBuilding.placement = this.tile.placement;
+
     this.store.dispatch(buyBuilding, newBuilding);
     this.controller.ok();
   }

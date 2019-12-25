@@ -43,7 +43,11 @@ export class Tile {
 
   @computedFrom("tileBuildings")
   public get isBuildingOnTile() {
-    return this.tileBuildings?.filter((b) => b.tile.id === this.id).length > 0;
+    return this.tileBuildings?.filter((b) => b.tileId === this.id).length > 0;
+  }
+
+  public get tileBuilding() {
+    return this.tileBuildings?.find((b) => b.tileId === this.id);
   }
 
   public async openPurchasePanel() {
@@ -53,7 +57,7 @@ export class Tile {
       openDialog(PurchasePanel, {
         resources: this.resources,
         tile: this,
-        tileBuilding: this.tileBuildings?.find((b) => b.tile.id === this.id),
+        tileBuilding: this.tileBuildings?.find((b) => b.tileId === this.id),
         view: "buildings/purchase-panel.html",
       });
     }

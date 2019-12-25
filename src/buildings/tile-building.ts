@@ -1,5 +1,5 @@
-import { bindable, computedFrom } from "aurelia-framework";
-import { Tile, TileType } from "../board/tile";
+import { bindable } from "aurelia-framework";
+import { TilePlacement, TileType } from "../board/tile";
 import { Resources } from "../store/state";
 
 export type AvailableTileBuildings = "sawmill"
@@ -134,12 +134,7 @@ export const TileBuildingsMap: {
 };
 
 export class TileBuilding {
-  @bindable public tile: Tile;
-
-  @computedFrom("tile")
-  public get type(): AvailableTileBuildings {
-    if (this.tile) {
-      return TileBuildingsMap[this.tile.type];
-    }
-  }
+  @bindable public tileId: string;
+  @bindable public type: AvailableTileBuildings;
+  @bindable public placement: TilePlacement;
 }
