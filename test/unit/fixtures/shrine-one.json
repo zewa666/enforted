@@ -1,0 +1,533 @@
+{
+  "lastDiceRoll": 5,
+  "players": [
+    {
+      "name": "zewa",
+      "currentTileId": "e24e3306-9048-0af5-7650-399e1f7b30ae"
+    }
+  ],
+  "resources": {
+    "blood": 0,
+    "coal": 0,
+    "food": 15,
+    "gold": 30,
+    "iron": 0,
+    "mana": 0,
+    "stone": 0,
+    "wood": 20
+  },
+  "round": 1,
+  "tileBuildings": [
+    {
+      "tileId": "e24e3306-9048-0af5-7650-399e1f7b30ae",
+      "type": "shrine",
+      "placement": "bottom"
+    }
+  ],
+  "tiles": [
+    {
+      "id": "36794b96-7d77-50d7-a8f3-fd330eda7386",
+      "isCorner": true,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "start"
+    },
+    {
+      "id": "747b8b45-b63b-5037-1a21-d88c9ab5eec1",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "630d56df-7d35-d49f-0bee-b188398d85a3",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "bd9fb000-09a6-1869-42ec-75a554b5921f",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "87ce9ffe-c0a8-ca98-9790-047e5f2d5811",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "8e4a78c6-05bc-2dba-c5d1-2886f0ba4b5e",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "bd13ba73-9647-e748-4f81-449d140121f7",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "624434c1-aa00-5509-d1ca-5eeb8af2d999",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "76936d4c-6b30-f49d-e516-40549b2bf6ee",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "9d9fefc0-d423-9404-ed76-ee862e81effb",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "wood"
+    },
+    {
+      "id": "e24e3306-9048-0af5-7650-399e1f7b30ae",
+      "isCorner": true,
+      "placement": "bottom",
+      "ring": "outer",
+      "type": "sacred_grounds"
+    },
+    {
+      "id": "e0795405-6a0b-80a3-d194-adec2a11999e",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "3bbf2108-7fe2-5e11-f873-905ab15fadeb",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "01fc13d9-35ec-5f4d-bade-3262d8f654c8",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "60083ef3-e08c-7efb-d2bb-5f78a240a0c6",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "d100c4c5-1a8e-cf35-b0fe-8c64034c1a6b",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "39a44439-bcc7-9f65-29fe-078efef0c2d7",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "621facf4-764c-5b3f-aead-8b1357dd364e",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "1784fbd3-d681-aad5-83c0-ed413edf86cb",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "094323b9-2d8a-9cb2-7517-28944dc00e82",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "outer",
+      "type": "food"
+    },
+    {
+      "id": "b76975da-2cad-c550-22b0-410b6b838fcf",
+      "isCorner": true,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "3e80ecbb-75aa-f18a-9a7f-b9c343446fb8",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "0fac8f86-0f50-3023-f554-ca21a5614cd5",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "0153b8c1-f37d-433e-3203-f7ca26961da8",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "96b7a3c7-3dfe-5751-8471-c3ec1e8113be",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "1f194163-14a1-c5bf-5f68-3eac356e8432",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "67d3a7d9-95bf-f6a5-301b-94a1d9aed697",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "6187b364-7f12-72a5-9e35-35577de0e644",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "cd6a0ff2-6a62-d40f-dc02-8dcd47ddf8d1",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "8f023b11-9d42-5f22-19de-a3fdd8e1d4f8",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "outer",
+      "type": "stone"
+    },
+    {
+      "id": "9432b27c-0001-ed70-0933-fb49ee10a5a1",
+      "isCorner": true,
+      "placement": "top",
+      "ring": "outer",
+      "type": "sacred_grounds"
+    },
+    {
+      "id": "b87fff49-f373-4a84-41ce-39d0f2af96f0",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "2ed247a7-8207-ead5-761c-45d1e5b29621",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "bd8cf98d-900e-ec27-91fb-b3c9c24c3a05",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "8b71d1f9-cfd3-b912-7d09-9add5f863803",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "027b794e-0889-e038-1bc6-58e2245e23b7",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "d2ed1617-b627-e00f-c390-ee02cd83a2c0",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "f945a863-c3ec-42e4-bd40-ebf29544799b",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "2510558f-5538-e7ac-515a-a1a2d6c5db0f",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "c7735dfa-927c-dfe9-aa0e-981271ebb0bd",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "outer",
+      "type": "gold"
+    },
+    {
+      "id": "5b421298-75e4-550e-939d-589770dd4d2f",
+      "isCorner": true,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "9cacebac-96d1-4d66-46f5-9961d081815c",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "85d55959-7b15-9373-1cfe-b515d12c6241",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "8fe3b4ca-c862-d20a-7c39-530ccfaa5d92",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "79ebfb3b-bd0e-e2e1-1953-c532f42cf205",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "22224939-374f-ddd9-81bf-04ed2bdd8b16",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "00d56794-1af6-19b1-f50d-aa790a3fa8a4",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "5897ba6e-1ebe-e46e-3644-5ee30f856f10",
+      "isCorner": false,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "b49489ce-5dce-cc0a-cdb8-247ef99ea060",
+      "isCorner": true,
+      "placement": "bottom",
+      "ring": "inner",
+      "type": "iron"
+    },
+    {
+      "id": "0b1b6578-dc5a-531e-74b0-e234cbb17891",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "d8aa44c5-b179-e6a7-0e58-960fb8289d01",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "255667e0-7dd2-f8a4-dca4-1af56a4a6387",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "01896f99-7981-4247-6a91-d41b91aa3d83",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "40310fa0-20c5-61fa-afea-626f119bf76c",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "sacred_grounds"
+    },
+    {
+      "id": "ebdd2013-a17c-6899-3bed-0052c8a9f8f7",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "7e1db118-bb0f-9631-7ec1-33ba67d83e2c",
+      "isCorner": false,
+      "placement": "left",
+      "ring": "inner",
+      "type": "mana"
+    },
+    {
+      "id": "5e09d67b-1e43-862a-3a5c-ae3afc8a629a",
+      "isCorner": true,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "cb98bb70-638c-06b4-cedd-41fa876658a8",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "00c002d6-6793-40d4-48e4-bb311c583a52",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "781298fb-9984-7ae1-b03a-6dedac4fe35f",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "56d5ba14-f744-c1cf-4410-7ab9c3ce7867",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "b11c2da6-1303-90f8-556b-ea5c8a2cade5",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "35fca2b5-eefe-13a6-32f6-dcfd8382b8e7",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "a8dfa666-872d-328a-98e9-f4f01907dd8a",
+      "isCorner": false,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "d638c17a-0d2f-cd55-e6c6-d108b0c4c6c8",
+      "isCorner": true,
+      "placement": "top",
+      "ring": "inner",
+      "type": "coal"
+    },
+    {
+      "id": "ed03c8f7-1996-10c2-13d3-c317e57da709",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "f0edd5dd-6055-e6e2-2998-7f5c135844bb",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "ae94eacb-ae39-c517-6926-b8faa1222a56",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "482ce162-0433-1c36-e7bf-487c090e7042",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "5f76f578-eda2-51d7-301f-2f2005078c13",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "182e3ea6-435f-92a8-d12d-8ed2431ebbb7",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "blood"
+    },
+    {
+      "id": "cb6b684d-a523-b799-98e0-ab588192a66e",
+      "isCorner": false,
+      "placement": "right",
+      "ring": "inner",
+      "type": "sacred_grounds"
+    }
+  ]
+}

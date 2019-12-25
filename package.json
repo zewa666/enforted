@@ -43,6 +43,7 @@
     "gulp-watch": "^5.0.1",
     "jest": "^24.1.0",
     "jest-cli": "^24.1.0",
+    "jest-localstorage-mock": "^2.4.0",
     "jest-transform-stub": "^2.0.0",
     "minimatch": "^3.0.4",
     "promise-polyfill": "^8.1.0",
@@ -94,7 +95,8 @@
     },
     "testRegex": "\\.spec\\.(ts|js)$",
     "setupFiles": [
-      "<rootDir>/test/jest-pretest.ts"
+      "<rootDir>/test/jest-pretest.ts",
+      "jest-localstorage-mock"
     ],
     "testEnvironment": "node",
     "collectCoverage": true,
