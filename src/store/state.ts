@@ -6,11 +6,11 @@ import { guid } from "./helper";
 export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
 
 export type Resources = {
-  [key in Exclude<TileType, "start" | "sacred_grounds">]: number;
+  [key in Exclude<TileType, "start" | "tragedy" | "sacred_grounds">]: number;
 };
 
 export const ResourcesIcons: {
-  [key in Exclude<TileType, "start" | "sacred_grounds">]: string
+  [key in Exclude<TileType, "start" | "tragedy" | "sacred_grounds">]: string
 } = {
   blood: "bloody-stash",
   coal: "brick-pile",
@@ -79,9 +79,16 @@ export const initialState = {
       ring: "outer",
       type: "food",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(10), (_, idx) => ({
+    {
       id: guid(),
-      isCorner: idx === 0,
+      isCorner: true,
+      placement: "top",
+      ring: "outer",
+      type: "tragedy"
+    },
+    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
+      id: guid(),
+      isCorner: false,
       placement: "top",
       ring: "outer",
       type: "stone",
@@ -114,13 +121,20 @@ export const initialState = {
       ring: "inner",
       type: idx === 4 ? "sacred_grounds" : "mana",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(8), (_, idx) => ({
       id: guid(),
-      isCorner: idx === 0 || idx === 8,
+      isCorner: idx === 0,
       placement: "top",
       ring: "inner",
       type: "coal",
     })),
+    {
+      id: guid(),
+      isCorner: true,
+      placement: "top",
+      ring: "inner",
+      type: "tragedy"
+    },
     ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
       id: guid(),
       isCorner: false,

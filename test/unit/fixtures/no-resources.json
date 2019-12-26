@@ -164,7 +164,7 @@
       "isCorner": true,
       "placement": "top",
       "ring": "outer",
-      "type": "stone"
+      "type": "tragedy"
     },
     {
       "id": "3e80ecbb-75aa-f18a-9a7f-b9c343446fb8",
@@ -472,7 +472,7 @@
       "isCorner": true,
       "placement": "top",
       "ring": "inner",
-      "type": "coal"
+      "type": "tragedy"
     },
     {
       "id": "ed03c8f7-1996-10c2-13d3-c317e57da709",

@@ -16,7 +16,8 @@ export type TileType = "wood"
   | "mana"
   | "blood"
   | "start"
-  | "sacred_grounds";
+  | "sacred_grounds"
+  | "tragedy";
 
 export type TilePlacement = "bottom" | "left" | "top" | "right";
 export type TileRing = "inner" | "outer";
@@ -51,7 +52,7 @@ export class Tile {
   }
 
   public async openPurchasePanel() {
-    if (this.type !== "start" && this.isPlayerOnTile) {
+    if (this.type !== "start" && this.type !== "tragedy" && this.isPlayerOnTile) {
       await this.store.dispatch(openPurchaseForTile, this);
 
       openDialog(PurchasePanel, {
