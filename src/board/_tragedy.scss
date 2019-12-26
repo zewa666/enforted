@@ -1,3 +1,15 @@
 .tragedy {
-  
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    width: 150px;
+  }
+
+  &__description {
+    text-align: justify;
+    text-justify: inter-word;
+    width: 400px;
+  }
 }

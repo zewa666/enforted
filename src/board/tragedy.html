@@ -1,4 +1,6 @@
 <template class="tragedy">
-  <h4 class="purchase-panel__header">Tragedy card</h4>
-
+  <h4 class="tragedy__header">${event.name}</h4>
+  <img src="assets/icons/${event.image}.svg" class="tragedy__image">
+  <p class="tragedy__description">${event.effect(store, state)}</p>
+  <button class="tragedy__button" click.trigger="controller.ok()">Accept the fate</button>
 </template>
