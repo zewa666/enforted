@@ -6,6 +6,7 @@ import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { openPurchaseForTile, Resources, State } from "../store/index";
 import { openDialog } from "../utils/utils";
+import { Tragedy } from "./tragedy";
 
 export type TileType = "wood"
   | "stone"
@@ -35,6 +36,14 @@ export class Tile {
 
   constructor(private store: Store<State>) {
 
+  }
+
+  public async playersChanged() {
+    if (this.type === "tragedy" && this.isPlayerOnTile) {
+      await openDialog(Tragedy, {
+        view: "board/tragedy.html"
+      }, true);
+    }
   }
 
   @computedFrom("players")

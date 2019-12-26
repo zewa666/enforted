@@ -14,12 +14,13 @@ export interface DialogModel {
   bem?: string;
 }
 
-export function openDialog(viewModel: any, model: DialogModel) {
+export function openDialog(viewModel: any, model: DialogModel, keyboard: boolean | "Escape" | "Enter" = false) {
   const dialogService = Container.instance.get(DialogService);
   model.bem = model.bem || kebabCase(viewModel.name);
 
   return dialogService.open({
     centerHorizontalOnly: true,
+    keyboard,
     model,
     view: "utils/generic-dialog.html",
     viewModel,

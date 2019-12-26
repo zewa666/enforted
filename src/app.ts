@@ -1,3 +1,4 @@
+import { DialogService } from "aurelia-dialog";
 import { autoinject } from "aurelia-framework";
 import {
   localStorageMiddleware,
@@ -20,7 +21,10 @@ import {
 export class App {
   public commandBarVisible: boolean = true;
 
-  constructor(private store: Store<State>) {
+  constructor(
+    private store: Store<State>,
+    private dialogService: DialogService
+  ) {
     this.store
       .state
       .pipe(
@@ -52,7 +56,7 @@ export class App {
   }
 
   private handleGlobalKeys = (event: KeyboardEvent) => {
-    if (event.keyCode === 13) {
+    if (!this.dialogService.hasOpenDialog && event.keyCode === 13) {
       this.store.dispatch(rollDice);
     }
   }
