@@ -9,21 +9,15 @@
   "resources": {
     "blood": 0,
     "coal": 0,
-    "food": 15,
-    "gold": 30,
+    "food": 0,
+    "gold": 0,
     "iron": 0,
     "mana": 0,
     "stone": 0,
-    "wood": 20
+    "wood": 0
   },
   "round": 1,
-  "tileBuildings": [
-    {
-      "tileId": "e24e3306-9048-0af5-7650-399e1f7b30ae",
-      "type": "shrine",
-      "placement": "bottom"
-    }
-  ],
+  "tileBuildings": [],
   "tiles": [
     {
       "id": "36794b96-7d77-50d7-a8f3-fd330eda7386",

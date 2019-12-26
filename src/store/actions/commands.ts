@@ -16,8 +16,8 @@ export function rollDice(state: State): State {
       {
         ...state.players[0],
         currentTileId: newPosition > state.tiles.length - 1
-        ? state.tiles[Math.abs(newPosition - state.tiles.length)].id
-        : state.tiles[newPosition].id
+          ? state.tiles[Math.abs(newPosition - state.tiles.length)].id
+          : state.tiles[newPosition].id
       } as any
     ],
     purchaseInProgress: undefined,
@@ -30,17 +30,45 @@ export function rollDice(state: State): State {
   };
 }
 
+export const PRODUCED_RESOURCES_PER_ROUND = 3;
 export function gatherResources(state: State): State {
+  const shrines = state.tileBuildings
+    .filter((b) => b.type === "shrine");
+  const resourcesProduced = PRODUCED_RESOURCES_PER_ROUND
+    + (shrines.length === 4
+      ? 1
+      : 0);
   const resources = state.tileBuildings
     .filter((b) => b.type !== "shrine")
     .reduce((prev, curr) => {
-    prev[state.tiles.find((t) => t.id === curr.tileId).type] += 3;
-    return prev;
-  }, Object.assign({}, state.resources) as Resources);
+      prev[state.tiles
+        .find((t) => t.id === curr.tileId)
+        .type] += resourcesProduced;
+      return prev;
+    }, Object.assign({}, state.resources) as Resources);
+
+  return gatherShrineResources({
+    ...state,
+    resources
+  });
+}
+
+export function gatherShrineResources(state: State) {
+  const shrines = state.tileBuildings
+    .filter((b) => b.type === "shrine");
+
+  if (!shrines) {
+    return state;
+  }
 
   return {
     ...state,
-    resources
+    resources: {
+      ...state.resources,
+      blood: shrines.length > 2 ? state.resources.blood + 1 : state.resources.blood,
+      gold: shrines.length > 0 ? state.resources.gold + 1 : state.resources.gold,
+      mana: shrines.length > 1 ? state.resources.mana + 1 : state.resources.mana,
+    }
   };
 }
 
