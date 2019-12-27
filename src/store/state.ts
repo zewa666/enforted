@@ -4,13 +4,14 @@ import { Player } from "../player/player";
 import { guid } from "./helper";
 
 export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
+export type ResourceTileType = Exclude<TileType, "start" | "tragedy" | "sacred_grounds">;
 
 export type Resources = {
-  [key in Exclude<TileType, "start" | "tragedy" | "sacred_grounds">]: number;
+  [key in ResourceTileType]: number;
 };
 
 export const ResourcesIcons: {
-  [key in Exclude<TileType, "start" | "tragedy" | "sacred_grounds">]: string
+  [key in ResourceTileType]: string
 } = {
   blood: "bloody-stash",
   coal: "brick-pile",

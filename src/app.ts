@@ -9,6 +9,9 @@ import {
 import { skip, take } from "rxjs/operators";
 
 import {
+  sacrificeResources
+} from "./store/actions/tragedy-events";
+import {
   buyBuilding,
   closePurchasePanel,
   LOCALSTORAGE_SAVE_KEY,
@@ -43,6 +46,7 @@ export class App {
     this.store.registerAction("open the purchase panel", openPurchaseForTile);
     this.store.registerAction("close the purchase panel", closePurchasePanel);
     this.store.registerAction("buy a tile building", buyBuilding);
+    this.store.registerAction("[tragedy] sacrifice resources", sacrificeResources);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

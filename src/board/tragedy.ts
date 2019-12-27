@@ -1,12 +1,14 @@
 import { DialogController } from "aurelia-dialog";
 import { autoinject } from "aurelia-framework";
-import { connectTo, Store } from "aurelia-store";
+import { Store } from "aurelia-store";
+import { take } from "rxjs/operators";
 
+import { sacrificeResources } from "../store/actions/tragedy-events";
+import { randBetween } from "../store/helper";
 import { State } from "../store/state";
 import { DialogModel } from "../utils/utils";
 
 @autoinject()
-@connectTo()
 export class Tragedy {
   public dialogView?: string;
   public bemclasses?: string;
@@ -19,6 +21,8 @@ export class Tragedy {
   ) { }
 
   public activate(model: DialogModel) {
+    // only subscribe for one state so we don't run into rerender cycles
+    this.store.state.pipe(take(1)).subscribe((state) => this.state = state);
     this.dialogView = model.view;
     this.bemclasses = model.bem;
 
@@ -57,21 +61,26 @@ export interface TragedyEvent {
   /**
    * performs the events effects and returns the description
    */
-  effect: (store, state) => string;
+  effect: (store: Store<State>, state: State) => string;
 }
 
 export const tragedyEvents: TragedyEvent[] = [
   {
     effect: (store, state) => {
-      const amount = 0;
-      const resourceType = "";
-      const description = `In order to please the gods you sacrifice a ${amount} of ${resourceType}.`;
+      const amount = randBetween(1, 4);
+      const availableResources = Object.keys(state.resources)
+        .filter((r) => state.resources[r] > 0);
+      const resourceType = availableResources[randBetween(0, availableResources.length - 1)];
+      const description = `In order to please the gods you sacrifice ${amount} of your ${resourceType}.`;
+
+      store.dispatch(sacrificeResources, resourceType, amount);
 
       return description;
     },
     image: "sacrificial-dagger",
     name: "A sacrifice for the gods",
-    weight: 0.08
+    // weight: 0.08
+    weight: 1
   },
   {
     effect: (store, state) => {

@@ -1,11 +1,12 @@
 import { Tile } from "../../board/tile";
 import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
+import { randBetween } from "../helper";
 import { State } from "../index";
 import { Resources } from "../state";
 
 export function rollDice(state: State): State {
   const idxOfTile = state.tiles.findIndex((t) => t.id === state.players[0].currentTileId);
-  const roll = Math.floor(Math.random() * 6) + 1;
+  const roll = randBetween(1, 6);
   const newPosition = idxOfTile + roll;
   const isNextRound = newPosition > state.tiles.length - 1;
 

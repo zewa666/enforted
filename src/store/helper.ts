@@ -7,3 +7,7 @@ export function guid(): string {
   return s4() + s4() + "-" + s4() + "-" + s4() + "-" +
     s4() + "-" + s4() + s4() + s4();
 }
+
+export function randBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * max) + min;
+}
