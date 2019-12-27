@@ -79,8 +79,7 @@ export const tragedyEvents: TragedyEvent[] = [
     },
     image: "sacrificial-dagger",
     name: "A sacrifice for the gods",
-    // weight: 0.08
-    weight: 1
+    weight: 0.08
   },
   {
     effect: (store, state) => {
