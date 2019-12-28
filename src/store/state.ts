@@ -1,4 +1,5 @@
 import { Tile, TileType } from "../board/tile";
+import { AvailableTragedyEvents } from "../board/tragedy";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { guid } from "./helper";
@@ -30,6 +31,7 @@ export interface State {
   lastDiceRoll?: number;
   resources: Resources;
   round: number;
+  activeTragedy?: AvailableTragedyEvents;
   /**
    * Setting this to undefined closes the purchase panel
    */

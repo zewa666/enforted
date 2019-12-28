@@ -4,14 +4,15 @@ import { randBetween } from "../helper";
 import { State } from "../index";
 import { Resources } from "../state";
 
-export function rollDice(state: State): State {
+export function rollDice(state: State, diceOverload?: number): State {
   const idxOfTile = state.tiles.findIndex((t) => t.id === state.players[0].currentTileId);
-  const roll = randBetween(1, 6);
+  const roll = diceOverload || randBetween(1, 6);
   const newPosition = idxOfTile + roll;
   const isNextRound = newPosition > state.tiles.length - 1;
 
   return {
     ...state,
+    activeTragedy: isNextRound ? undefined : state.activeTragedy,
     lastDiceRoll: roll,
     players: [
       {

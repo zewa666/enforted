@@ -50,6 +50,20 @@ export class Tragedy {
   }
 }
 
+export enum AvailableTragedyEvents {
+  Sacrifice,
+  RagingFire,
+  StumblingSteps,
+  ForgottenEquipment,
+  DefiledAltar,
+  CollapsedMines,
+  Vermins,
+  Rockfall,
+  ShatteringEarth,
+  BurningTrees,
+  ContaminatedBlood
+}
+
 export interface TragedyEvent {
   /**
    * defines the probability this event gets picked
@@ -58,6 +72,7 @@ export interface TragedyEvent {
   weight: number;
   name: string;
   image: string;
+  event: AvailableTragedyEvents;
   /**
    * performs the events effects and returns the description
    */
@@ -77,6 +92,7 @@ export const tragedyEvents: TragedyEvent[] = [
 
       return description;
     },
+    event: AvailableTragedyEvents.Sacrifice,
     image: "sacrificial-dagger",
     name: "A sacrifice for the gods",
     weight: 0.08
@@ -88,6 +104,7 @@ export const tragedyEvents: TragedyEvent[] = [
 
       return description;
     },
+    event: AvailableTragedyEvents.RagingFire,
     image: "small-fire",
     name: "Raging fire",
     weight: 0.07
@@ -96,6 +113,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return "Your last nights tavern demands it's toll. Your next dice rolls are wonky single steps.";
     },
+    event: AvailableTragedyEvents.StumblingSteps,
     image: "beer-stein",
     name: "Stumbling steps",
     weight: 0.12
@@ -104,6 +122,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return "You were in such a hurry rushing for the adventure leaving your essentials at the door steps. Go back to the start of your journey and get them.";
     },
+    event: AvailableTragedyEvents.ForgottenEquipment,
     image: "bindle",
     name: "The forgotten equipment",
     weight: 0.11
@@ -112,6 +131,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return "Strangers have been seen, defiling one of your shrines. 'Tis your duty to rebuild them in full glory.";
     },
+    event: AvailableTragedyEvents.DefiledAltar,
     image: "broken-tablet",
     name: "Defiled altar",
     weight: 0.07
@@ -123,6 +143,7 @@ export const tragedyEvents: TragedyEvent[] = [
 
       return description;
     },
+    event: AvailableTragedyEvents.CollapsedMines,
     image: "oppression",
     name: "Collapsed mines",
     weight: 0.10
@@ -131,6 +152,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return `Your mills got pested by pesky vermins. Until the mess is cleaned no food may be produced.`;
     },
+    event: AvailableTragedyEvents.Vermins,
     image: "rat",
     name: "Plague of vermins",
     weight: 0.09
@@ -139,6 +161,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return `Those giant boulders set loose and burried few of your men. It will take a while until the next shipment is ready.`;
     },
+    event: AvailableTragedyEvents.Rockfall,
     image: "falling-rocks",
     name: "The rockfall",
     weight: 0.09
@@ -147,6 +170,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return `A mighty earth quake shattered your mana rifts. It is nature that shows it's endless power. It will take a wihle until further veils can be casted.`;
     },
+    event: AvailableTragedyEvents.ShatteringEarth,
     image: "earth-spit",
     name: "Shattering earth",
     weight: 0.09
@@ -155,6 +179,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return `A morron with a torch, none of wisdom on his porch, set ablaze your woods. No more lumber is going soon to find the routes.`;
     },
+    event: AvailableTragedyEvents.BurningTrees,
     image: "burning-tree",
     name: "Burning trees",
     weight: 0.09
@@ -163,6 +188,7 @@ export const tragedyEvents: TragedyEvent[] = [
     effect: (store, state) => {
       return `One of the corpses was filled with evil gazes. It will take a while to harvest another crop.`;
     },
+    event: AvailableTragedyEvents.ContaminatedBlood,
     image: "infested-mass",
     name: "Contaminated blood",
     weight: 0.09
