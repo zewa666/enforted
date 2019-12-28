@@ -4,6 +4,7 @@ import { Store } from "aurelia-store";
 import { take } from "rxjs/operators";
 
 import {
+  forgottenEquipment,
   ragingFire,
   sacrificeResources
 } from "../store/actions/tragedy-events";
@@ -133,7 +134,7 @@ export const tragedyEvents: TragedyEvent[] = [
   },
   {
     effect: (store, state) => {
-      return "Your last nights tavern demands it's toll. Your next dice rolls are wonky single steps.";
+      return "Your last nights tavern demands it's toll. Your next dice rolls are wonky small steps.";
     },
     event: AvailableTragedyEvents.StumblingSteps,
     image: "beer-stein",
@@ -142,6 +143,8 @@ export const tragedyEvents: TragedyEvent[] = [
   },
   {
     effect: (store, state) => {
+      store.dispatch(forgottenEquipment);
+
       return "You were in such a hurry rushing for the adventure leaving your essentials at the door steps. Go back to the start of your journey and get them.";
     },
     event: AvailableTragedyEvents.ForgottenEquipment,

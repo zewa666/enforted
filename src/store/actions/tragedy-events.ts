@@ -1,4 +1,5 @@
 import { AvailableTragedyEvents } from "../../board/tragedy";
+import { Player } from "../../player/player";
 import { ResourceTileType, State } from "../state";
 
 export function sacrificeResources(
@@ -28,6 +29,19 @@ export function ragingFire(
     tileBuildings: [
       ...state.tileBuildings.slice(0, idx),
       ...state.tileBuildings.slice(idx + 1),
+    ]
+  };
+}
+
+export function forgottenEquipment(state: State): State {
+  return {
+    ...state,
+    activeTragedy: undefined,
+    players: [
+      {
+        ...state.players[0],
+        currentTileId: state.tiles.find((t) => t.type === "start").id
+      } as Player
     ]
   };
 }

@@ -4,7 +4,11 @@ import { executeSteps, Store } from "aurelia-store";
 import { ComponentTester, StageComponent } from "aurelia-testing";
 
 import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
-import { ragingFire, sacrificeResources } from "../../src/store/actions/tragedy-events";
+import {
+  forgottenEquipment,
+  ragingFire,
+  sacrificeResources
+} from "../../src/store/actions/tragedy-events";
 import { LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
 
 describe("tragedy events", () => {
@@ -67,6 +71,18 @@ describe("tragedy events", () => {
       await executeSteps(store, false,
         () => store.dispatch(ragingFire, state.tileBuildings[0].tileId),
         (res) => expect(res.tileBuildings.length).toBe(0)
+      );
+    });
+
+    it("should send back to start and remove tragedy when forgotten equipment is drawn", async () => {
+      const { store } = await loadComponentWithFixture("tragedy-everywhere");
+
+      await executeSteps(store, false,
+        () => store.dispatch(forgottenEquipment),
+        (res) => {
+          expect(res.players[0].currentTileId).toBe(res.tiles.find((t) => t.type === "start").id);
+          expect(res.activeTragedy).toBeUndefined();
+        }
       );
     });
   });

@@ -1,5 +1,6 @@
 import { Tile } from "../../board/tile";
 import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
+import { Player } from "../../player/player";
 import { randBetween } from "../helper";
 import { State } from "../index";
 import { Resources } from "../state";
@@ -20,7 +21,7 @@ export function rollDice(state: State, diceOverload?: number): State {
         currentTileId: newPosition > state.tiles.length - 1
           ? state.tiles[Math.abs(newPosition - state.tiles.length)].id
           : state.tiles[newPosition].id
-      } as any
+      } as Player
     ],
     purchaseInProgress: undefined,
     resources: isNextRound
