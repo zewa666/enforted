@@ -32,6 +32,7 @@ export interface State {
   resources: Resources;
   round: number;
   activeTragedy?: AvailableTragedyEvents;
+  activeTragedyParams?: any[];
   /**
    * Setting this to undefined closes the purchase panel
    */

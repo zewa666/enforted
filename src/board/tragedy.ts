@@ -3,7 +3,9 @@ import { autoinject } from "aurelia-framework";
 import { Store } from "aurelia-store";
 import { take } from "rxjs/operators";
 
+import { AvailableTileBuildings } from "../buildings/tile-building";
 import {
+  collapsedMines,
   defiledAltar,
   forgottenEquipment,
   pausedResourceProduction,
@@ -172,8 +174,14 @@ export const tragedyEvents: TragedyEvent[] = [
   },
   {
     effect: (store, state) => {
-      const mineType = "";
+      const mineTypes: AvailableTileBuildings[] = [
+        "gold_mine", "iron_mine", "coal_mine"
+      ];
+
+      const mineType = mineTypes[randBetween(0, mineTypes.length)];
       const description = `Men screamed and shouted, sealed in the dark groves of your ${mineType}. Poor devils souls, for their life found it's end in the dark.`;
+
+      store.dispatch(collapsedMines, mineType);
 
       return description;
     },

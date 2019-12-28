@@ -1,3 +1,4 @@
+import { AvailableTileBuildings } from "buildings/tile-building";
 import { AvailableTragedyEvents } from "../../board/tragedy";
 import { Player } from "../../player/player";
 import { randBetween } from "../helper";
@@ -38,6 +39,7 @@ export function forgottenEquipment(state: State): State {
   return {
     ...state,
     activeTragedy: undefined,
+    activeTragedyParams: undefined,
     players: [
       {
         ...state.players[0],
@@ -67,5 +69,13 @@ export function pausedResourceProduction(
   return {
     ...state,
     activeTragedy: tragedy
+  };
+}
+
+export function collapsedMines(state: State, mineType: AvailableTileBuildings): State {
+  return {
+    ...state,
+    activeTragedy: AvailableTragedyEvents.CollapsedMines,
+    activeTragedyParams: [mineType]
   };
 }

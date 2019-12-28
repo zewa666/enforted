@@ -1,6 +1,6 @@
 import { Tile } from "../../board/tile";
 import { AvailableTragedyEvents } from "../../board/tragedy";
-import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
+import { AvailableTileBuildings, TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
 import { randBetween } from "../helper";
 import { State } from "../index";
@@ -15,6 +15,7 @@ export function rollDice(state: State, diceOverload?: number): State {
   return {
     ...state,
     activeTragedy: isNextRound ? undefined : state.activeTragedy,
+    activeTragedyParams: isNextRound ? undefined : state.activeTragedyParams,
     lastDiceRoll: roll,
     players: [
       {
@@ -56,6 +57,10 @@ export function gatherResources(state: State): State {
           return b.type !== "mana_rift";
         case AvailableTragedyEvents.Vermins:
           return b.type !== "farm";
+        case AvailableTragedyEvents.CollapsedMines:
+          const mineType = state.activeTragedyParams[0] as AvailableTileBuildings;
+          return b.type !== mineType;
+
         default:
           return true;
       }
