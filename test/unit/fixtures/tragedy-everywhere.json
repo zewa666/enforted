@@ -21,6 +21,16 @@
       "tileId": "bd9fb000-09a6-1869-42ec-75a554b5921f",
       "type": "sawmill",
       "placement": "bottom"
+    },
+    {
+      "tileId": "e24e3306-9048-0af5-7650-399e1f7b30ae",
+      "type": "shrine",
+      "placement": "bottom"
+    },
+    {
+      "tileId": "9432b27c-0001-ed70-0933-fb49ee10a5a1",
+      "type": "shrine",
+      "placement": "top"
     }
   ],
   "tiles": [

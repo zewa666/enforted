@@ -4,6 +4,7 @@ import { Store } from "aurelia-store";
 import { take } from "rxjs/operators";
 
 import {
+  defiledAltar,
   forgottenEquipment,
   ragingFire,
   sacrificeResources
@@ -142,7 +143,7 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.12
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
       store.dispatch(forgottenEquipment);
 
       return "You were in such a hurry rushing for the adventure leaving your essentials at the door steps. Go back to the start of your journey and get them.";
@@ -154,6 +155,13 @@ export const tragedyEvents: TragedyEvent[] = [
   },
   {
     effect: (store, state) => {
+      const shrines = state.tileBuildings.filter((tb) => tb.type === "shrine");
+      if (shrines.length === 0) {
+        return "A shrine has been defiled, yet it was one for the wrong gods.";
+      }
+
+      store.dispatch(defiledAltar);
+
       return "Strangers have been seen, defiling one of your shrines. 'Tis your duty to rebuild them in full glory.";
     },
     event: AvailableTragedyEvents.DefiledAltar,

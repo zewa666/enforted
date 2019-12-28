@@ -9,6 +9,7 @@ import {
 import { skip, take } from "rxjs/operators";
 
 import {
+  defiledAltar,
   forgottenEquipment,
   ragingFire,
   sacrificeResources
@@ -51,6 +52,7 @@ export class App {
     this.store.registerAction("[tragedy] sacrifice resources", sacrificeResources);
     this.store.registerAction("[tragedy] raging fire", ragingFire);
     this.store.registerAction("[tragedy] the forgotten equipment", forgottenEquipment);
+    this.store.registerAction("[tragedy] a defiled altar", defiledAltar);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

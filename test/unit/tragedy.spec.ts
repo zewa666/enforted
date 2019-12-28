@@ -5,6 +5,7 @@ import { ComponentTester, StageComponent } from "aurelia-testing";
 
 import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
 import {
+  defiledAltar,
   forgottenEquipment,
   ragingFire,
   sacrificeResources
@@ -67,10 +68,11 @@ describe("tragedy events", () => {
 
     it("should destroy a tileBuilding with raging fire", async () => {
       const { state, store } = await loadComponentWithFixture("tragedy-everywhere");
+      const id = state.tileBuildings[0].tileId;
 
       await executeSteps(store, false,
-        () => store.dispatch(ragingFire, state.tileBuildings[0].tileId),
-        (res) => expect(res.tileBuildings.length).toBe(0)
+        () => store.dispatch(ragingFire, id),
+        (res) => expect(res.tileBuildings.findIndex((tb) => tb.tileId === id)).toBe(-1)
       );
     });
 
@@ -82,6 +84,20 @@ describe("tragedy events", () => {
         (res) => {
           expect(res.players[0].currentTileId).toBe(res.tiles.find((t) => t.type === "start").id);
           expect(res.activeTragedy).toBeUndefined();
+        }
+      );
+    });
+
+    it("should destroy a random shrine", async () => {
+      const { store, state } = await loadComponentWithFixture("tragedy-everywhere");
+
+      await executeSteps(store, false,
+        () => {
+          expect(state.tileBuildings.filter((tb) => tb.type === "shrine").length).toBe(2);
+          store.dispatch(defiledAltar);
+        },
+        (res) => {
+          expect(res.tileBuildings.filter((tb) => tb.type === "shrine").length).toBe(1);
         }
       );
     });
