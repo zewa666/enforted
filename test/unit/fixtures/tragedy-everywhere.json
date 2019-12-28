@@ -16,7 +16,13 @@
     "wood": 0
   },
   "round": 1,
-  "tileBuildings": [],
+  "tileBuildings": [
+    {
+      "tileId": "bd9fb000-09a6-1869-42ec-75a554b5921f",
+      "type": "sawmill",
+      "placement": "bottom"
+    }
+  ],
   "tiles": [
     {
       "id": "36794b96-7d77-50d7-a8f3-fd330eda7386",

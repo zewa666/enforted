@@ -3,7 +3,10 @@ import { autoinject } from "aurelia-framework";
 import { Store } from "aurelia-store";
 import { take } from "rxjs/operators";
 
-import { sacrificeResources } from "../store/actions/tragedy-events";
+import {
+  ragingFire,
+  sacrificeResources
+} from "../store/actions/tragedy-events";
 import { randBetween } from "../store/helper";
 import { State } from "../store/state";
 import { DialogModel } from "../utils/utils";
@@ -32,7 +35,7 @@ export class Tragedy {
   private drawRandomTragedyEvent() {
     let sum = 0;
     const r = Math.random();
-    const probability: { [key: number]: number} = tragedyEvents.reduce((acc, curr, idx) => {
+    const probability: { [key: number]: number } = tragedyEvents.reduce((acc, curr, idx) => {
       acc[idx] = curr.weight;
 
       return acc;
@@ -99,8 +102,14 @@ export const tragedyEvents: TragedyEvent[] = [
   },
   {
     effect: (store, state) => {
-      const tileBuildingType = "";
-      const description = `A fire broke out! Your ${tileBuildingType} burned to the ground.`;
+      if (state.tileBuildings.length === 0) {
+        return "A building burned to the ground, but luckily it was none of yours.";
+      }
+
+      const targetBuilding = state.tileBuildings[randBetween(0, state.tileBuildings.length - 1)];
+      const description = `A fire broke out! Your ${targetBuilding.type} burned to the ground.`;
+
+      store.dispatch(ragingFire, targetBuilding.tileId);
 
       return description;
     },

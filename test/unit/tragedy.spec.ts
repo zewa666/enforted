@@ -4,7 +4,7 @@ import { executeSteps, Store } from "aurelia-store";
 import { ComponentTester, StageComponent } from "aurelia-testing";
 
 import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
-import { sacrificeResources } from "../../src/store/actions/tragedy-events";
+import { ragingFire, sacrificeResources } from "../../src/store/actions/tragedy-events";
 import { LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
 
 describe("tragedy events", () => {
@@ -58,6 +58,15 @@ describe("tragedy events", () => {
         (res) => {
           expect(res.activeTragedy).toBeUndefined();
         },
+      );
+    });
+
+    it("should destroy a tileBuilding with raging fire", async () => {
+      const { state, store } = await loadComponentWithFixture("tragedy-everywhere");
+
+      await executeSteps(store, false,
+        () => store.dispatch(ragingFire, state.tileBuildings[0].tileId),
+        (res) => expect(res.tileBuildings.length).toBe(0)
       );
     });
   });

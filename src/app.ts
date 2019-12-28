@@ -9,6 +9,7 @@ import {
 import { skip, take } from "rxjs/operators";
 
 import {
+  ragingFire,
   sacrificeResources
 } from "./store/actions/tragedy-events";
 import {
@@ -47,6 +48,7 @@ export class App {
     this.store.registerAction("close the purchase panel", closePurchasePanel);
     this.store.registerAction("buy a tile building", buyBuilding);
     this.store.registerAction("[tragedy] sacrifice resources", sacrificeResources);
+    this.store.registerAction("[tragedy] raging fire", ragingFire);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }
