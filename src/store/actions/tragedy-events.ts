@@ -59,3 +59,13 @@ export function defiledAltar(state: State): State {
     ]
   };
 }
+
+export function pausedResourceProduction(
+  state: State,
+  tragedy: AvailableTragedyEvents
+): State {
+  return {
+    ...state,
+    activeTragedy: tragedy
+  };
+}

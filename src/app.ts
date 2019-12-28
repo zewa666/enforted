@@ -11,6 +11,7 @@ import { skip, take } from "rxjs/operators";
 import {
   defiledAltar,
   forgottenEquipment,
+  pausedResourceProduction,
   ragingFire,
   sacrificeResources
 } from "./store/actions/tragedy-events";
@@ -53,6 +54,7 @@ export class App {
     this.store.registerAction("[tragedy] raging fire", ragingFire);
     this.store.registerAction("[tragedy] the forgotten equipment", forgottenEquipment);
     this.store.registerAction("[tragedy] a defiled altar", defiledAltar);
+    this.store.registerAction("[tragedy] paused resource production", pausedResourceProduction);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

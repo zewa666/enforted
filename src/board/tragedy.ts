@@ -6,6 +6,7 @@ import { take } from "rxjs/operators";
 import {
   defiledAltar,
   forgottenEquipment,
+  pausedResourceProduction,
   ragingFire,
   sacrificeResources
 } from "../store/actions/tragedy-events";
@@ -182,7 +183,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.10
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(pausedResourceProduction, AvailableTragedyEvents.Vermins);
+
       return `Your mills got pested by pesky vermins. Until the mess is cleaned no food may be produced.`;
     },
     event: AvailableTragedyEvents.Vermins,
@@ -191,7 +194,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.09
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(pausedResourceProduction, AvailableTragedyEvents.Rockfall);
+
       return `Those giant boulders set loose and burried few of your men. It will take a while until the next shipment is ready.`;
     },
     event: AvailableTragedyEvents.Rockfall,
@@ -200,7 +205,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.09
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(pausedResourceProduction, AvailableTragedyEvents.ShatteringEarth);
+
       return `A mighty earth quake shattered your mana rifts. It is nature that shows it's endless power. It will take a wihle until further veils can be casted.`;
     },
     event: AvailableTragedyEvents.ShatteringEarth,
@@ -209,7 +216,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.09
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(pausedResourceProduction, AvailableTragedyEvents.BurningTrees);
+
       return `A morron with a torch, none of wisdom on his porch, set ablaze your woods. No more lumber is going soon to find the routes.`;
     },
     event: AvailableTragedyEvents.BurningTrees,
@@ -218,7 +227,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.09
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(pausedResourceProduction, AvailableTragedyEvents.ContaminatedBlood);
+
       return `One of the corpses was filled with evil gazes. It will take a while to harvest another crop.`;
     },
     event: AvailableTragedyEvents.ContaminatedBlood,

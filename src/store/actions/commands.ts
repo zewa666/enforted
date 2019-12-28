@@ -1,4 +1,5 @@
 import { Tile } from "../../board/tile";
+import { AvailableTragedyEvents } from "../../board/tragedy";
 import { TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
 import { randBetween } from "../helper";
@@ -43,6 +44,22 @@ export function gatherResources(state: State): State {
       : 0);
   const resources = state.tileBuildings
     .filter((b) => b.type !== "shrine")
+    .filter((b) => {
+      switch (state.activeTragedy) {
+        case AvailableTragedyEvents.BurningTrees:
+          return b.type !== "sawmill";
+        case AvailableTragedyEvents.ContaminatedBlood:
+          return b.type !== "butchery";
+        case AvailableTragedyEvents.Rockfall:
+          return b.type !== "quarry";
+        case AvailableTragedyEvents.ShatteringEarth:
+          return b.type !== "mana_rift";
+        case AvailableTragedyEvents.Vermins:
+          return b.type !== "farm";
+        default:
+          return true;
+      }
+    })
     .reduce((prev, curr) => {
       prev[state.tiles
         .find((t) => t.id === curr.tileId)

@@ -7,10 +7,16 @@ import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
 import {
   defiledAltar,
   forgottenEquipment,
+  pausedResourceProduction,
   ragingFire,
   sacrificeResources
 } from "../../src/store/actions/tragedy-events";
-import { LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
+import {
+  LOCALSTORAGE_SAVE_KEY,
+  PRODUCED_RESOURCES_PER_ROUND,
+  rollDice,
+  State
+} from "../../src/store/index";
 
 describe("tragedy events", () => {
   it("should have a total weight of 1", () => {
@@ -99,6 +105,34 @@ describe("tragedy events", () => {
         (res) => {
           expect(res.tileBuildings.filter((tb) => tb.type === "shrine").length).toBe(1);
         }
+      );
+    });
+
+    it("should not produce any resources after a round if the corresponding tragedy is active", async () => {
+      const { store, state } = await loadComponentWithFixture("tragedy-everywhere");
+
+      store.resetToState({
+        ...state,
+        tileBuildings: state.tileBuildings.filter((tb) => tb.type === "sawmill")
+      });
+
+      await executeSteps(store, false,
+        (res) => {
+          expect(res.tileBuildings.length).toBe(1);
+          expect(res.resources.wood).toBe(0);
+          store.dispatch(pausedResourceProduction, AvailableTragedyEvents.BurningTrees);
+        },
+        (res) => {
+          store.dispatch(rollDice, res.tiles.length + 1);
+        },
+        (res) => {
+          expect(res.resources.wood).toBe(0);
+          // now the tragedy event is gone
+          store.dispatch(rollDice, res.tiles.length + 1);
+        },
+        (res) => {
+          expect(res.resources.wood).toBe(PRODUCED_RESOURCES_PER_ROUND);
+        },
       );
     });
   });
