@@ -24,12 +24,25 @@ export class Tragedy {
   ) { }
 
   public activate(model: DialogModel) {
-    // only subscribe for one state so we don't run into rerender cycles
-    this.store.state.pipe(take(1)).subscribe((state) => this.state = state);
     this.dialogView = model.view;
     this.bemclasses = model.bem;
 
-    this.drawRandomTragedyEvent();
+    // only subscribe for one state so we don't run into rerender cycles
+    this.store.state.pipe(take(1)).subscribe((state) => {
+      this.state = state;
+
+      if (this.state.activeTragedy !== undefined) {
+        this.event = {
+          effect: () => `You beared more tragedy than a poor soul can handle`,
+          event: -1,
+          image: "prayer",
+          name: "No more tragedy",
+          weight: 0,
+        } as TragedyEvent;
+      } else {
+        this.drawRandomTragedyEvent();
+      }
+    });
   }
 
   private drawRandomTragedyEvent() {
