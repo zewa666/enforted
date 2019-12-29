@@ -5,6 +5,7 @@ import { ComponentTester, StageComponent } from "aurelia-testing";
 
 import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
 import {
+  collapsedMines,
   defiledAltar,
   forgottenEquipment,
   pausedResourceProduction,
@@ -132,6 +133,43 @@ describe("tragedy events", () => {
         },
         (res) => {
           expect(res.resources.wood).toBe(PRODUCED_RESOURCES_PER_ROUND);
+        },
+      );
+    });
+
+    it("should not produce any resources of the drawn collapside mines", async () => {
+      const { store, state } = await loadComponentWithFixture("tragedy-everywhere");
+
+      store.resetToState({
+        ...state,
+        tileBuildings: [
+          {
+            placement: "bottom",
+            tileId: "5b421298-75e4-550e-939d-589770dd4d2f",
+            type: "iron_mine"
+          }
+        ]
+      });
+
+      await executeSteps(store, false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({
+            coal: 0,
+            gold: 0,
+            iron: 0
+          }));
+          store.dispatch(collapsedMines, "iron_mine");
+        },
+        (res) => {
+          store.dispatch(rollDice, res.tiles.length + 1);
+        },
+        (res) => {
+          expect(res.resources.iron).toBe(0);
+          // now the tragedy event is gone
+          store.dispatch(rollDice, res.tiles.length + 1);
+        },
+        (res) => {
+          expect(res.resources.iron).toBe(PRODUCED_RESOURCES_PER_ROUND);
         },
       );
     });
