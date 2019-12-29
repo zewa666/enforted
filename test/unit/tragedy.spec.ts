@@ -10,7 +10,8 @@ import {
   forgottenEquipment,
   pausedResourceProduction,
   ragingFire,
-  sacrificeResources
+  sacrificeResources,
+  stumblingSteps
 } from "../../src/store/actions/tragedy-events";
 import {
   LOCALSTORAGE_SAVE_KEY,
@@ -170,6 +171,32 @@ describe("tragedy events", () => {
         },
         (res) => {
           expect(res.resources.iron).toBe(PRODUCED_RESOURCES_PER_ROUND);
+        },
+      );
+    });
+
+    it("should roll three times a 1 if stumbling steps is active", async () => {
+      const { store } = await loadComponentWithFixture("tragedy-everywhere");
+
+      await executeSteps(store, false,
+        () => {
+          store.dispatch(stumblingSteps);
+        },
+        () => store.dispatch(rollDice),
+        (res) => {
+          expect(res.lastDiceRoll).toBe(1);
+          expect(res.activeTragedy).toBe(AvailableTragedyEvents.StumblingSteps);
+          store.dispatch(rollDice);
+        },
+        (res) => {
+          expect(res.lastDiceRoll).toBe(1);
+          expect(res.activeTragedy).toBe(AvailableTragedyEvents.StumblingSteps);
+          store.dispatch(rollDice);
+        },
+        (res) => {
+          expect(res.lastDiceRoll).toBe(1);
+          expect(res.activeTragedy).toBeUndefined();
+          expect(res.activeTragedyParams).toBeUndefined();
         },
       );
     });

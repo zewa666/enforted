@@ -14,7 +14,8 @@ import {
   forgottenEquipment,
   pausedResourceProduction,
   ragingFire,
-  sacrificeResources
+  sacrificeResources,
+  stumblingSteps
 } from "./store/actions/tragedy-events";
 import {
   buyBuilding,
@@ -57,6 +58,7 @@ export class App {
     this.store.registerAction("[tragedy] a defiled altar", defiledAltar);
     this.store.registerAction("[tragedy] paused resource production", pausedResourceProduction);
     this.store.registerAction("[tragey] collapsed mines", collapsedMines);
+    this.store.registerAction("[tragey] stumbling steps", stumblingSteps);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

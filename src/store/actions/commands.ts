@@ -7,15 +7,27 @@ import { State } from "../index";
 import { Resources } from "../state";
 
 export function rollDice(state: State, diceOverload?: number): State {
+  const isStumblingStep = state.activeTragedy === AvailableTragedyEvents.StumblingSteps;
   const idxOfTile = state.tiles.findIndex((t) => t.id === state.players[0].currentTileId);
-  const roll = diceOverload || randBetween(1, 6);
+  const roll = diceOverload || (isStumblingStep ? 1 : randBetween(1, 6));
   const newPosition = idxOfTile + roll;
   const isNextRound = newPosition > state.tiles.length - 1;
+  const newStumblingSteps = (state.activeTragedyParams === undefined || state.activeTragedyParams[0] === 1)
+    ? undefined
+    : [state.activeTragedyParams[0] - 1];
 
   return {
     ...state,
-    activeTragedy: isNextRound ? undefined : state.activeTragedy,
-    activeTragedyParams: isNextRound ? undefined : state.activeTragedyParams,
+    activeTragedy: isNextRound
+      ? undefined
+      : isStumblingStep && newStumblingSteps === undefined
+        ? undefined
+        : state.activeTragedy,
+    activeTragedyParams: isNextRound
+      ? undefined
+      : isStumblingStep
+        ? newStumblingSteps
+        : state.activeTragedyParams,
     lastDiceRoll: roll,
     players: [
       {

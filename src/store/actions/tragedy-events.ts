@@ -79,3 +79,11 @@ export function collapsedMines(state: State, mineType: AvailableTileBuildings): 
     activeTragedyParams: [mineType]
   };
 }
+
+export function stumblingSteps(state: State): State {
+  return {
+    ...state,
+    activeTragedy: AvailableTragedyEvents.StumblingSteps,
+    activeTragedyParams: [3]
+  };
+}

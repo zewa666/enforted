@@ -10,7 +10,8 @@ import {
   forgottenEquipment,
   pausedResourceProduction,
   ragingFire,
-  sacrificeResources
+  sacrificeResources,
+  stumblingSteps
 } from "../store/actions/tragedy-events";
 import { randBetween } from "../store/helper";
 import { State } from "../store/state";
@@ -137,7 +138,9 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.07
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
+      store.dispatch(stumblingSteps);
+
       return "Your last nights tavern demands it's toll. Your next dice rolls are wonky small steps.";
     },
     event: AvailableTragedyEvents.StumblingSteps,
@@ -173,7 +176,7 @@ export const tragedyEvents: TragedyEvent[] = [
     weight: 0.07
   },
   {
-    effect: (store, state) => {
+    effect: (store) => {
       const mineTypes: AvailableTileBuildings[] = [
         "gold_mine", "iron_mine", "coal_mine"
       ];
