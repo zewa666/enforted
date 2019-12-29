@@ -19,6 +19,7 @@
       </ul>
       <button class="purchase-panel__buy"
               click.trigger="buyBuilding()"
+              data-aid="btn-buy"
               disabled.bind="tileBuilding || !sufficientResources"
               title.bind="!sufficientResources ? 'Not enough resources' : 'Buy'">Buy</button>
     </li>
