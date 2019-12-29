@@ -51,21 +51,21 @@ export const TileBuildingResourceCost: {
     blood: 0,
     coal: 0,
     food: 0,
-    gold: 10,
+    gold: 6,
     iron: 0,
     mana: 0,
     stone: 0,
-    wood: 20
+    wood: 6
   },
   gold_mine: {
     blood: 0,
     coal: 0,
-    food: 10,
-    gold: 10,
+    food: 7,
+    gold: 0,
     iron: 0,
     mana: 0,
-    stone: 0,
-    wood: 15
+    stone: 5,
+    wood: 12
   },
   iron_mine: {
     blood: 0,
@@ -90,22 +90,22 @@ export const TileBuildingResourceCost: {
   quarry: {
     blood: 0,
     coal: 0,
-    food: 0,
-    gold: 15,
+    food: 5,
+    gold: 8,
     iron: 0,
     mana: 0,
     stone: 0,
-    wood: 10
+    wood: 9
   },
   sawmill: {
     blood: 0,
     coal: 0,
     food: 0,
-    gold: 10,
+    gold: 5,
     iron: 0,
     mana: 0,
     stone: 0,
-    wood: 5
+    wood: 4
   },
   shrine: {
     blood: 0,
