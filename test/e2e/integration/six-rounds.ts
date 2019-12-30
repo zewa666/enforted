@@ -1,4 +1,12 @@
+const $btnTragedyAccept = `[data-aid='btn-tragedy-accept']`;
+
 function rollDice() {
+  cy.get("body").then(($body) => {
+    if ($body.find($btnTragedyAccept).length) {
+      cy.get($btnTragedyAccept).click();
+    }
+  });
+
   cy.get("[data-aid='btn-dice-roll']")
     .click();
 }
@@ -59,12 +67,14 @@ describe("Enforted base playthrough in order to achieve one of all outer buildin
     await rollUntilTileType("wood");
     getPlayer().dblclick()
       .get(`[data-aid="btn-buy"]`)
+      .should("not.be.disabled")
       .click();
     cy.log("Bought sawmill");
 
     await rollUntilTileType("stone");
     getPlayer().dblclick()
       .get(`[data-aid="btn-buy"]`)
+      .should("not.be.disabled")
       .click();
     cy.log("Bought quarry");
 
@@ -74,6 +84,7 @@ describe("Enforted base playthrough in order to achieve one of all outer buildin
     rollUntilTileType("gold");
     getPlayer().dblclick()
       .get(`[data-aid="btn-buy"]`)
+      .should("not.be.disabled")
       .click();
     cy.log("Bought gold_mine");
 
@@ -83,6 +94,7 @@ describe("Enforted base playthrough in order to achieve one of all outer buildin
     rollUntilTileType("food");
     getPlayer().dblclick()
       .get(`[data-aid="btn-buy"]`)
+      .should("not.be.disabled")
       .click();
 
     cy.log("Finished");
