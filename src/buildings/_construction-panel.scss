@@ -1,0 +1,38 @@
+.construction-panel {
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__building-icon {
+    margin: 0 10px;
+    width: 70px;
+  }
+
+  &__building-navigator {
+    height: 30px;
+  }
+
+  &__building-name {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__buy {
+    margin-top: 10px;
+  }
+
+  &__cost {
+    list-style: none;
+    padding: 0 0 0 5px;
+  }
+
+  &__close {
+    margin-bottom: 15px;
+  }
+
+  &__header {
+    margin: 0;
+  }
+}

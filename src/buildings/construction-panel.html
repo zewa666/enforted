@@ -1,0 +1,34 @@
+<template class="construction-panel">
+  <h4 class="construction-panel__header">Fortress Buildings</h4>
+
+  <ul class="construction-panel__list">
+    <li class="construction-panel__item">
+      <div class="construction-panel__building-name">
+        <button class="construction-panel__building-navigator"
+                click.trigger="toggleBuilding('-')">&#x2B05;</button>
+        <img title.bind="building.name"
+             class="construction-panel__building-icon"
+             src="assets/icons/${building.icon}.svg" />
+        <button class="construction-panel__building-navigator"
+                click.trigger="toggleBuilding('+')">&#x27A1;</button>
+      </div>
+      <ul class="construction-panel__cost cost">
+        <li repeat.for="cost of building.costs"
+            class="cost__item">
+          <img src="assets/icons/${cost.icon}.svg"
+               title.bind="cost.resource"
+               class="cost__icon" />
+          <span class="cost__value">${cost.value}</span>
+        </li>
+      </ul>
+      <button class="construction-panel__buy"
+              click.trigger="buyBuilding()"
+              data-aid="btn-buy"
+              disabled.bind="!building.sufficientResources"
+              title.bind="!building.sufficientResources ? 'Not enough resources' : 'Buy'">Buy</button>
+    </li>
+  </ul>
+
+  <button class="construction-panel__close"
+          click.trigger="closePanel()">Close</button>
+</template>

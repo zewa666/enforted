@@ -12,7 +12,7 @@
         <li repeat.for="cost of costs"
             class="cost__item">
           <img src="assets/icons/${cost.icon}.svg"
-               title="cost.resource"
+               title.bind="cost.resource"
                class="cost__icon" />
           <span class="cost__value">${cost.value}</span>
         </li>

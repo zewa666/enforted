@@ -1,6 +1,7 @@
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
+import { ConstructionPanel } from "../buildings/construction-panel";
 import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
@@ -70,6 +71,11 @@ export class Tile {
         tile: this,
         tileBuilding: this.tileBuildings?.find((b) => b.tileId === this.id),
         view: "buildings/purchase-panel.html",
+      });
+    } else if (this.type === "construction-site" && this.isPlayerOnTile) {
+      openDialog(ConstructionPanel, {
+        resources: this.resources,
+        view: "buildings/construction-panel.html",
       });
     }
   }
