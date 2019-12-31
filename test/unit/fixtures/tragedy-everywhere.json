@@ -361,21 +361,21 @@
       "isCorner": false,
       "placement": "bottom",
       "ring": "inner",
-      "type": "iron"
+      "type": "construction-site"
     },
     {
       "id": "b49489ce-5dce-cc0a-cdb8-247ef99ea060",
       "isCorner": true,
       "placement": "bottom",
       "ring": "inner",
-      "type": "iron"
+      "type": "construction-site"
     },
     {
       "id": "0b1b6578-dc5a-531e-74b0-e234cbb17891",
       "isCorner": false,
       "placement": "left",
       "ring": "inner",
-      "type": "mana"
+      "type": "construction-site"
     },
     {
       "id": "d8aa44c5-b179-e6a7-0e58-960fb8289d01",

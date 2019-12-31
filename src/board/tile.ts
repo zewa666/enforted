@@ -18,6 +18,7 @@ export type TileType = "wood"
   | "blood"
   | "start"
   | "sacred_grounds"
+  | "construction-site"
   | "tragedy";
 
 export type TilePlacement = "bottom" | "left" | "top" | "right";
@@ -61,7 +62,7 @@ export class Tile {
   }
 
   public async openPurchasePanel() {
-    if (this.type !== "start" && this.type !== "tragedy" && this.isPlayerOnTile) {
+    if (!["start", "tragedy", "construction-site"].includes(this.type) && this.isPlayerOnTile) {
       await this.store.dispatch(openPurchaseForTile, this);
 
       openDialog(PurchasePanel, {

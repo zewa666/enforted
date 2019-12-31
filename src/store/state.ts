@@ -5,7 +5,7 @@ import { Player } from "../player/player";
 import { guid } from "./helper";
 
 export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
-export type ResourceTileType = Exclude<TileType, "start" | "tragedy" | "sacred_grounds">;
+export type ResourceTileType = Exclude<TileType, "start" | "tragedy" | "sacred_grounds" | "construction-site">;
 
 export type Resources = {
   [key in ResourceTileType]: number;
@@ -111,19 +111,40 @@ export const initialState = {
       ring: "outer",
       type: "gold",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(9), (_, idx) => ({
+    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
       id: guid(),
-      isCorner: idx === 0 || idx === 8,
+      isCorner: idx === 0,
       placement: "bottom",
       ring: "inner",
       type: "iron",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
+    {
+      id: guid(),
+      isCorner: false,
+      placement: "bottom",
+      ring: "inner",
+      type: "construction-site",
+    },
+    {
+      id: guid(),
+      isCorner: true,
+      placement: "bottom",
+      ring: "inner",
+      type: "construction-site",
+    },
+    {
       id: guid(),
       isCorner: false,
       placement: "left",
       ring: "inner",
-      type: idx === 4 ? "sacred_grounds" : "mana",
+      type: "construction-site",
+    },
+    ...Array.from<Tile, Partial<Tile>>(Array(6), (_, idx) => ({
+      id: guid(),
+      isCorner: false,
+      placement: "left",
+      ring: "inner",
+      type: idx === 3 ? "sacred_grounds" : "mana",
     })),
     ...Array.from<Tile, Partial<Tile>>(Array(8), (_, idx) => ({
       id: guid(),
