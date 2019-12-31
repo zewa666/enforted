@@ -1,3 +1,4 @@
+import { AvailableFortressBuildings, FortressBuildingResourceCost } from "buildings/fortress-building";
 import { Tile } from "../../board/tile";
 import { AvailableTragedyEvents } from "../../board/tragedy";
 import { AvailableTileBuildings, TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
@@ -142,5 +143,26 @@ export function buyBuilding(state: State, building: TileBuilding): State {
     tileBuildings: [
       ...state.tileBuildings, building
     ]
+  };
+}
+
+export function buyFortressBuilding(state: State, type: AvailableFortressBuildings) {
+  const costs = FortressBuildingResourceCost[type];
+
+  return {
+    ...state,
+    fortressBuildings: [
+      ...state.fortressBuildings, { type }
+    ],
+    resources: {
+      blood: state.resources.blood - costs.blood,
+      coal: state.resources.coal - costs.coal,
+      food: state.resources.food - costs.food,
+      gold: state.resources.gold - costs.gold,
+      iron: state.resources.iron - costs.iron,
+      mana: state.resources.mana - costs.mana,
+      stone: state.resources.stone - costs.stone,
+      wood: state.resources.wood - costs.wood,
+    },
   };
 }

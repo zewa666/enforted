@@ -19,6 +19,7 @@ import {
 } from "./store/actions/tragedy-events";
 import {
   buyBuilding,
+  buyFortressBuilding,
   closePurchasePanel,
   LOCALSTORAGE_SAVE_KEY,
   openPurchaseForTile,
@@ -59,6 +60,7 @@ export class App {
     this.store.registerAction("[tragedy] paused resource production", pausedResourceProduction);
     this.store.registerAction("[tragey] collapsed mines", collapsedMines);
     this.store.registerAction("[tragey] stumbling steps", stumblingSteps);
+    this.store.registerAction("buy fortress building", buyFortressBuilding);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

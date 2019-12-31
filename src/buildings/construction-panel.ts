@@ -3,10 +3,12 @@ import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 import { capitalize } from "lodash";
 
-import { Resources, ResourcesIcons, State } from "../store/index";
+import { take } from "rxjs/operators";
+import { buyFortressBuilding, Resources, ResourcesIcons, State } from "../store/index";
 import { DialogModel } from "../utils/utils";
 import {
   AllFortressBuildings,
+  FortressBuilding,
   FortressBuildingIcon,
   FortressBuildingResourceCost
 } from "./fortress-building";
@@ -27,7 +29,7 @@ export class ConstructionPanel {
   ) { }
 
   @computedFrom("currentBuildingIdx")
-  public get building() {
+  public get building(): FortressBuilding {
     return this.fortressBuildings[this.currentBuildingIdx];
   }
 
@@ -35,21 +37,26 @@ export class ConstructionPanel {
     this.resources = model.resources;
     this.dialogView = model.view;
     this.bemclasses = model.bem;
-    this.fortressBuildings = AllFortressBuildings.map((b) => {
-      const buildingCosts = Object.entries<number>(FortressBuildingResourceCost[b]).filter((r) => r[1] !== 0);
-      const costs = buildingCosts.map((e) => ({
-        icon: ResourcesIcons[e[0]],
-        resource: e[0],
-        value: e[1],
-      }));
 
-      return {
-        costs,
-        icon: FortressBuildingIcon[b],
-        name: capitalize(b.replace(/_/g, " ")),
-        sufficientResources: !costs.some((c) => this.resources[c.resource] - c.value < 0),
-        type: b
-      };
+    this.store.state.pipe(take(1)).subscribe((state) => {
+      this.fortressBuildings = AllFortressBuildings.filter((b) =>
+        !state.fortressBuildings.find((fb) => fb.type === b)
+      ).map((b) => {
+        const buildingCosts = Object.entries<number>(FortressBuildingResourceCost[b]).filter((r) => r[1] !== 0);
+        const costs = buildingCosts.map((e) => ({
+          icon: ResourcesIcons[e[0]],
+          resource: e[0],
+          value: e[1],
+        }));
+
+        return {
+          costs,
+          icon: FortressBuildingIcon[b],
+          name: capitalize(b.replace(/_/g, " ")),
+          sufficientResources: !costs.some((c) => this.resources[c.resource] - c.value < 0),
+          type: b
+        };
+      });
     });
   }
 
@@ -70,6 +77,7 @@ export class ConstructionPanel {
   }
 
   public buyBuilding() {
-    // TODO: implement buy
+    this.store.dispatch(buyFortressBuilding, this.building.type);
+    this.controller.ok();
   }
 }

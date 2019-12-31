@@ -1,5 +1,6 @@
 import { Tile, TileType } from "../board/tile";
 import { AvailableTragedyEvents } from "../board/tragedy";
+import { FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { guid } from "./helper";
@@ -27,6 +28,7 @@ export const ResourcesIcons: {
 export interface State {
   tiles: Tile[];
   players: Player[];
+  fortressBuildings: FortressBuilding[];
   tileBuildings: TileBuilding[];
   lastDiceRoll?: number;
   resources: Resources;
@@ -40,6 +42,7 @@ export interface State {
 }
 
 export const initialState = {
+  fortressBuildings: [],
   lastDiceRoll: undefined,
   players: [],
   resources: {
