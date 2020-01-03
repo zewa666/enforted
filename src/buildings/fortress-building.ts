@@ -1,4 +1,5 @@
-import { bindable } from "aurelia-framework";
+import { bindable, computedFrom } from "aurelia-framework";
+import { capitalize } from "lodash";
 
 import { Resources } from "../store/state";
 
@@ -77,4 +78,14 @@ export const FortressBuildingResourceCost: {
 
 export class FortressBuilding {
   @bindable() public type: AvailableFortressBuildings;
+
+  @computedFrom("type")
+  public get icon(): string {
+    return FortressBuildingIcon[this.type];
+  }
+
+  @computedFrom("type")
+  public get name(): string {
+    return capitalize(this.type.replace(/_/g, " "));
+  }
 }

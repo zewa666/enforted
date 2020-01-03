@@ -1,0 +1,26 @@
+.fortress {
+  align-items: center;
+  background-color: $fortress-bg;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+
+  &__caption {
+    align-items: center;
+    display: flex;
+    flex: 8;
+  }
+
+  &__buildings {
+    align-items: center;
+    display: flex;
+    height: 25%;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  &__building {
+    height: 60%;
+  }
+}

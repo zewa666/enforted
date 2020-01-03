@@ -1,6 +1,10 @@
-import { AvailableFortressBuildings, FortressBuildingResourceCost } from "buildings/fortress-building";
 import { Tile } from "../../board/tile";
 import { AvailableTragedyEvents } from "../../board/tragedy";
+import {
+  AvailableFortressBuildings,
+  FortressBuilding,
+  FortressBuildingResourceCost
+} from "../../buildings/fortress-building";
 import { AvailableTileBuildings, TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
 import { randBetween } from "../helper";
@@ -152,7 +156,7 @@ export function buyFortressBuilding(state: State, type: AvailableFortressBuildin
   return {
     ...state,
     fortressBuildings: [
-      ...state.fortressBuildings, { type }
+      ...state.fortressBuildings, { type } as FortressBuilding
     ],
     resources: {
       blood: state.resources.blood - costs.blood,

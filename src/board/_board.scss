@@ -35,24 +35,12 @@
     }
 
     &--center {
+      flex-basis: 0;
       flex-grow: 9;
     }
   }
 
   &__fortress {
     outline: none;
-  }
-}
-
-.fortress {
-  align-items: center;
-  background-color: $fortress-bg;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  
-
-  &__caption {
-    position: absolute;
   }
 }

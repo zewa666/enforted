@@ -1,0 +1,9 @@
+<template class="fortress">
+  <span class="fortress__caption">Fortress</span>
+
+  <div class="fortress__buildings">
+    <fortress-building repeat.for="building of state.fortressBuildings"
+                       type.bind="building.type"
+                       class="fortress__building"></fortress-building>
+  </div>
+</template>

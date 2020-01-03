@@ -53,13 +53,7 @@
                 tile-buildings.bind="state.tileBuildings"></tile>
         </div>
         <div class="${bem('board', 'col', 'center')}">
-
-          <!-- Fortress -->
-          <div class="board__fortress fortress">
-            <span class="fortress__caption">Fortress</span>
-          </div>
-          <!-- /Fortress -->
-
+          <fortress class="board__fortress"></fortress>
         </div>
         <div class="${bem('board', 'col', 'right')}">
           <tile repeat.for="tile of getTiles('inner', 'right')"
