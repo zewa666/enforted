@@ -23,6 +23,7 @@ export function rollDice(state: State, diceOverload?: number): State {
 
   return {
     ...state,
+    activeFortressBuildingConstruction: isNextRound ? undefined : state.activeFortressBuildingConstruction,
     activeTragedy: isNextRound
       ? undefined
       : isStumblingStep && newStumblingSteps === undefined
@@ -150,11 +151,12 @@ export function buyBuilding(state: State, building: TileBuilding): State {
   };
 }
 
-export function buyFortressBuilding(state: State, type: AvailableFortressBuildings) {
+export function buyFortressBuilding(state: State, type: AvailableFortressBuildings): State {
   const costs = FortressBuildingResourceCost[type];
 
   return {
     ...state,
+    activeFortressBuildingConstruction: type,
     fortressBuildings: [
       ...state.fortressBuildings, { type } as FortressBuilding
     ],

@@ -1,6 +1,6 @@
 import { Tile, TileType } from "../board/tile";
 import { AvailableTragedyEvents } from "../board/tragedy";
-import { FortressBuilding } from "../buildings/fortress-building";
+import { AvailableFortressBuildings, FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
 import { guid } from "./helper";
@@ -33,6 +33,7 @@ export interface State {
   lastDiceRoll?: number;
   resources: Resources;
   round: number;
+  activeFortressBuildingConstruction?: AvailableFortressBuildings;
   activeTragedy?: AvailableTragedyEvents;
   activeTragedyParams?: any[];
   /**

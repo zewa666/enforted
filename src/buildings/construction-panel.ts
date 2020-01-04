@@ -20,6 +20,7 @@ export class ConstructionPanel {
   public dialogView: string;
   public bemclasses: string;
   public currentBuildingIdx = 0;
+  public buildingInProgress: boolean;
 
   private fortressBuildings;
 
@@ -44,6 +45,7 @@ export class ConstructionPanel {
     this.bemclasses = model.bem;
 
     this.store.state.pipe(take(1)).subscribe((state) => {
+      this.buildingInProgress = !!state.activeFortressBuildingConstruction;
       this.fortressBuildings = AllFortressBuildings.filter((b) =>
         !state.fortressBuildings.find((fb) => fb.type === b)
       ).map((b) => {
@@ -81,8 +83,8 @@ export class ConstructionPanel {
     }
   }
 
-  public buyBuilding() {
-    this.store.dispatch(buyFortressBuilding, this.building.type);
+  public async buyBuilding() {
+    await this.store.dispatch(buyFortressBuilding, this.building.type);
     this.controller.ok();
   }
 }
