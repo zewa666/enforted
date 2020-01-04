@@ -16,6 +16,7 @@
     "wood": 0
   },
   "round": 1,
+  "fortressBuildings": [],
   "tileBuildings": [
     {
       "tileId": "bd9fb000-09a6-1869-42ec-75a554b5921f",

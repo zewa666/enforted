@@ -7,14 +7,14 @@
     }
   ],
   "resources": {
-    "blood": 0,
-    "coal": 0,
-    "food": 0,
-    "gold": 0,
-    "iron": 0,
-    "mana": 0,
-    "stone": 0,
-    "wood": 0
+    "blood": 100,
+    "coal": 100,
+    "food": 100,
+    "gold": 100,
+    "iron": 100,
+    "mana": 100,
+    "stone": 100,
+    "wood": 100
   },
   "round": 1,
   "fortressBuildings": [],

@@ -151,8 +151,12 @@ export function buyBuilding(state: State, building: TileBuilding): State {
   };
 }
 
-export function buyFortressBuilding(state: State, type: AvailableFortressBuildings): State {
+export function buyFortressBuilding(state: State, type: AvailableFortressBuildings): State | false {
   const costs = FortressBuildingResourceCost[type];
+
+  if (state.activeFortressBuildingConstruction) {
+    return false;
+  }
 
   return {
     ...state,
