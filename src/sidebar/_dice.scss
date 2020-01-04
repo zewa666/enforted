@@ -1,0 +1,24 @@
+.dice {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &__icon {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+  }
+
+  &__round {
+    margin: 5px 0;
+  }
+  
+  &__last-roll {
+    background-color: $dice-text-bg;
+    font-size: 20px;
+    margin-top: 5px;
+    text-align: center;
+    width: 50px;
+  }
+}

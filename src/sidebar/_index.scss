@@ -3,51 +3,6 @@
   flex-direction: column;
 }
 
-.dice {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-  &__icon {
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-  }
-
-  &__round {
-    margin: 5px 0;
-  }
-  
-  &__last-roll {
-    background-color: $dice-text-bg;
-    font-size: 20px;
-    margin-top: 5px;
-    text-align: center;
-    width: 50px;
-  }
-}
-
-.resources-overview {
-  &__list {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-    width: 70px;
-  }
-  
-  &__item {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__image {
-    width: 30px;
-  }
-}
-
 .save {
   &__actions {
     display: flex;
@@ -55,15 +10,6 @@
   }
 }
 
-.tragedy-overview {
-  display: flex;
-  justify-content: center;
-
-  &__image {
-    width: 100px;
-
-    &--hidden {
-      visibility: hidden;
-    }
-  }
-}
+@import "./dice";
+@import "./tragedy-overview";
+@import "./resources-overview";
