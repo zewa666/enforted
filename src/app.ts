@@ -29,7 +29,7 @@ import {
 
 @autoinject()
 export class App {
-  public commandBarVisible: boolean = true;
+  public sidebarVisible: boolean = true;
 
   constructor(
     private store: Store<State>,

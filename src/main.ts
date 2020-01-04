@@ -13,7 +13,7 @@ export function configure(aurelia: Aurelia) {
     .plugin("aurelia-dialog")
     .feature("board")
     .feature("player")
-    .feature("commands")
+    .feature("sidebar")
     .feature("buildings");
 
   aurelia.use.developmentLogging(environment.debug ? "debug" : "warn");

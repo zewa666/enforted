@@ -1,11 +1,4 @@
-.command {
-  &__icon {
-    height: 40px;
-    width: 40px;
-  }
-}
-
-.command-bar {
+.sidebar {
   display: flex;
   flex-direction: column;
 }
@@ -18,6 +11,8 @@
   
   &__icon {
     cursor: pointer;
+    height: 40px;
+    width: 40px;
   }
 
   &__round {

@@ -1,10 +1,10 @@
 <template>
   <require from="./app.css"></require>
   <div class="main">
-    <button class="main__toggle-command-bar"
-            click.trigger="commandBarVisible = !commandBarVisible">${!commandBarVisible ? "⇶" : "⬱"}</button>
-    <command-bar class="main__command-bar"
-                 show.bind="commandBarVisible"></command-bar>
+    <button class="main__toggle-sidebar"
+            click.trigger="sidebarVisible = !sidebarVisible">${!sidebarVisible ? "⇶" : "⬱"}</button>
+    <sidebar class="main__sidebar"
+             show.bind="sidebarVisible"></sidebar>
     <board class="main__board"></board>
   </div>
 </template>

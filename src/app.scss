@@ -12,7 +12,7 @@
   margin: 0 auto;
   width: 100vw;
 
-  &__command-bar {
+  &__sidebar {
     flex-grow: 1;
   }
 
@@ -20,7 +20,7 @@
     flex-grow: 22;
   }
 
-  &__toggle-command-bar {
+  &__toggle-sidebar {
     background-color: $toggle-cbar-btn-bg;
     border: none;
     color: $toggle-cbar-btn-fg;
@@ -50,5 +50,5 @@ ux-dialog-overlay.active {
 
 @import "./board/index";
 @import "./player/player";
-@import "./commands/index";
+@import "./sidebar/index";
 @import "./buildings/index";
