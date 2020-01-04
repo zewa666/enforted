@@ -1,7 +1,7 @@
 <template class="construction-panel">
   <h4 class="construction-panel__header">Fortress Buildings</h4>
-
-  <ul class="construction-panel__list">
+  <ul if.bind="buildingsLeftToBuild"
+      class="construction-panel__list">
     <li class="construction-panel__item">
       <div class="construction-panel__building-name">
         <button class="construction-panel__building-navigator"
@@ -28,6 +28,8 @@
               title.bind="!building.sufficientResources ? 'Not enough resources' : 'Buy'">Buy</button>
     </li>
   </ul>
+  <div class="construction-panel__no-buildings"
+       else>No buildings left to buy</div>
 
   <button class="construction-panel__close"
           click.trigger="closePanel()">Close</button>

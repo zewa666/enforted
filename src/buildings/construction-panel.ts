@@ -33,6 +33,11 @@ export class ConstructionPanel {
     return this.fortressBuildings[this.currentBuildingIdx];
   }
 
+  @computedFrom("fortressBuildings")
+  public get buildingsLeftToBuild() {
+    return !!this.fortressBuildings.length;
+  }
+
   public activate(model: PurchasePanel & DialogModel) {
     this.resources = model.resources;
     this.dialogView = model.view;
