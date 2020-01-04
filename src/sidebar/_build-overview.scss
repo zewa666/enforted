@@ -1,0 +1,12 @@
+.build-overview {
+  display: flex;
+  justify-content: center;
+
+  &__image {
+    width: 100px;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+}
