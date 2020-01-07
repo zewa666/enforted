@@ -14,13 +14,15 @@
     "aurelia-dialog": "^2.0.0-rc.8",
     "aurelia-store": "^1.4.0",
     "lodash": "^4.17.15",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^4.0.3",
     "@types/jest": "^24.0.9",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.11.6",
+    "@types/web-animations-js": "^2.2.8",
     "aurelia-cli": "^1.0.2",
     "aurelia-loader-nodejs": "^1.0.1",
     "aurelia-pal-nodejs": "^1.2.0",

@@ -1,4 +1,5 @@
 import { Aurelia } from "aurelia-framework";
+import "web-animations-js";
 import environment from "./environment";
 
 import { initialState } from "./store/index";
@@ -11,6 +12,7 @@ export function configure(aurelia: Aurelia) {
       initialState
     })
     .plugin("aurelia-dialog")
+    .feature("animator")
     .feature("board")
     .feature("player")
     .feature("sidebar")
