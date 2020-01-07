@@ -1,6 +1,7 @@
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
+import { WebAnimationAnimator } from "../animator/animator";
 import { ConstructionPanel } from "../buildings/construction-panel";
 import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
@@ -36,12 +37,17 @@ export class Tile {
   @bindable public id: string;
   @bindable public resources: Resources;
 
-  constructor(private store: Store<State>) {
-
-  }
+  constructor(
+    private store: Store<State>,
+    private animator: WebAnimationAnimator,
+    private element: Element
+  ) { }
 
   public async playersChanged() {
     if (this.type === "tragedy" && this.isPlayerOnTile) {
+      this.animator.animate(this.element, {
+        backgroundColor: ["transparent", "red", "transparent", "red"]
+      }, 2000);
       await openDialog(Tragedy, {
         view: "board/tragedy.html"
       }, true);
