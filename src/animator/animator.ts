@@ -12,6 +12,11 @@ interface CssAnimation {
 export class WebAnimationAnimator extends Animator {
   public isAnimating: boolean = false;
 
+  public storedEnterAnimations: { [selector: string]: {
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null | any,
+    options?: number | KeyframeAnimationOptions
+  }} = {};
+
   /**
    * Execute a single animation.
    * @param element Element to animate
@@ -25,7 +30,7 @@ export class WebAnimationAnimator extends Animator {
     keyframes: Keyframe[] | PropertyIndexedKeyframes | null | any,
     options?: number | KeyframeAnimationOptions
   ): Promise<boolean> {
-    const animation = (element as HTMLElement).animate(keyframes, options);
+    const animation = (element as HTMLElement).animate(keyframes, options as any);
     return animation.finished.then(() => true);
   }
 
@@ -44,7 +49,12 @@ export class WebAnimationAnimator extends Animator {
    * @returns Resolved when the animation is done
    */
   public enter(element: Element): Promise<boolean> {
-    return Promise.resolve(false);
+    const settings = Object.assign({
+      keyframes: { opacity: [0, 1]},
+      options: 2000
+    }, this.storedEnterAnimations[element.tagName]);
+    const animation = (element as HTMLElement).animate(settings.keyframes, settings.options);
+    return animation.finished.then(() => true);
   }
 
   /**

@@ -2,6 +2,7 @@ import { Aurelia } from "aurelia-framework";
 import "web-animations-js";
 import environment from "./environment";
 
+import { WebAnimationAnimator } from "./animator/animator";
 import { initialState } from "./store/index";
 
 export function configure(aurelia: Aurelia) {
@@ -12,7 +13,17 @@ export function configure(aurelia: Aurelia) {
       initialState
     })
     .plugin("aurelia-dialog")
-    .feature("animator")
+    .feature("animator", (instance: WebAnimationAnimator) => {
+      instance.storedEnterAnimations["TILE-BUILDING"] = {
+        keyframes: [
+          { transform: "translate3d(0, 70%, 0)", opacity: "0"},
+          { transform: "translate3d(0, 0, 0)", opacity: "1"}
+        ],
+        options: 300
+      };
+
+      return instance;
+    })
     .feature("board")
     .feature("player")
     .feature("sidebar")
