@@ -1,4 +1,5 @@
 import { DialogService } from "aurelia-dialog";
+import { EventAggregator } from "aurelia-event-aggregator";
 import { autoinject } from "aurelia-framework";
 import {
   localStorageMiddleware,
@@ -33,7 +34,8 @@ export class App {
 
   constructor(
     private store: Store<State>,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private ea: EventAggregator
   ) {
     this.store
       .state
@@ -75,7 +77,7 @@ export class App {
 
   private handleGlobalKeys = (event: KeyboardEvent) => {
     if (!this.dialogService.hasOpenDialog && event.keyCode === 13) {
-      this.store.dispatch(rollDice);
+      this.ea.publish("key-shortcut", event.keyCode);
     }
   }
 }
