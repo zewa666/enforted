@@ -23,14 +23,10 @@ export function configure(aurelia: Aurelia) {
       };
       instance.storedLeaveAnimations["TILE-BUILDING"] = {
         keyframes: [
-          { transform: "scale(1)", opacity: "1", filer: "blur(0px)" },
-          { transform: "scale(2)", opacity: "0", filer: "blur(4px)" }
+          { transform: "translate3d(0, 0, 0)", opacity: "1"},
+          { transform: "translate3d(0, 70%, 0)", opacity: "0"}
         ],
-        options: {
-          duration: 1000,
-          easing: "cubic-bezier(0.165, 0.840, 0.440, 1.000)",
-          fill: "both",
-        }
+        options: 1000
       };
 
       return instance;

@@ -17,11 +17,16 @@
           <span class="cost__value">${cost.value}</span>
         </li>
       </ul>
-      <button class="purchase-panel__buy"
+      <button class="purchase-panel__button"
               click.trigger="buyBuilding()"
               data-aid="btn-buy"
               disabled.bind="tileBuilding || !sufficientResources"
               title.bind="!sufficientResources ? 'Not enough resources' : 'Buy'">Buy</button>
+      <button class="purchase-panel__button"
+              click.trigger="destroyBuilding()"
+              data-aid="btn-destroy"
+              disabled.bind="!tileBuilding"
+              title.bind="!tileBuilding ? 'Nothing built yet' : 'Destroy the building'">Destroy</button>
     </li>
   </ul>
 

@@ -4,6 +4,7 @@ import { Player } from "../../player/player";
 import { ResourceTileType } from "../../resources/index";
 import { randBetween } from "../helper";
 import { State } from "../state";
+import { destroyBuilding } from "./commands";
 
 export function sacrificeResources(
   state: State,
@@ -24,16 +25,7 @@ export function ragingFire(
   state: State,
   tileId: string
 ): State {
-  const idx = state.tileBuildings.findIndex((tb) => tb.tileId === tileId);
-
-  return {
-    ...state,
-    activeTragedy: AvailableTragedyEvents.RagingFire,
-    tileBuildings: [
-      ...state.tileBuildings.slice(0, idx),
-      ...state.tileBuildings.slice(idx + 1),
-    ]
-  };
+  return destroyBuilding(state, tileId);
 }
 
 export function forgottenEquipment(state: State): State {

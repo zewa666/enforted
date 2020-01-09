@@ -7,6 +7,7 @@ import { Resources, ResourcesIcons } from "../resources/index";
 import {
   buyBuilding,
   closePurchasePanel,
+  destroyBuilding,
   State
 } from "../store/index";
 import { DialogModel } from "../utils/utils";
@@ -71,6 +72,11 @@ export class PurchasePanel {
     newBuilding.placement = this.tile.placement;
 
     this.store.dispatch(buyBuilding, newBuilding);
+    this.controller.ok();
+  }
+
+  public destroyBuilding() {
+    this.store.dispatch(destroyBuilding, this.tileBuilding.tileId);
     this.controller.ok();
   }
 

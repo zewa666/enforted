@@ -151,6 +151,22 @@ export function buyBuilding(state: State, building: TileBuilding): State {
   };
 }
 
+export function destroyBuilding(
+  state: State,
+  tileId: string
+): State {
+  const idx = state.tileBuildings.findIndex((tb) => tb.tileId === tileId);
+
+  return {
+    ...state,
+    activeTragedy: AvailableTragedyEvents.RagingFire,
+    tileBuildings: [
+      ...state.tileBuildings.slice(0, idx),
+      ...state.tileBuildings.slice(idx + 1),
+    ]
+  };
+}
+
 export function buyFortressBuilding(state: State, type: AvailableFortressBuildings): State | false {
   const costs = FortressBuildingResourceCost[type];
 

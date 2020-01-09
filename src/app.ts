@@ -22,6 +22,7 @@ import {
   buyBuilding,
   buyFortressBuilding,
   closePurchasePanel,
+  destroyBuilding,
   LOCALSTORAGE_SAVE_KEY,
   openPurchaseForTile,
   rollDice,
@@ -55,6 +56,7 @@ export class App {
     this.store.registerAction("open the purchase panel", openPurchaseForTile);
     this.store.registerAction("close the purchase panel", closePurchasePanel);
     this.store.registerAction("buy a tile building", buyBuilding);
+    this.store.registerAction("destroy a tile building", destroyBuilding);
     this.store.registerAction("[tragedy] sacrifice resources", sacrificeResources);
     this.store.registerAction("[tragedy] raging fire", ragingFire);
     this.store.registerAction("[tragedy] the forgotten equipment", forgottenEquipment);
