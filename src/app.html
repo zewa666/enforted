@@ -3,8 +3,7 @@
   <div class="main">
     <button class="main__toggle-sidebar"
             click.trigger="sidebarVisible = !sidebarVisible">${!sidebarVisible ? "⇶" : "⬱"}</button>
-    <sidebar class="main__sidebar"
-             show.bind="sidebarVisible"></sidebar>
+    <sidebar class="${bem('main', 'sidebar', !sidebarVisible ? 'hidden' : 'visible')}"></sidebar>
     <board class="main__board"></board>
   </div>
 </template>
