@@ -1,11 +1,22 @@
 .sidebar {
   flex-direction: column;
+
+  &__item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .save {
-  &__actions {
-    display: flex;
-    flex-direction: column;
+  &__button {
+    background-color: $save-button-bg;
+    border: 1px solid $save-button-border;
+    border-radius: 3px;
+    color: $save-button-text;
+    height: 30px;
+    margin: 10px;
   }
 }
 
