@@ -50,7 +50,7 @@ export class Tile {
       }, 2000);
       await openDialog(Tragedy, {
         view: "board/tragedy.html"
-      }, true);
+      }, "Enter");
     }
   }
 
