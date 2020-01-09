@@ -1,5 +1,4 @@
-import { DOM } from "aurelia-pal";
-import { animationEvent, Animator } from "aurelia-templating";
+import { Animator } from "aurelia-templating";
 
 interface CssAnimation {
   className: string;
@@ -13,6 +12,10 @@ export class WebAnimationAnimator extends Animator {
   public isAnimating: boolean = false;
 
   public storedEnterAnimations: { [selector: string]: {
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null | any,
+    options?: number | KeyframeAnimationOptions
+  }} = {};
+  public storedLeaveAnimations: { [selector: string]: {
     keyframes: Keyframe[] | PropertyIndexedKeyframes | null | any,
     options?: number | KeyframeAnimationOptions
   }} = {};
@@ -63,7 +66,12 @@ export class WebAnimationAnimator extends Animator {
    * @returns Resolved when the animation is done
    */
   public leave(element: Element): Promise<boolean> {
-    return Promise.resolve(false);
+    const settings = Object.assign({
+      keyframes: { opacity: [0, 1]},
+      options: 2000
+    }, this.storedLeaveAnimations[element.tagName]);
+    const animation = (element as HTMLElement).animate(settings.keyframes, settings.options);
+    return animation.finished.then(() => true);
   }
 
   /**
