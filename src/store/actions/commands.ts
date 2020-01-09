@@ -7,9 +7,9 @@ import {
 } from "../../buildings/fortress-building";
 import { AvailableTileBuildings, TileBuilding, TileBuildingResourceCost } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
+import { Resources } from "../../resources/index";
 import { randBetween } from "../helper";
 import { State } from "../index";
-import { Resources } from "../state";
 
 export function rollDice(state: State, diceOverload?: number): State {
   const isStumblingStep = state.activeTragedy === AvailableTragedyEvents.StumblingSteps;

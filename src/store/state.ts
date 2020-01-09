@@ -1,30 +1,12 @@
-import { Tile, TileType } from "../board/tile";
+import { Tile } from "../board/tile";
 import { AvailableTragedyEvents } from "../board/tragedy";
 import { AvailableFortressBuildings, FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
+import { Resources } from "../resources/index";
 import { guid } from "./helper";
 
 export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
-export type ResourceTileType = Exclude<TileType, "start" | "tragedy" | "sacred_grounds" | "construction-site">;
-
-export type Resources = {
-  [key in ResourceTileType]: number;
-};
-
-export const ResourcesIcons: {
-  [key in ResourceTileType]: string
-} = {
-  blood: "bloody-stash",
-  coal: "brick-pile",
-  food: "wheat",
-  gold: "two-coins",
-  iron: "ore",
-  mana: "vortex",
-  stone: "stone-block",
-  wood: "forest"
-};
-
 export interface State {
   tiles: Tile[];
   players: Player[];

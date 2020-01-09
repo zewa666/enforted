@@ -3,7 +3,7 @@ import { connectTo } from "aurelia-store";
 import { upperFirst } from "lodash";
 import { pluck } from "rxjs/operators";
 
-import { Resources, ResourcesIcons } from "../store/state";
+import { Resources, ResourcesIcons } from "../resources/index";
 
 @connectTo((store) => store.state.pipe(pluck("resources")))
 export class ResourcesOverview {

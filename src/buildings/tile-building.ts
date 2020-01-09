@@ -1,6 +1,6 @@
 import { bindable } from "aurelia-framework";
 import { TilePlacement, TileType } from "../board/tile";
-import { Resources } from "../store/state";
+import { Resources } from "../resources/index";
 
 export type AvailableTileBuildings = "sawmill"
   | "quarry"

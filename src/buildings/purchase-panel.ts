@@ -3,12 +3,10 @@ import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
 
 import { Tile } from "../board/tile";
-
+import { Resources, ResourcesIcons } from "../resources/index";
 import {
   buyBuilding,
   closePurchasePanel,
-  Resources,
-  ResourcesIcons,
   State
 } from "../store/index";
 import { DialogModel } from "../utils/utils";

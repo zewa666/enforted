@@ -1,7 +1,7 @@
 import { bindable, computedFrom } from "aurelia-framework";
 import { capitalize } from "lodash";
 
-import { Resources } from "../store/state";
+import { Resources } from "../resources/index";
 
 export const AllFortressBuildings = [
   "blacksmith_shop",

@@ -1,8 +1,9 @@
 import { AvailableTileBuildings } from "buildings/tile-building";
 import { AvailableTragedyEvents } from "../../board/tragedy";
 import { Player } from "../../player/player";
+import { ResourceTileType } from "../../resources/index";
 import { randBetween } from "../helper";
-import { ResourceTileType, State } from "../state";
+import { State } from "../state";
 
 export function sacrificeResources(
   state: State,
