@@ -83,5 +83,9 @@ export function buyFortressBuilding(state: State, type: AvailableFortressBuildin
       stone: state.resources.stone - costs.stone,
       wood: state.resources.wood - costs.wood,
     },
-  };
+    stats: {
+      ...state.stats,
+      defense: type === "palisades" ? state.stats.defense + 10 : state.stats.defense
+    }
+  } as State;
 }

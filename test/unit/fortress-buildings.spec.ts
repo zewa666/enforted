@@ -3,7 +3,8 @@ import { PLATFORM } from "aurelia-framework";
 import { executeSteps, Store } from "aurelia-store";
 import { ComponentTester, StageComponent } from "aurelia-testing";
 
-import { buyFortressBuilding, LOCALSTORAGE_SAVE_KEY, State } from "../../src/store/index";
+import { FortressBuilding } from "../../src/buildings/fortress-building";
+import { buyFortressBuilding, LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
 
 describe("fortress buildings", () => {
   let component: ComponentTester;
@@ -51,4 +52,138 @@ describe("fortress buildings", () => {
     expect(firstState).toBe((store as any)._state.getValue());
   });
 
+  describe("the bakery", () => {
+    async function addBakeryTo(fixture: string) {
+      const ret = await loadComponentWithFixture(fixture);
+      ret.state = {
+        ...ret.state,
+        fortressBuildings: [
+          ...ret.state.fortressBuildings,
+          { type: "bakery" } as FortressBuilding
+        ]
+      };
+      ret.store.resetToState(ret.state);
+
+      return ret;
+    }
+
+    it("should produce no new population if neither coal nor wood are available", async () => {
+      const { store } = await addBakeryTo("no-resources");
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 0, wood: 0 }));
+          expect(res.stats.population).toBe(10);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => expect(res.stats.population).toBe(10)
+      );
+    });
+
+    it("should produce new population if coals are available", async () => {
+      const { store, state } = await addBakeryTo("no-resources");
+      store.resetToState({ ...state, resources: { ...state.resources, coal: 1 } });
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 1, wood: 0 }));
+          expect(res.stats.population).toBe(10);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.stats.population).toBe(11);
+          expect(res.resources.coal).toBe(0);
+        }
+      );
+    });
+
+    it("should produce new population if wood is available", async () => {
+      const { store, state } = await addBakeryTo("no-resources");
+      store.resetToState({ ...state, resources: { ...state.resources, wood: 1 } });
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ wood: 1, coal: 0 }));
+          expect(res.stats.population).toBe(10);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.stats.population).toBe(11);
+          expect(res.resources.wood).toBe(0);
+        }
+      );
+    });
+  });
+
+  describe("palisades", () => {
+    it("should increase the defense when built", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.stats.defense).toBe(0);
+          store.dispatch(buyFortressBuilding, "palisades");
+        },
+        (res) => expect(res.stats.defense).toBe(10)
+      );
+    });
+  });
+
+  describe("the blacksmith shop", () => {
+    async function addBlacksmithShopTo(fixture: string) {
+      const ret = await loadComponentWithFixture(fixture);
+      ret.state = {
+        ...ret.state,
+        fortressBuildings: [
+          ...ret.state.fortressBuildings,
+          { type: "blacksmith_shop" } as FortressBuilding
+        ]
+      };
+      ret.store.resetToState(ret.state);
+
+      return ret;
+    }
+
+    it("should produce no new population if not all requirements are satisfied are available", async () => {
+      const { store } = await addBlacksmithShopTo("no-resources");
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 0, iron: 0 }));
+          expect(res.stats.soldiers).toBe(0);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => expect(res.stats.soldiers).toBe(0)
+      );
+    });
+
+    it("should produce new soldier if both coals and iron are available", async () => {
+      const { store, state } = await addBlacksmithShopTo("no-resources");
+      store.resetToState({ ...state, resources: { ...state.resources, coal: 1, iron: 1 } });
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 1, iron: 1 }));
+          expect(res.stats.soldiers).toBe(0);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.stats.soldiers).toBe(1);
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 0, iron: 0 }));
+        }
+      );
+    });
+  });
 });

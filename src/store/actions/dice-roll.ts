@@ -1,7 +1,7 @@
 import { AvailableTragedyEvents } from "../../board/tragedy";
 import { AvailableTileBuildings } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
-import { Resources } from "../../resources/index";
+import { Resources, Stats } from "../../resources/index";
 import { randBetween } from "../helper";
 import { State } from "../index";
 
@@ -14,7 +14,8 @@ export function rollDice(state: State, diceOverload?: number): State {
   const newStumblingSteps = (state.activeTragedyParams === undefined || state.activeTragedyParams[0] === 1)
     ? undefined
     : [state.activeTragedyParams[0] - 1];
-  return {
+
+  return gatherFortressBuilding({
     ...state,
     activeFortressBuildingConstruction: isNextRound ? undefined : state.activeFortressBuildingConstruction,
     activeTragedy: isNextRound
@@ -43,7 +44,39 @@ export function rollDice(state: State, diceOverload?: number): State {
     round: isNextRound
       ? state.round + 1
       : state.round,
-  };
+  }, isNextRound);
+}
+
+export function gatherFortressBuilding(state: State, isNextRound: boolean): State {
+  if (!isNextRound) {
+    return state;
+  }
+
+  const newState = {
+    ...state,
+    resources: { ...state.resources },
+    stats: { ...state.stats }
+  } as State;
+
+  return newState.fortressBuildings.reduce((prev, curr) => {
+    switch (curr.type) {
+      case "bakery":
+        const res = prev.resources.coal > 0 && "coal" || prev.resources.wood > 0 && "wood";
+
+        if (res) {
+          prev.resources[res] -= 1;
+          prev.stats.population += 1;
+        }
+      case "blacksmith_shop":
+        if (prev.resources.iron > 0 && prev.resources.coal > 0) {
+          prev.resources.iron -= 1;
+          prev.resources.coal -= 1;
+          prev.stats.soldiers += 1;
+        }
+    }
+
+    return prev;
+  }, newState);
 }
 
 export const PRODUCED_RESOURCES_PER_ROUND = 3;
