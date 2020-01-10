@@ -16,3 +16,15 @@ export const ResourcesIcons: {
   stone: "stone-block",
   wood: "forest"
 };
+
+export type Stat = "defense" | "population" | "soldiers";
+export type Stats = {
+  [key in Stat]: number;
+};
+export const StatsIcons: {
+  [key in Stat]: string;
+} = {
+  defense: "checked-shield",
+  population: "icicles-aura",
+  soldiers: "sword-brandish"
+};

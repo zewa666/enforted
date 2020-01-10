@@ -4,7 +4,8 @@ import { Store } from "aurelia-store";
 import { capitalize } from "lodash";
 
 import { take } from "rxjs/operators";
-import { buyFortressBuilding, Resources, ResourcesIcons, State } from "../store/index";
+import { Resources, ResourcesIcons } from "../resources/index";
+import { buyFortressBuilding, State } from "../store/index";
 import { DialogModel } from "../utils/utils";
 import {
   AllFortressBuildings,

@@ -6,7 +6,8 @@ import { ConstructionPanel } from "../buildings/construction-panel";
 import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
-import { openPurchaseForTile, Resources, State } from "../store/index";
+import { Resources } from "../resources/index";
+import { openPurchaseForTile, State } from "../store/index";
 import { openDialog } from "../utils/utils";
 import { Tragedy } from "./tragedy";
 

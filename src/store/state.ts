@@ -3,7 +3,7 @@ import { AvailableTragedyEvents } from "../board/tragedy";
 import { AvailableFortressBuildings, FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
 import { Player } from "../player/player";
-import { Resources } from "../resources/index";
+import { Resources, Stats } from "../resources/index";
 import { guid } from "./helper";
 
 export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
@@ -15,6 +15,7 @@ export interface State {
   lastDiceRoll?: number;
   resources: Resources;
   round: number;
+  stats: Stats;
   activeFortressBuildingConstruction?: AvailableFortressBuildings;
   activeTragedy?: AvailableTragedyEvents;
   activeTragedyParams?: any[];
@@ -39,6 +40,11 @@ export const initialState = {
     wood: 20,
   },
   round: 1,
+  stats: {
+    defense: 0,
+    population: 10,
+    soldiers: 0
+  },
   tileBuildings: [],
   tiles: [
     {

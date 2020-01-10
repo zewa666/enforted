@@ -1,0 +1,11 @@
+<template class="stats-overview">
+  <ul class="stats-overview__list">
+    <li class="stats-overview__item"
+        repeat.for="res of stats">
+      <img title.bind="res.name"
+           class="stats-overview__image"
+           src="assets/icons/${res.icon}.svg" />
+      <span class="stats-overview__value">${res.value}</span>
+    </li>
+  </ul>
+</template>

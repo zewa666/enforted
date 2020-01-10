@@ -5,6 +5,7 @@ import { Dice } from "./dice";
 import { ResourcesOverview } from "./resources-overview";
 import { Save } from "./save";
 import { Sidebar } from "./sidebar";
+import { StatsOverview } from "./stats-overview";
 import { TragedyOverview } from "./tragedy-overview";
 
 export function configure(config: FrameworkConfiguration) {
@@ -13,6 +14,7 @@ export function configure(config: FrameworkConfiguration) {
     BuildOverview,
     Dice,
     ResourcesOverview,
+    StatsOverview,
     Save,
     TragedyOverview
   ]);

@@ -17,6 +17,11 @@
     "wood": 0
   },
   "round": 1,
+  "stats": {
+    "defense": 0,
+    "population": 10,
+    "soldiers": 0
+  },
   "fortressBuildings": [],
   "tileBuildings": [],
   "tiles": [
