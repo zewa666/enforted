@@ -77,6 +77,13 @@ export function gatherFortressBuilding(state: State, isNextRound: boolean): Stat
         if (prev.resources.gold > 0) {
           prev.resources.gold += 1;
         }
+      case "magician_tower":
+        if (prev.resources.mana > 2) {
+          prev.resources.mana -= 3;
+          prev.fireFountainsActive = true;
+        } else {
+          prev.fireFountainsActive = false;
+        }
     }
 
     return prev;

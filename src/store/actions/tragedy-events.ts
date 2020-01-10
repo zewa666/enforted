@@ -33,6 +33,7 @@ export function forgottenEquipment(state: State): State {
     ...state,
     activeTragedy: undefined,
     activeTragedyParams: undefined,
+    fireFountainsActive: false,
     players: [
       {
         ...state.players[0],

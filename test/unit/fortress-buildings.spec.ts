@@ -4,6 +4,7 @@ import { executeSteps, Store } from "aurelia-store";
 import { ComponentTester, StageComponent } from "aurelia-testing";
 
 import { FortressBuilding } from "../../src/buildings/fortress-building";
+import { forgottenEquipment } from "../../src/store/actions/tragedy-events";
 import { buyFortressBuilding, LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
 
 describe("fortress buildings", () => {
@@ -166,6 +167,65 @@ describe("fortress buildings", () => {
           store.dispatch(rollDice, res.tiles.length);
         },
         (res) => expect(res.resources.gold).toBe(0)
+      );
+    });
+  });
+
+  describe("the magican tower", () => {
+    it("should activate the fire fountains for the next round if enough mana is available", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+      let manaAfterMagicianTower = -1;
+
+      await executeSteps(
+        store,
+        false,
+        () => store.dispatch(buyFortressBuilding, "magician_tower"),
+        (res) => {
+          manaAfterMagicianTower = res.resources.mana;
+          expect(res.fireFountainsActive).toBe(false);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.resources.mana).toBe(manaAfterMagicianTower - 3);
+          expect(res.fireFountainsActive).toBe(true);
+        }
+      );
+    });
+
+    it("should not activate fire fountains if not enough mana is available", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+
+      await executeSteps(
+        store,
+        false,
+        () => store.dispatch(buyFortressBuilding, "magician_tower"),
+        (res) => {
+          store.resetToState({ ...res, resources: { ...res.resources, mana: 0 }});
+          expect(res.fireFountainsActive).toBe(false);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.fireFountainsActive).toBe(false);
+        }
+      );
+    });
+
+    it("should turn off the fire fountains if forgotten equipment tragedy is rolled", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+
+      await executeSteps(
+        store,
+        false,
+        () => store.dispatch(buyFortressBuilding, "magician_tower"),
+        (res) => {
+          expect(res.fireFountainsActive).toBe(false);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.fireFountainsActive).toBe(true);
+          store.dispatch(forgottenEquipment);
+        },
+        (res) => expect(res.fireFountainsActive).toBe(false)
       );
     });
   });

@@ -22,6 +22,7 @@
     "population": 10,
     "soldiers": 0
   },
+  "fireFountainsActive": false,
   "fortressBuildings": [],
   "tileBuildings": [],
   "tiles": [

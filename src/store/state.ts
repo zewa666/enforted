@@ -23,9 +23,11 @@ export interface State {
    * Setting this to undefined closes the purchase panel
    */
   purchaseInProgress?: string;
+  fireFountainsActive: boolean;
 }
 
 export const initialState = {
+  fireFountainsActive: false,
   fortressBuildings: [],
   lastDiceRoll: undefined,
   players: [],
