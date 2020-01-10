@@ -73,6 +73,10 @@ export function gatherFortressBuilding(state: State, isNextRound: boolean): Stat
           prev.resources.coal -= 1;
           prev.stats.soldiers += 1;
         }
+      case "bank":
+        if (prev.resources.gold > 0) {
+          prev.resources.gold += 1;
+        }
     }
 
     return prev;

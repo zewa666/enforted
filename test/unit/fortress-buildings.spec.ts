@@ -137,6 +137,39 @@ describe("fortress buildings", () => {
     });
   });
 
+  describe("the bank", () => {
+    it("should increase gold if some is present", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+      let goldAfterBank = -1;
+
+      await executeSteps(
+        store,
+        false,
+        () => store.dispatch(buyFortressBuilding, "bank"),
+        (res) => {
+          goldAfterBank = res.resources.gold;
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => expect(res.resources.gold).toBe(goldAfterBank + 1)
+      );
+    });
+
+    it("should not increase gold if none is present", async () => {
+      const { store } = await loadComponentWithFixture("massive-resources");
+
+      await executeSteps(
+        store,
+        false,
+        () => store.dispatch(buyFortressBuilding, "bank"),
+        (res) => {
+          store.resetToState({ ...res, resources: { ...res.resources, gold: 0 }});
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => expect(res.resources.gold).toBe(0)
+      );
+    });
+  });
+
   describe("the blacksmith shop", () => {
     async function addBlacksmithShopTo(fixture: string) {
       const ret = await loadComponentWithFixture(fixture);
