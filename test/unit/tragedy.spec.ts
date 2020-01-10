@@ -146,7 +146,7 @@ describe("tragedy events", () => {
         tileBuildings: [
           {
             placement: "bottom",
-            tileId: "5b421298-75e4-550e-939d-589770dd4d2f",
+            tileId: "9cacebac-96d1-4d66-46f5-9961d081815c",
             type: "iron_mine"
           }
         ]

@@ -318,7 +318,7 @@
       "isCorner": true,
       "placement": "bottom",
       "ring": "inner",
-      "type": "iron"
+      "type": "fire_fountain"
     },
     {
       "id": "9cacebac-96d1-4d66-46f5-9961d081815c",
@@ -430,7 +430,7 @@
       "isCorner": true,
       "placement": "top",
       "ring": "inner",
-      "type": "coal"
+      "type": "fire_fountain"
     },
     {
       "id": "cb98bb70-638c-06b4-cedd-41fa876658a8",

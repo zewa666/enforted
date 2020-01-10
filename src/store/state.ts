@@ -103,9 +103,16 @@ export const initialState = {
       ring: "outer",
       type: "gold",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
+    {
       id: guid(),
-      isCorner: idx === 0,
+      isCorner: true,
+      placement: "bottom",
+      ring: "inner",
+      type: "fire_fountain",
+    },
+    ...Array.from<Tile, Partial<Tile>>(Array(6), (_, idx) => ({
+      id: guid(),
+      isCorner: false,
       placement: "bottom",
       ring: "inner",
       type: "iron",
@@ -138,9 +145,16 @@ export const initialState = {
       ring: "inner",
       type: idx === 3 ? "sacred_grounds" : "mana",
     })),
-    ...Array.from<Tile, Partial<Tile>>(Array(8), (_, idx) => ({
+    {
       id: guid(),
-      isCorner: idx === 0,
+      isCorner: true,
+      placement: "top",
+      ring: "inner",
+      type: "fire_fountain",
+    },
+    ...Array.from<Tile, Partial<Tile>>(Array(7), (_, idx) => ({
+      id: guid(),
+      isCorner: false,
       placement: "top",
       ring: "inner",
       type: "coal",

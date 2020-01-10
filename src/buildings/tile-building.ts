@@ -120,7 +120,7 @@ export const TileBuildingResourceCost: {
 };
 
 export const TileBuildingsMap: {
-  [key in Exclude<TileType, "start" | "tragedy" | "construction-site">]: AvailableTileBuildings
+  [key in Exclude<TileType, "start" | "tragedy" | "construction-site" | "fire_fountain">]: AvailableTileBuildings
 } = {
   blood: "butchery",
   coal: "coal_mine",
