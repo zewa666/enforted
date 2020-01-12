@@ -5,6 +5,7 @@ import { WebAnimationAnimator } from "../animator/animator";
 import { ConstructionPanel } from "../buildings/construction-panel";
 import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
+import { Monster } from "../monster/monster";
 import { Player } from "../player/player";
 import { Resources } from "../resources/index";
 import { openPurchaseForTile, State } from "../store/index";
@@ -35,6 +36,7 @@ export class Tile {
   @bindable public isCorner: boolean = false;
   @bindable public ring: "inner" | "outer";
   @bindable public players?: Player[] = [];
+  @bindable public monsters?: Monster[] = [];
   @bindable public tileBuildings?: TileBuilding[] = [];
   @bindable public id: string;
   @bindable public resources: Resources;
@@ -59,6 +61,11 @@ export class Tile {
   @computedFrom("players")
   public get isPlayerOnTile() {
     return this.players?.filter((p) => p.currentTileId === this.id).length > 0;
+  }
+
+  @computedFrom("monsters")
+  public get monstersOnTile() {
+    return this.monsters?.filter((p) => p.currentTileId === this.id);
   }
 
   @computedFrom("tileBuildings")

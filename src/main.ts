@@ -15,6 +15,7 @@ export function configure(aurelia: Aurelia) {
     .plugin("aurelia-dialog")
     .feature("board")
     .feature("player")
+    .feature("monster")
     .feature("sidebar")
     .feature("buildings");
 

@@ -11,4 +11,10 @@
                  tile-id.bind="id"
                  type.bind="tileBuilding.type"
                  placement.bind="placement"></tile-building>
+
+  <monster repeat.for="monster of monstersOnTile"
+           if.bind="monstersOnTile"
+           class="tile__monster"
+           current-tile-id.bind="$parent.id"
+           type.bind="monster.type"></monster>
 </template>

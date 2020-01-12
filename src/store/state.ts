@@ -2,6 +2,7 @@ import { Tile } from "../board/tile";
 import { AvailableTragedyEvents } from "../board/tragedy";
 import { AvailableFortressBuildings, FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
+import { Monster } from "../monster/monster";
 import { Player } from "../player/player";
 import { Resources, Stats } from "../resources/index";
 import { guid } from "./helper";
@@ -10,6 +11,7 @@ export const LOCALSTORAGE_SAVE_KEY = "enforted-save-game";
 export interface State {
   tiles: Tile[];
   players: Player[];
+  monsters: Monster[];
   fortressBuildings: FortressBuilding[];
   tileBuildings: TileBuilding[];
   lastDiceRoll?: number;
@@ -30,6 +32,7 @@ export const initialState = {
   fireFountainsActive: false,
   fortressBuildings: [],
   lastDiceRoll: undefined,
+  monsters: [],
   players: [],
   resources: {
     blood: 0,
@@ -182,3 +185,17 @@ const player = {} as Player;
 player.name = "zewa";
 player.currentTileId = initialState.tiles[0].id;
 initialState.players.push(player);
+
+initialState.monsters.push({
+  currentTileId: initialState.tiles[1].id,
+  type: "Zombie"
+} as Monster, {
+  currentTileId: initialState.tiles[2].id,
+  type: "Dragon"
+} as Monster, {
+  currentTileId: initialState.tiles[3].id,
+  type: "Golem"
+} as Monster, {
+  currentTileId: initialState.tiles[5].id,
+  type: "Skeleton"
+} as Monster);
