@@ -1,5 +1,6 @@
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
+import { capitalize } from "lodash";
 
 import { WebAnimationAnimator } from "../animator/animator";
 import { ConstructionPanel } from "../buildings/construction-panel";
@@ -71,6 +72,11 @@ export class Tile {
   @computedFrom("tileBuildings")
   public get isBuildingOnTile() {
     return this.tileBuildings?.filter((b) => b.tileId === this.id).length > 0;
+  }
+
+  @computedFrom("type")
+  public get typeName() {
+    return capitalize(this.type.replace(/_/g, " "));
   }
 
   public get tileBuilding() {

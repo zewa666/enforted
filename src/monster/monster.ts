@@ -20,7 +20,7 @@ export const AllMonsters = [
 
 export type MonsterType = (typeof AllMonsters)[number];
 
-export const MonsterPropMap: { [monster in  MonsterType]: { icon: string, stats: MonsterStats } } = {
+export const MonsterPropMap: { [monster in MonsterType]: { icon: string, stats: MonsterStats } } = {
   Dragon: {
     icon: "spiked-dragon-head",
     stats: { hp: 30, dmg: 10 }

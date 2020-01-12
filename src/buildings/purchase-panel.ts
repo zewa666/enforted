@@ -1,6 +1,7 @@
 import { DialogController } from "aurelia-dialog";
 import { autoinject, bindable, computedFrom } from "aurelia-framework";
 import { Store } from "aurelia-store";
+import { capitalize, upperFirst } from "lodash";
 
 import { Tile } from "../board/tile";
 import { Resources, ResourcesIcons } from "../resources/index";
@@ -45,12 +46,17 @@ export class PurchasePanel {
   }
 
   @computedFrom("tile")
+  public get buildingName() {
+    return capitalize(TileBuildingsMap[this.tile.type].replace(/_/g, " "));
+  }
+
+  @computedFrom("tile")
   public get costs() {
     const entries = Object.entries<number>(TileBuildingResourceCost[this.building]).filter((r) => r[1] !== 0);
 
     return entries.map((e) => ({
       icon: ResourcesIcons[e[0]],
-      resource: e[0],
+      resource: upperFirst(e[0]),
       value: e[1],
     }));
   }
