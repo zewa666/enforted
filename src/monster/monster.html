@@ -1,4 +1,11 @@
 <template class="monster">
   <img title.bind="type"
+       class="monster__icon"
        src="assets/icons/monsters/${icon}.svg" />
+  <div class="monster__stats-container">
+    <span class="monster__stat monster__stat--hp"
+          title="Health">${stats.hp}</span>
+    <span class="monster__stat monster__stat--dmg"
+          title="Damage">${stats.dmg}</span>
+  </div>
 </template>

@@ -2,7 +2,7 @@ import { Tile } from "../board/tile";
 import { AvailableTragedyEvents } from "../board/tragedy";
 import { AvailableFortressBuildings, FortressBuilding } from "../buildings/fortress-building";
 import { TileBuilding } from "../buildings/tile-building";
-import { Monster } from "../monster/monster";
+import { Monster, MonsterPropMap } from "../monster/monster";
 import { Player } from "../player/player";
 import { Resources, Stats } from "../resources/index";
 import { guid } from "./helper";
@@ -188,14 +188,18 @@ initialState.players.push(player);
 
 initialState.monsters.push({
   currentTileId: initialState.tiles[1].id,
+  stats: { ...MonsterPropMap.Zombie.stats},
   type: "Zombie"
 } as Monster, {
   currentTileId: initialState.tiles[2].id,
+  stats: { ...MonsterPropMap.Dragon.stats},
   type: "Dragon"
 } as Monster, {
   currentTileId: initialState.tiles[3].id,
+  stats: { ...MonsterPropMap.Golem.stats},
   type: "Golem"
 } as Monster, {
   currentTileId: initialState.tiles[5].id,
+  stats: { ...MonsterPropMap.Skeleton.stats},
   type: "Skeleton"
 } as Monster);
