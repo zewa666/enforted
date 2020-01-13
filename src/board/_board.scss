@@ -4,7 +4,7 @@
   &__row {
     display: flex;
     width: 100%;
-    
+
     &--top,
     &--bottom {
       height: 15.384615385%;
@@ -14,7 +14,7 @@
       flex-flow: row-reverse;
     }
 
-    &--center {    
+    &--center {
       height: 69.23076923%;
     }
   }

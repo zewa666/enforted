@@ -18,7 +18,7 @@
     &--visible {
       display: flex;
     }
-    
+
     &--hidden {
       display: none;
     }
@@ -33,27 +33,29 @@
     border: none;
     color: $toggle-cbar-btn-fg;
 
-    &::-moz-focus-inner { 
+    &::-moz-focus-inner {
       border: 0;
     }
-    &:focus { outline: none; }
+    &:focus {
+      outline: none;
+    }
 
-    @media (min-width: 1281px) { 
+    @media (min-width: 1281px) {
       display: none;
     }
   }
 
-  @media (min-width: 1281px) { 
+  @media (min-width: 1281px) {
     height: 50vw;
     margin: 10px auto;
     width: 80vw;
-  } 
+  }
 }
 
 // stylelint-disable-next-line
 ux-dialog-overlay.active {
   background-color: $dialog-overlay-bg;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @import "./board/index";

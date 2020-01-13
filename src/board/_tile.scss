@@ -3,7 +3,7 @@
   background-color: $tile-bg;
   background-repeat: no-repeat;
   display: flex;
-	flex-grow: 1;
+  flex-grow: 1;
   justify-content: center;
   outline: 1px solid $tile-border-bg;
   position: relative;
@@ -44,7 +44,6 @@
 
   &--food {
     background-image: url("assets/icons/wheat.svg");
-
   }
 
   &--mana {
