@@ -1,5 +1,5 @@
 <template class="build-overview">
-  <img src="assets/icons/${building.icon}.svg"
+  <img src="assets/icons/${building.icon || 'empty'}.svg"
        title.bind="building.name"
        class="${bem('build-overview', 'image', !state.activeFortressBuildingConstruction && 'hidden')}">
 </template>

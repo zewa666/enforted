@@ -1,5 +1,5 @@
 <template class="tragedy-overview">
-  <img src="assets/icons/${tragedy.image}.svg"
+  <img src="assets/icons/${tragedy.image || 'empty'}.svg"
        title.bind="tragedy.name"
        class="${bem('tragedy-overview', 'image', !tragedy && 'hidden')}">
 </template>
