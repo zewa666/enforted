@@ -1,5 +1,5 @@
-import { AvailableTileBuildings } from "buildings/tile-building";
 import { AvailableTragedyEvents } from "../../board/tragedy";
+import { AvailableTileBuildings } from "../../buildings/tile-building";
 import { Player } from "../../player/player";
 import { ResourceTileType } from "../../resources/index";
 import { randBetween } from "../helper";
