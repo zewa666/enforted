@@ -1,39 +1,13 @@
-import { bootstrap } from "aurelia-bootstrapper";
-import { PLATFORM } from "aurelia-framework";
-import { executeSteps, Store } from "aurelia-store";
-import { ComponentTester, StageComponent } from "aurelia-testing";
+import { executeSteps } from "aurelia-store";
 
 import { FortressBuilding } from "../../src/buildings/fortress-building";
 import { forgottenEquipment } from "../../src/store/actions/tragedy-events";
-import { buyFortressBuilding, LOCALSTORAGE_SAVE_KEY, rollDice, State } from "../../src/store/index";
+import { buyFortressBuilding, rollDice, State } from "../../src/store/index";
+import { stageBoard } from "../staged-helper";
 
 describe("fortress buildings", () => {
-  let component: ComponentTester;
-
-  beforeEach(() => {
-    localStorage.clear();
-    PLATFORM.global.localStorage = localStorage;
-
-    component = StageComponent
-      .withResources("../../src/app")
-      .inView("<app></app>");
-  });
-
-  afterEach(() => component.dispose());
-
-  async function loadComponentWithFixture(fixture: string) {
-    const fixtureString = JSON.stringify(require(`./fixtures/${fixture}.json`));
-
-    localStorage.setItem(LOCALSTORAGE_SAVE_KEY, fixtureString);
-    await component.create(bootstrap);
-
-    return {
-      state: component.viewModel.store._state.getValue() as State,
-      store: component.viewModel.store as Store<State>,
-      view: component.element,
-      vm: component.viewModel,
-    };
-  }
+  const staged = stageBoard.bind(this)(beforeEach, afterEach);
+  const loadComponentWithFixture = staged.loadComponentWithFixture.bind(this);
 
   it("should be allowed to only build one per round", async () => {
     const { store } = await loadComponentWithFixture("massive-resources");

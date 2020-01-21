@@ -1,9 +1,7 @@
-import { bootstrap } from "aurelia-bootstrapper";
-import { PLATFORM } from "aurelia-pal";
-import { executeSteps, Store } from "aurelia-store";
-import { ComponentTester, StageComponent } from "aurelia-testing";
+import { executeSteps } from "aurelia-store";
 
 import { AvailableTragedyEvents, tragedyEvents } from "../../src/board/tragedy";
+import { TileBuilding } from "../../src/buildings/tile-building";
 import {
   collapsedMines,
   defiledAltar,
@@ -14,11 +12,10 @@ import {
   stumblingSteps
 } from "../../src/store/actions/tragedy-events";
 import {
-  LOCALSTORAGE_SAVE_KEY,
   PRODUCED_RESOURCES_PER_ROUND,
-  rollDice,
-  State
+  rollDice
 } from "../../src/store/index";
+import { stageBoard, Staged } from "../staged-helper";
 
 describe("tragedy events", () => {
   it("should have a total weight of 1", () => {
@@ -31,32 +28,8 @@ describe("tragedy events", () => {
   });
 
   describe("staged", () => {
-    let component: ComponentTester;
-
-    beforeEach(() => {
-      localStorage.clear();
-      PLATFORM.global.localStorage = localStorage;
-
-      component = StageComponent
-        .withResources("../../src/app")
-        .inView("<app></app>");
-    });
-
-    afterEach(() => component.dispose());
-
-    async function loadComponentWithFixture(fixture: string) {
-      const fixtureString = JSON.stringify(require(`./fixtures/${fixture}.json`));
-
-      localStorage.setItem(LOCALSTORAGE_SAVE_KEY, fixtureString);
-      await component.create(bootstrap);
-
-      return {
-        state: component.viewModel.store._state.getValue() as State,
-        store: component.viewModel.store as Store<State>,
-        view: component.element,
-        vm: component.viewModel,
-      };
-    }
+    const staged = stageBoard.bind(this)(beforeEach, afterEach) as Staged;
+    const loadComponentWithFixture = staged.loadComponentWithFixture.bind(this);
 
     it("should set the drawn tragedy for the rounds duration", async () => {
       const { state, store } = await loadComponentWithFixture("tragedy-everywhere");
@@ -148,7 +121,7 @@ describe("tragedy events", () => {
             placement: "bottom",
             tileId: "9cacebac-96d1-4d66-46f5-9961d081815c",
             type: "iron_mine"
-          }
+          } as TileBuilding
         ]
       });
 

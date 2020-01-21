@@ -17,6 +17,7 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "target": "es5",
+    "strictBindCallApply": true,
     "lib": [
       "es2015",
       "dom"
