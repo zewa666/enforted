@@ -4,8 +4,7 @@ import { PRODUCED_RESOURCES_PER_ROUND, rollDice, State } from "../../src/store/i
 import { stageBoard } from "../staged-helper";
 
 describe("Shrines", () => {
-  const staged = stageBoard.bind(this)(beforeEach, afterEach);
-  const loadComponentWithFixture = staged.loadComponentWithFixture.bind(this);
+  const { loadComponentWithFixture } = stageBoard(beforeEach, afterEach);
 
   function generateShrines(state: State): TileBuilding[] {
     return state.tiles.filter((t) => t.type === "sacred_grounds")

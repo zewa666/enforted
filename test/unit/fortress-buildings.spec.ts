@@ -6,8 +6,7 @@ import { buyFortressBuilding, rollDice, State } from "../../src/store/index";
 import { stageBoard } from "../staged-helper";
 
 describe("fortress buildings", () => {
-  const staged = stageBoard.bind(this)(beforeEach, afterEach);
-  const loadComponentWithFixture = staged.loadComponentWithFixture.bind(this);
+  const { loadComponentWithFixture } = stageBoard(beforeEach, afterEach);
 
   it("should be allowed to only build one per round", async () => {
     const { store } = await loadComponentWithFixture("massive-resources");
@@ -137,7 +136,7 @@ describe("fortress buildings", () => {
         false,
         () => store.dispatch(buyFortressBuilding, "bank"),
         (res) => {
-          store.resetToState({ ...res, resources: { ...res.resources, gold: 0 }});
+          store.resetToState({ ...res, resources: { ...res.resources, gold: 0 } });
           store.dispatch(rollDice, res.tiles.length);
         },
         (res) => expect(res.resources.gold).toBe(0)
@@ -174,7 +173,7 @@ describe("fortress buildings", () => {
         false,
         () => store.dispatch(buyFortressBuilding, "magician_tower"),
         (res) => {
-          store.resetToState({ ...res, resources: { ...res.resources, mana: 0 }});
+          store.resetToState({ ...res, resources: { ...res.resources, mana: 0 } });
           expect(res.fireFountainsActive).toBe(false);
           store.dispatch(rollDice, res.tiles.length);
         },

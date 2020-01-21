@@ -36,7 +36,8 @@ export function stageBoard(be: jest.Lifecycle, ae: jest.Lifecycle): Staged {
     }
   };
 
-  be.bind(this)(() => {
+  // tslint:disable-next-line:only-arrow-functions
+  be(function() {
     localStorage.clear();
     PLATFORM.global.localStorage = localStorage;
 
@@ -45,7 +46,8 @@ export function stageBoard(be: jest.Lifecycle, ae: jest.Lifecycle): Staged {
       .inView("<app></app>");
   });
 
-  ae.bind(this)(() => staged.component.dispose());
+  // tslint:disable-next-line:only-arrow-functions
+  ae(function() { staged.component.dispose(); });
 
   return staged as Staged;
 }

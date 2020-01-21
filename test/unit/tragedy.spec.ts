@@ -28,8 +28,7 @@ describe("tragedy events", () => {
   });
 
   describe("staged", () => {
-    const staged = stageBoard.bind(this)(beforeEach, afterEach) as Staged;
-    const loadComponentWithFixture = staged.loadComponentWithFixture.bind(this);
+    const { loadComponentWithFixture } = stageBoard(beforeEach, afterEach);
 
     it("should set the drawn tragedy for the rounds duration", async () => {
       const { state, store } = await loadComponentWithFixture("tragedy-everywhere");
