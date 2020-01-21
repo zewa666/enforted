@@ -278,5 +278,34 @@ describe("fortress buildings", () => {
         }
       );
     });
+
+    it("should produce no new soldier if not enough population", async () => {
+      const { store, state } = await addBlacksmithShopTo("no-resources");
+      store.resetToState({
+        ...state,
+        resources: { ...state.resources, coal: 1, iron: 1 },
+        stats: {
+          ...state.stats,
+          population: 10,
+          soldiers: 10
+        }
+      });
+
+      await executeSteps(
+        store,
+        false,
+        (res) => {
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 1, iron: 1 }));
+          expect(res.stats.population).toBe(10);
+          expect(res.stats.soldiers).toBe(10);
+          store.dispatch(rollDice, res.tiles.length);
+        },
+        (res) => {
+          expect(res.stats.population).toBe(10);
+          expect(res.stats.soldiers).toBe(10);
+          expect(res.resources).toEqual(expect.objectContaining({ coal: 1, iron: 1 }));
+        }
+      );
+    });
   });
 });

@@ -61,7 +61,7 @@
     "ts-jest": "^24.0.0",
     "ts-loader": "^6.2.1",
     "tslint": "^5.13.0",
-    "typescript": "^3.1.2",
+    "typescript": "^3.7.5",
     "vinyl-fs": "^3.0.3",
     "webpack": "^4.27.0"
   },
