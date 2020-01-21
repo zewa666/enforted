@@ -69,6 +69,7 @@
     "build": "au build",
     "start": "au run",
     "test": "au test",
+    "tdd": "au test --watch",
     "lint": "au lint",
     "e2e": "au cypress",
     "deploy": "rimraf dist && au build && copyfiles assets/**/* assets/favicon.png scripts/**/* index.html dist && gh-pages -d dist",

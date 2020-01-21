@@ -25,6 +25,7 @@ import {
   destroyBuilding,
   LOCALSTORAGE_SAVE_KEY,
   openPurchaseForTile,
+  reinforceTileBuilding,
   rollDice,
   State
 } from "./store/index";
@@ -65,6 +66,7 @@ export class App {
     this.store.registerAction("[tragey] collapsed mines", collapsedMines);
     this.store.registerAction("[tragey] stumbling steps", stumblingSteps);
     this.store.registerAction("buy fortress building", buyFortressBuilding);
+    this.store.registerAction("reinforce tile building", reinforceTileBuilding);
 
     this.store.dispatch(rehydrateFromLocalStorage, LOCALSTORAGE_SAVE_KEY);
   }

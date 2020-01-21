@@ -1,4 +1,15 @@
+$topBarHeight: 1.3em;
+
 .purchase-panel {
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__stats-icon {
+    width: $topBarHeight;
+  }
+
   &__list {
     list-style: none;
     padding: 0;
@@ -27,6 +38,7 @@
   }
 
   &__header {
+    font-size: $topBarHeight;
     margin: 0;
   }
 }

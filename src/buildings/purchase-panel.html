@@ -1,6 +1,10 @@
 <template class="purchase-panel">
-  <h4 class="purchase-panel__header">Building</h4>
-
+  <div class="purchase-panel__top-bar">
+    <h4 class="purchase-panel__header">Building</h4>
+    <div class="purchase-panel__garrison">
+      <img class="purchase-panel__stats-icon" src="assets/icons/sword-brandish.svg" repeat.for="soldier of tileBuilding.garrison" />
+    </div>
+  </div>
   <ul class="purchase-panel__list">
     <li class="purchase-panel__item">
       <span class="purchase-panel__building-name">
@@ -27,6 +31,12 @@
               data-aid="btn-destroy"
               disabled.bind="!tileBuilding"
               title.bind="!tileBuilding ? 'Nothing built yet' : 'Destroy the building'">Destroy</button>
+      <button class="purchase-panel__button"
+              click.trigger="reinforceBuilding()"
+              data-aid="btn-reinforce-building"
+              disabled.bind="!tileBuilding || !soldiersLeft"
+              title.bind="!tileBuilding ? 'Nothing built yet' : 'Reinforce with an additional soldier'">Reinforce</button>
+
     </li>
   </ul>
 

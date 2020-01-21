@@ -1,4 +1,4 @@
-import { bindable } from "aurelia-framework";
+import { bindable, computedFrom } from "aurelia-framework";
 import { TilePlacement, TileType } from "../board/tile";
 import { Resources } from "../resources/index";
 
@@ -119,6 +119,10 @@ export const TileBuildingResourceCost: {
   }
 };
 
+export const BASE_DMG = 5;
+export const DMG_PER_SOLDIER = 2;
+export const MAX_SOLDIERS = 3;
+
 export const TileBuildingsMap: {
   [key in Exclude<TileType, "start" | "tragedy" | "construction-site" | "fire_fountain">]: AvailableTileBuildings
 } = {
@@ -137,4 +141,10 @@ export class TileBuilding {
   @bindable public tileId: string;
   @bindable public type: AvailableTileBuildings;
   @bindable public placement: TilePlacement;
+  @bindable public garrison: 0 | 1 | 2 | 3;
+
+  @computedFrom("garrison")
+  public get dmg() {
+    return BASE_DMG + ((this.garrison || 0) * DMG_PER_SOLDIER);
+  }
 }

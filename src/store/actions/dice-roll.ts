@@ -70,8 +70,7 @@ export function gatherFortressBuilding(state: State, isNextRound: boolean): Stat
       case "blacksmith_shop":
         if (
           prev.resources.iron > 0 &&
-          prev.resources.coal > 0 &&
-          prev.stats.population > prev.stats.soldiers
+          prev.resources.coal > 0
         ) {
           prev.resources.iron -= 1;
           prev.resources.coal -= 1;

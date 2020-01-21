@@ -60,6 +60,25 @@ export function destroyBuilding(
   };
 }
 
+export function reinforceTileBuilding(state: State, tileId: string): State {
+  const idx = state.tileBuildings.findIndex((tb) => tb.tileId === tileId);
+
+  return {
+    ...state,
+    stats: {
+      ...state.stats, soldiers: state.stats.soldiers - 1
+    },
+    tileBuildings: [
+      ...state.tileBuildings.slice(0, idx),
+      {
+        ...state.tileBuildings[idx],
+        garrison: state.tileBuildings[idx].garrison + 1
+      } as TileBuilding,
+      ...state.tileBuildings.slice(idx + 1),
+    ]
+  };
+}
+
 export function buyFortressBuilding(state: State, type: AvailableFortressBuildings): State | false {
   const costs = FortressBuildingResourceCost[type];
 

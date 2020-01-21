@@ -4,15 +4,17 @@ import { Store } from "aurelia-store";
 import { capitalize, upperFirst } from "lodash";
 
 import { Tile } from "../board/tile";
-import { Resources, ResourcesIcons } from "../resources/index";
+import { Resources, ResourcesIcons, Stats } from "../resources/index";
 import {
   buyBuilding,
   closePurchasePanel,
   destroyBuilding,
+  reinforceTileBuilding,
   State
 } from "../store/index";
 import { DialogModel } from "../utils/utils";
 import {
+  MAX_SOLDIERS,
   TileBuilding,
   TileBuildingResourceCost,
   TileBuildingsIcon,
@@ -24,6 +26,7 @@ export class PurchasePanel {
   @bindable() public tile: Tile;
   @bindable() public tileBuilding?: TileBuilding;
   @bindable() public resources: Resources;
+  @bindable() public stats: Stats;
   public dialogView?: string;
   public bemclasses?: string;
 
@@ -36,6 +39,7 @@ export class PurchasePanel {
     this.tile = model.tile;
     this.tileBuilding = model.tileBuilding;
     this.resources = model.resources;
+    this.stats = model.stats;
     this.dialogView = model.view;
     this.bemclasses = model.bem;
   }
@@ -48,6 +52,11 @@ export class PurchasePanel {
   @computedFrom("tile")
   public get buildingName() {
     return capitalize(TileBuildingsMap[this.tile.type].replace(/_/g, " "));
+  }
+
+  @computedFrom("stats.soldiers", "tileBuilding.garrison")
+  public get soldiersLeft() {
+    return this.stats.soldiers > 0 && this.tileBuilding.garrison < MAX_SOLDIERS;
   }
 
   @computedFrom("tile")
@@ -76,13 +85,19 @@ export class PurchasePanel {
     newBuilding.tileId = this.tile.id;
     newBuilding.type = TileBuildingsMap[this.tile.type];
     newBuilding.placement = this.tile.placement;
+    newBuilding.garrison = 0;
 
-    this.store.dispatch(buyBuilding, newBuilding);
+    this.store.pipe(buyBuilding, newBuilding).pipe(closePurchasePanel).dispatch();
     this.controller.ok();
   }
 
   public destroyBuilding() {
-    this.store.dispatch(destroyBuilding, this.tileBuilding.tileId);
+    this.store.pipe(destroyBuilding, this.tileBuilding.tileId).pipe(closePurchasePanel).dispatch();
+    this.controller.ok();
+  }
+
+  public reinforceBuilding() {
+    this.store.pipe(reinforceTileBuilding, this.tileBuilding.tileId).pipe(closePurchasePanel).dispatch();
     this.controller.ok();
   }
 

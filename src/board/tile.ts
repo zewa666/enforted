@@ -8,7 +8,7 @@ import { PurchasePanel } from "../buildings/purchase-panel";
 import { TileBuilding } from "../buildings/tile-building";
 import { Monster } from "../monster/monster";
 import { Player } from "../player/player";
-import { Resources } from "../resources/index";
+import { Resources, Stats } from "../resources/index";
 import { openPurchaseForTile, State } from "../store/index";
 import { openDialog } from "../utils/utils";
 import { Tragedy } from "./tragedy";
@@ -41,6 +41,7 @@ export class Tile {
   @bindable public tileBuildings?: TileBuilding[] = [];
   @bindable public id: string;
   @bindable public resources: Resources;
+  @bindable public stats: Stats;
 
   constructor(
     private store: Store<State>,
@@ -89,6 +90,7 @@ export class Tile {
 
       openDialog(PurchasePanel, {
         resources: this.resources,
+        stats: this.stats,
         tile: this,
         tileBuilding: this.tileBuildings?.find((b) => b.tileId === this.id),
         view: "buildings/purchase-panel.html",
