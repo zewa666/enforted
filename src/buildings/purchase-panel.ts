@@ -63,7 +63,7 @@ export class PurchasePanel {
 
   @computedFrom("resources")
   public get sufficientResources() {
-    return !this.costs.some((c) => this.resources[c.resource] - c.value < 0);
+    return !this.costs.some((c) => this.resources[c.resource.toLowerCase()] - c.value < 0);
   }
 
   @computedFrom("tileBuilding")
