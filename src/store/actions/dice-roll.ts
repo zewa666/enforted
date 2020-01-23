@@ -4,6 +4,7 @@ import { Player } from "../../player/player";
 import { Resources, Stats } from "../../resources/index";
 import { randBetween } from "../helper";
 import { State } from "../index";
+import { monsterRoll } from "./monsters";
 
 export function rollDice(state: State, diceOverload?: number): State {
   const isStumblingStep = state.activeTragedy === AvailableTragedyEvents.StumblingSteps;
@@ -29,6 +30,7 @@ export function rollDice(state: State, diceOverload?: number): State {
         ? newStumblingSteps
         : state.activeTragedyParams,
     lastDiceRoll: roll,
+    monsters: monsterRoll(state).monsters,
     players: [
       {
         ...state.players[0],
