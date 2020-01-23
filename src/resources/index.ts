@@ -1,6 +1,6 @@
 import { TileType } from "../board/tile";
 
-export type ResourceTileType = Exclude<TileType, "start" | "tragedy" | "sacred_grounds" | "construction-site" | "fire_fountain">;
+export type ResourceTileType = Exclude<TileType, "start" | "rally_point" | "tragedy" | "sacred_grounds" | "construction-site" | "fire_fountain">;
 export type Resources = {
   [key in ResourceTileType]: number;
 };

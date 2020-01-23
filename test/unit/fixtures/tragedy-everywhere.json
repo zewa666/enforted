@@ -467,7 +467,7 @@
       "isCorner": false,
       "placement": "top",
       "ring": "inner",
-      "type": "coal"
+      "type": "sacred_grounds"
     },
     {
       "id": "35fca2b5-eefe-13a6-32f6-dcfd8382b8e7",
@@ -537,7 +537,7 @@
       "isCorner": false,
       "placement": "right",
       "ring": "inner",
-      "type": "sacred_grounds"
+      "type": "rally_point"
     }
   ]
 }

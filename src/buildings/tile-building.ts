@@ -128,7 +128,11 @@ export function calculateDmg(garrison) {
 }
 
 export const TileBuildingsMap: {
-  [key in Exclude<TileType, "start" | "tragedy" | "construction-site" | "fire_fountain">]: AvailableTileBuildings
+  [key in Exclude<TileType, "start"
+    | "rally_point"
+    | "tragedy"
+    | "construction-site"
+    | "fire_fountain">]: AvailableTileBuildings
 } = {
   blood: "butchery",
   coal: "coal_mine",

@@ -162,7 +162,7 @@ export const initialState = {
       isCorner: false,
       placement: "top",
       ring: "inner",
-      type: "coal",
+      type: idx === 4 ? "sacred_grounds" : "coal",
     })),
     {
       id: guid(),
@@ -176,7 +176,7 @@ export const initialState = {
       isCorner: false,
       placement: "right",
       ring: "inner",
-      type: idx === 6 ? "sacred_grounds" : "blood",
+      type: idx === 6 ? "rally_point" : "blood",
     })),
   ]
 } as State;

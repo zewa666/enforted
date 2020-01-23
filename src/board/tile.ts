@@ -22,6 +22,7 @@ export type TileType = "wood"
   | "mana"
   | "blood"
   | "start"
+  | "rally_point"
   | "sacred_grounds"
   | "construction-site"
   | "tragedy"
@@ -85,7 +86,10 @@ export class Tile {
   }
 
   public async openPurchasePanel() {
-    if (!["start", "tragedy", "construction-site", "fire_fountain"].includes(this.type) && this.isPlayerOnTile) {
+    if (
+      !["start", "rally_point", "tragedy",
+        "construction-site", "fire_fountain"].includes(this.type) && this.isPlayerOnTile
+    ) {
       await this.store.dispatch(openPurchaseForTile, this);
 
       openDialog(PurchasePanel, {
