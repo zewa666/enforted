@@ -123,6 +123,10 @@ export const BASE_DMG = 5;
 export const DMG_PER_SOLDIER = 2;
 export const MAX_SOLDIERS = 3;
 
+export function calculateDmg(garrison) {
+  return BASE_DMG + ((garrison || 0) * DMG_PER_SOLDIER);
+}
+
 export const TileBuildingsMap: {
   [key in Exclude<TileType, "start" | "tragedy" | "construction-site" | "fire_fountain">]: AvailableTileBuildings
 } = {
@@ -145,6 +149,6 @@ export class TileBuilding {
 
   @computedFrom("garrison")
   public get dmg() {
-    return BASE_DMG + ((this.garrison || 0) * DMG_PER_SOLDIER);
+    return calculateDmg(this.garrison);
   }
 }
