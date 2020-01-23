@@ -5,6 +5,22 @@
   position: absolute;
   z-index: 1;
 
+  &:hover {
+    z-index: 2;
+  }
+
+  // stylelint-disable selector-max-specificity
+  &:only-of-type {
+    // stylelint-disable-next-line declaration-no-important
+    left: initial!important;
+  }
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      left: #{($i - 1) * 15}px;
+    }
+  }
+  // stylelint-enable
+
   &__icon {
     height: 4vw;
     width: 4vw;
