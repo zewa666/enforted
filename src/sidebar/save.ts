@@ -15,7 +15,7 @@ export class Save {
   }
 
   public saveGame() {
-    const data = new Blob([window.localStorage.getItem(LOCALSTORAGE_SAVE_KEY) || "{}"], { type: "application/json" });
+    const data = new Blob([window.localStorage.getItem(LOCALSTORAGE_SAVE_KEY) || JSON.stringify(initialState)], { type: "application/json" });
     const url = window.URL.createObjectURL(data);
     const anchor = document.createElement("a");
     anchor.href = url;
