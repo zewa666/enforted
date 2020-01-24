@@ -25,7 +25,7 @@ export function configure(aurelia: Aurelia) {
     aurelia.use.feature("animator", (instance: WebAnimationAnimator) => {
       instance.storedEnterAnimations["TILE-BUILDING"] = {
         keyframes: [
-          { transform: "translate3d(0, 70%, 0)", opacity: "0"},
+          { transform: "translate3d(0, 50%, 0)", opacity: "0"},
           { transform: "translate3d(0, 0, 0)", opacity: "1"}
         ],
         options: 300
@@ -33,13 +33,13 @@ export function configure(aurelia: Aurelia) {
       instance.storedLeaveAnimations["TILE-BUILDING"] = {
         keyframes: [
           { transform: "translate3d(0, 0, 0)", opacity: "1"},
-          { transform: "translate3d(0, 70%, 0)", opacity: "0"}
+          { transform: "translate3d(0, 50%, 0)", opacity: "0"}
         ],
         options: 1000
       };
       instance.storedEnterAnimations.MONSTER = {
         keyframes: [
-          { transform: "translate3d(0, 70%, 0)", opacity: "0"},
+          { transform: "translate3d(0, 50%, 0)", opacity: "0"},
           { transform: "translate3d(0, 0, 0)", opacity: "1"}
         ],
         options: 300
@@ -47,7 +47,7 @@ export function configure(aurelia: Aurelia) {
       instance.storedLeaveAnimations.MONSTER = {
         keyframes: [
           { transform: "translate3d(0, 0, 0)", opacity: "1"},
-          { transform: "translate3d(0, 70%, 0)", opacity: "0"}
+          { transform: "translate3d(0, 50%, 0)", opacity: "0"}
         ],
         options: 1000
       };
