@@ -3,6 +3,7 @@ import { executeSteps } from "aurelia-store";
 import { Monster } from "../../src/monster/monster";
 import { rollDice } from "../../src/store/index";
 import { stageBoard } from "../staged-helper";
+import { getPreviousTileOf, getTileByType } from "./helpers";
 
 describe("monsters", () => {
   const { loadComponentWithFixture } = stageBoard(beforeEach, afterEach);
@@ -24,7 +25,7 @@ describe("monsters", () => {
       monsters: [
         {
           ...state.monsters[0],
-          currentTileId: state.tiles.find((t) => t.type === "sacred_grounds").id
+          currentTileId: getTileByType(state, "sacred_grounds").id
         } as Monster,
         ...state.monsters.slice(1)
       ]
@@ -38,6 +39,32 @@ describe("monsters", () => {
         store.dispatch(rollDice);
       },
       (res) => expect(res.monsters[0].stats.hp).toBeLessThan(initialHpOfFirstMonster)
+    );
+  });
+
+  it("should get killed instantly by stepping on active fire fountains", async () => {
+    const { store, state } = await loadComponentWithFixture("monster-vs-farms");
+    const firstFireFountain = getTileByType(state, "fire_fountain");
+    const tileBefore = getPreviousTileOf(state, firstFireFountain.id);
+
+    store.resetToState({
+      ...state,
+      fireFountainsActive: true,
+      monsters: [
+        {
+          ...state.monsters[0],
+          currentTileId: tileBefore.id
+        } as Monster,
+        ...state.monsters.slice(1)
+      ]
+    });
+
+    await executeSteps(store, false,
+      (res) => {
+        expect(res.fireFountainsActive).toBe(true);
+        store.dispatch(rollDice, 1);
+      },
+      (res) => expect(res.monsters.length).toBe(state.monsters.length - 1)
     );
   });
 });

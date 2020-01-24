@@ -30,7 +30,7 @@ export function rollDice(state: State, diceOverload?: number): State {
         ? newStumblingSteps
         : state.activeTragedyParams,
     lastDiceRoll: roll,
-    monsters: monsterRoll(state).monsters,
+    monsters: monsterRoll(state, diceOverload).monsters,
     players: [
       {
         ...state.players[0],
