@@ -1,6 +1,7 @@
 import { executeSteps } from "aurelia-store";
 
 import { Monster } from "../../src/monster/monster";
+import { wavesAtRounds } from "../../src/store/actions/monsters";
 import { rollDice } from "../../src/store/index";
 import { stageBoard } from "../staged-helper";
 import { getPreviousTileOf, getTileByType } from "./helpers";
@@ -65,6 +66,45 @@ describe("monsters", () => {
         store.dispatch(rollDice, 1);
       },
       (res) => expect(res.monsters.length).toBe(state.monsters.length - 1)
+    );
+  });
+
+  it("should appear in waves", async () => {
+    const { store, state } = await loadComponentWithFixture("massive-resources");
+
+    store.resetToState({
+      ...state,
+      round: parseInt(Object.keys(wavesAtRounds)[0], 10) - 1
+    });
+
+    await executeSteps(store, false,
+      (res) => {
+        expect(res.monsters).toEqual([]);
+        store.dispatch(rollDice, res.tiles.length);
+      },
+      (res) => expect(res.monsters).not.toEqual([])
+    );
+  });
+
+  it("should add new wave to existing monsters", async () => {
+    const { store, state } = await loadComponentWithFixture("massive-resources");
+
+    store.resetToState({
+      ...state,
+      monsters: [{
+        currentTileId: state.tiles[0].id,
+        stats: { dmg: 1, hp: 1},
+        type: "Zombie"
+      } as Monster],
+      round: parseInt(Object.keys(wavesAtRounds)[0], 10) - 1
+    });
+
+    await executeSteps(store, false,
+      (res) => {
+        expect(res.monsters.length).toBe(1);
+        store.dispatch(rollDice, res.tiles.length);
+      },
+      (res) => expect(res.monsters.length).toBeGreaterThan(1)
     );
   });
 });

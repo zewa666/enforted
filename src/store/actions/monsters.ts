@@ -1,5 +1,5 @@
 import { calculateDmg } from "../../buildings/tile-building";
-import { Monster } from "../../monster/monster";
+import { Monster, MonsterPropMap, MonsterType } from "../../monster/monster";
 import { randBetween } from "../helper";
 import { State } from "../state";
 
@@ -41,3 +41,28 @@ export function monsterRoll(state: State, diceOverload?: number): State {
     monsters
   };
 }
+
+export function generateWave(state: State, isNextRound: boolean): State {
+  if (!isNextRound || !wavesAtRounds.hasOwnProperty(state.round + 1)) {
+    return state;
+  }
+
+  const newMonsters = wavesAtRounds[state.round + 1].map((type) => ({
+      currentTileId: state.tiles[0].id,
+      stats: { ...MonsterPropMap[type].stats},
+      type
+    } as Monster));
+
+  return {
+    ...state,
+     monsters: [...state.monsters, ...newMonsters]
+  };
+}
+
+export const wavesAtRounds: {
+  [round: number]: MonsterType[]
+} = {
+  15: [...new Array(2).fill("Zombie")],
+  25: [...new Array(2).fill("Zombie"), "Skeleton"],
+  32: [...new Array(3).fill("Skeleton")],
+};
