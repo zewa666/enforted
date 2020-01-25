@@ -78,7 +78,7 @@ export class Tile {
 
   @computedFrom("type")
   public get typeName() {
-    return capitalize(this.type.replace(/_/g, " "));
+    return capitalize(this.type.replace(/_|-/g, " "));
   }
 
   public get tileBuilding() {
