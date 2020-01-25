@@ -55,6 +55,11 @@ COPY *.* ./
 # Copy source files
 COPY src ./src
 
+# Copy styles
+COPY style ./style
+
+# Copy assets
+COPY assets ./assets
 
 # Copy test, unit & e2e
 COPY test ./test
@@ -64,11 +69,11 @@ COPY test ./test
 RUN au test
 
 # RUN E2E TESTS
-RUN npm run e2e:headless
+# RUN npm run e2e:headless
 
 # build
 FROM build-stage as publish-stage
-RUN au build --env prod
+RUN au build
 
 # production stage
 FROM nginx:alpine as production-stage
@@ -80,6 +85,7 @@ WORKDIR /usr/share/nginx/html
 
 COPY --from=publish-stage /app/scripts/ ./scripts/
 COPY --from=publish-stage /app/index.html/ .
+COPY --from=publish-stage /app/assets ./assets
 
 EXPOSE 80
 
