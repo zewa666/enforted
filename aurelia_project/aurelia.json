@@ -52,9 +52,9 @@
       }
     ],
     "options": {
-      "minify": "stage & prod",
+      "minify": false,
       "sourcemaps": "dev & stage",
-      "rev": "prod",
+      "rev": false,
       "cache": "dev & stage"
     },
     "bundles": [
