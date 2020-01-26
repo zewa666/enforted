@@ -52,7 +52,15 @@
       }
     ],
     "options": {
-      "minify": false,
+      "minify": {
+        "dev": false,
+        "default": {
+          
+        },
+        "stage & prod": {
+          "mangle": false
+        }
+      },
       "sourcemaps": "dev & stage",
       "rev": false,
       "cache": "dev & stage"
