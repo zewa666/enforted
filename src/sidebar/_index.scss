@@ -7,6 +7,18 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  &__order-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    @include mq-desktop {
+      display: unset;
+      flex-direction: unset;
+      justify-content: unset;
+    }
+  }
 }
 
 .save {
@@ -16,7 +28,8 @@
     border-radius: 3px;
     color: $save-button-text;
     height: 30px;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
+    width: calc(100% - 20px);
   }
 }
 

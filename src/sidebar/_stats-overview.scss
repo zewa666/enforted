@@ -2,19 +2,33 @@
   &__list {
     color: $resources-text-fg;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none;
     padding: 0;
-    width: 70px;
+    width: 90px;
+
+    @include mq-desktop {
+      flex-direction: column;
+      width: 70px;
+    }
   }
 
   &__item {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    margin-right: 5px;
+
+    @include mq-desktop {
+      margin-right: unset;
+    }
   }
 
   &__image {
-    width: 30px;
+    width: 15px;
+
+    @include mq-desktop {
+      width: 30px;
+    }
   }
 }

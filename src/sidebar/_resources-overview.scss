@@ -3,18 +3,34 @@
     color: $resources-text-fg;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    height: 80px;
     list-style: none;
     padding: 0;
-    width: 70px;
+    width: 90px;
+
+    @include mq-desktop {
+      flex-wrap: unset;
+      height: unset;
+      width: 70px;
+    }
   }
 
   &__item {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    margin-right: 10px;
+
+    @include mq-desktop {
+      margin-right: unset;
+    }
   }
 
   &__image {
-    width: 30px;
+    width: 15px;
+    @include mq-desktop {
+      width: 30px;
+    }
   }
 }

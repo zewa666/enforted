@@ -1,4 +1,5 @@
 @import "../style/colors";
+@import "../style/helpers";
 
 .body {  
   background-color: $body-bg;
@@ -41,12 +42,12 @@
       outline: none;
     }
 
-    @media (min-width: 1281px) {
+    @include mq-desktop {
       display: none;
     }
   }
 
-  @media (min-width: 1281px) {
+  @include mq-desktop {
     height: 50vw;
     margin: 10px auto;
     width: 80vw;

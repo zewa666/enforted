@@ -6,7 +6,13 @@
   }
 
   &__round {
+    color: $resources-text-fg;
+    font-size: 1em;
     margin: 5px 0;
+
+    @include mq-desktop {
+      font-size: 1.5em;      
+    }
   }
   
   &__last-roll {

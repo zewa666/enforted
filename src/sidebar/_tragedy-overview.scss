@@ -3,7 +3,11 @@
   justify-content: center;
 
   &__image {
-    width: 100px;
+    width: 40px;
+
+    @include mq-desktop {
+      width: 100px;
+    }
 
     &--hidden {
       visibility: hidden;
