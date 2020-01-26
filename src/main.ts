@@ -5,6 +5,16 @@ import environment from "./environment";
 import { WebAnimationAnimator } from "./animator/animator";
 import { initialState } from "./store/index";
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js", { scope: "./" }).then((reg) => {
+    // tslint:disable-next-line:no-console
+    console.log("Successfully registered service worker. Scope is " + reg.scope);
+  }).catch((error) => {
+    // tslint:disable-next-line:no-console
+    console.log("Failed registering service worker " + error);
+  });
+}
+
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
