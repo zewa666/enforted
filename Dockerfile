@@ -73,7 +73,7 @@ RUN au test
 
 # build
 FROM build-stage as publish-stage
-RUN au build
+RUN au build --env prod
 
 # production stage
 FROM nginx:alpine as production-stage
