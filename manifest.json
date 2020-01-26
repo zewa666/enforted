@@ -6,9 +6,12 @@
   "short_name": "Enforted",
   "icons": [
     {
-      "src": "/assets/favicon.png",
+      "src": "/assets/favicon_maskable.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "background_color": "#292927",
+  "theme_color": "#292927"
 }
