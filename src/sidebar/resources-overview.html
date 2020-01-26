@@ -3,6 +3,7 @@
     <li class="resources-overview__item"
         repeat.for="res of resources">
       <img title.bind="res.name"
+           alt.bind="res.name"
            class="resources-overview__image"
            src="assets/icons/${res.icon}.svg" />
       <span class="resources-overview__value">${res.value}</span>
