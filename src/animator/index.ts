@@ -1,5 +1,6 @@
 import { FrameworkConfiguration } from "aurelia-framework";
 import { TemplatingEngine } from "aurelia-templating";
+
 import { WebAnimationAnimator } from "./animator";
 
 /**

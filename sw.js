@@ -7,7 +7,6 @@ const FILES_TO_CACHE = [
   "/index.html",
   "/scripts/app-bundle.js",
   "/scripts/vendor-bundle.js",
-  "/scripts/velocity-shim.js",
   "/assets/favicon.png",
   "/assets/favicon_maskable.png",
   "assets/icons/anvil.svg",
