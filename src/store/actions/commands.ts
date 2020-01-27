@@ -52,7 +52,6 @@ export function destroyBuilding(
 
   return {
     ...state,
-    activeTragedy: AvailableTragedyEvents.RagingFire,
     tileBuildings: [
       ...state.tileBuildings.slice(0, idx),
       ...state.tileBuildings.slice(idx + 1),

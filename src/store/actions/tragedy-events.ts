@@ -25,7 +25,10 @@ export function ragingFire(
   state: State,
   tileId: string
 ): State {
-  return destroyBuilding(state, tileId);
+  const newState = destroyBuilding(state, tileId);
+  newState.activeTragedy = AvailableTragedyEvents.RagingFire;
+
+  return newState;
 }
 
 export function forgottenEquipment(state: State): State {
