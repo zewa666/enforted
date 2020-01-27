@@ -13,7 +13,6 @@ import {
   FortressBuildingIcon,
   FortressBuildingResourceCost
 } from "./fortress-building";
-import { PurchasePanel } from "./purchase-panel";
 
 @autoinject()
 export class ConstructionPanel {
@@ -40,7 +39,7 @@ export class ConstructionPanel {
     return !!this.fortressBuildings.length;
   }
 
-  public activate(model: PurchasePanel & DialogModel) {
+  public activate(model: ConstructionPanel & DialogModel) {
     this.resources = model.resources;
     this.dialogView = model.view;
     this.bemclasses = model.bem;

@@ -15,6 +15,7 @@ export function rollDice(state: State, diceOverload?: number): State {
   const newStumblingSteps = (state.activeTragedyParams === undefined || state.activeTragedyParams[0] === 1)
     ? undefined
     : [state.activeTragedyParams[0] - 1];
+  const monsterRollState = monsterRoll(state, diceOverload);
 
   return gatherFortressBuilding({
     ...state,
@@ -30,7 +31,7 @@ export function rollDice(state: State, diceOverload?: number): State {
         ? newStumblingSteps
         : state.activeTragedyParams,
     lastDiceRoll: roll,
-    monsters: generateWave(monsterRoll(state, diceOverload), isNextRound).monsters,
+    monsters: generateWave(monsterRollState, isNextRound).monsters,
     players: [
       {
         ...state.players[0],
@@ -46,6 +47,7 @@ export function rollDice(state: State, diceOverload?: number): State {
     round: isNextRound
       ? state.round + 1
       : state.round,
+    stats: monsterRollState.stats,
   }, isNextRound);
 }
 

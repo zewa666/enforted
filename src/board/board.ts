@@ -3,6 +3,8 @@ import { Store } from "aurelia-store";
 import { Subscription } from "rxjs";
 
 import { State } from "../store/index";
+import { openDialog } from "../utils/utils";
+import { GameOver } from "./game-over";
 import { TilePlacement, TileRing } from "./tile";
 
 @autoinject()
@@ -11,7 +13,16 @@ export class Board {
   private subscription: Subscription;
 
   constructor(private store: Store<State>) {
-    this.subscription = this.store.state.subscribe((state) => this.state = state);
+    this.subscription = this.store.state.subscribe((state) => {
+      this.state = state;
+
+      if (state.stats.population <= 0) {
+        // game ended
+        openDialog(GameOver, {
+          view: "board/game-over.html",
+        });
+      }
+    });
   }
 
   public getTiles(ring: TileRing, placement: TilePlacement) {
