@@ -12,6 +12,11 @@
     "url": "https://pragmatic-coder.net"
   },
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bem": "^0.3.0",
@@ -49,6 +54,7 @@
     "gulp-tslint": "^8.1.4",
     "gulp-typescript": "^5.0.0",
     "gulp-watch": "^5.0.1",
+    "husky": "^4.2.1",
     "jest": "^24.1.0",
     "jest-cli": "^24.1.0",
     "jest-localstorage-mock": "^2.4.0",
