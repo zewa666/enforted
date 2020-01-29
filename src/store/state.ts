@@ -26,11 +26,13 @@ export interface State {
    */
   purchaseInProgress?: string;
   fireFountainsActive: boolean;
+  gameStarted: boolean;
 }
 
 export const initialState = {
   fireFountainsActive: false,
   fortressBuildings: [],
+  gameStarted: false,
   lastDiceRoll: undefined,
   monsters: [],
   players: [],

@@ -1,14 +1,4 @@
-@import "../style/colors";
-@import "../style/helpers";
-
-.body {  
-  background-color: $body-bg;
-  margin: 0;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  user-select: none;
-}
-
-.main {
+.app {
   display: flex;
   height: 100vh;
   margin: 0 auto;
@@ -53,15 +43,3 @@
     width: 80vw;
   }
 }
-
-// stylelint-disable-next-line
-ux-dialog-overlay.active {
-  background-color: $dialog-overlay-bg;
-  opacity: 0.5;
-}
-
-@import "./board/index";
-@import "./player/player";
-@import "./sidebar/index";
-@import "./buildings/index";
-@import "./monster/index";

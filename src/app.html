@@ -1,9 +1,9 @@
 <template>
-  <require from="./app.css"></require>
-  <div class="main">
-    <button class="main__toggle-sidebar"
+  <require from="./main.css"></require>
+  <div class="app">
+    <button class="app__toggle-sidebar"
             click.trigger="sidebarVisible = !sidebarVisible">${!sidebarVisible ? "⇶" : "⬱"}</button>
-    <sidebar class="${bem('main', 'sidebar', !sidebarVisible ? 'hidden' : 'visible')}"></sidebar>
-    <board class="main__board"></board>
+    <sidebar class="${bem('app', 'sidebar', !sidebarVisible ? 'hidden' : 'visible')}"></sidebar>
+    <board class="app__board"></board>
   </div>
 </template>

@@ -1,9 +1,10 @@
 import { Aurelia } from "aurelia-framework";
+import { rehydrateFromLocalStorage } from "aurelia-store";
 import "web-animations-js";
-import environment from "./environment";
 
 import { WebAnimationAnimator } from "./animator/animator";
-import { initialState } from "./store/index";
+import environment from "./environment";
+import { initialState, LOCALSTORAGE_SAVE_KEY, State } from "./store/index";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js", { scope: "./" }).then((reg) => {
@@ -15,7 +16,7 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-export function configure(aurelia: Aurelia) {
+export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .plugin("aurelia-bem")
@@ -35,29 +36,29 @@ export function configure(aurelia: Aurelia) {
     aurelia.use.feature("animator", (instance: WebAnimationAnimator) => {
       instance.storedEnterAnimations["TILE-BUILDING"] = {
         keyframes: [
-          { transform: "translate3d(0, 50%, 0)", opacity: "0"},
-          { transform: "translate3d(0, 0, 0)", opacity: "1"}
+          { transform: "translate3d(0, 50%, 0)", opacity: "0" },
+          { transform: "translate3d(0, 0, 0)", opacity: "1" }
         ],
         options: 300
       };
       instance.storedLeaveAnimations["TILE-BUILDING"] = {
         keyframes: [
-          { transform: "translate3d(0, 0, 0)", opacity: "1"},
-          { transform: "translate3d(0, 50%, 0)", opacity: "0"}
+          { transform: "translate3d(0, 0, 0)", opacity: "1" },
+          { transform: "translate3d(0, 50%, 0)", opacity: "0" }
         ],
         options: 1000
       };
       instance.storedEnterAnimations.MONSTER = {
         keyframes: [
-          { transform: "translate3d(0, 50%, 0)", opacity: "0"},
-          { transform: "translate3d(0, 0, 0)", opacity: "1"}
+          { transform: "translate3d(0, 50%, 0)", opacity: "0" },
+          { transform: "translate3d(0, 0, 0)", opacity: "1" }
         ],
         options: 300
       };
       instance.storedLeaveAnimations.MONSTER = {
         keyframes: [
-          { transform: "translate3d(0, 0, 0)", opacity: "1"},
-          { transform: "translate3d(0, 50%, 0)", opacity: "0"}
+          { transform: "translate3d(0, 0, 0)", opacity: "1" },
+          { transform: "translate3d(0, 50%, 0)", opacity: "0" }
         ],
         options: 1000
       };
@@ -69,5 +70,8 @@ export function configure(aurelia: Aurelia) {
     aurelia.use.plugin("aurelia-testing");
   }
 
-  aurelia.start().then(() => aurelia.setRoot());
+  await aurelia.start();
+
+  const storage = rehydrateFromLocalStorage({}, LOCALSTORAGE_SAVE_KEY) as State;
+  aurelia.setRoot(storage.gameStarted ? "./app" : "./start-screen");
 }

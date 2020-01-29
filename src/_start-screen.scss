@@ -1,0 +1,22 @@
+.start-screen {
+  align-items: center;
+  color: $text-fg;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90vw;
+
+  &__icon {
+    background-image: url("assets/favicon_maskable.png");
+    background-size: contain;
+    border-radius: 15px;
+    box-shadow: 5px 3px 3px $cod-gray;
+    cursor: pointer;
+    height: 20vh;
+    padding-top: 15px;
+    text-align: center;
+    width: 20vh;
+  }
+}

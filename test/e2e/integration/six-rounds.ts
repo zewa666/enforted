@@ -64,6 +64,8 @@ describe("Enforted base playthrough in order to achieve one of all outer buildin
   it("should manage to gather all buildings before 6 round", async () => {
     cy.visit("/");
 
+    cy.get("[data-aid='btn-start-game']").click();
+
     await rollUntilTileType("wood");
     getPlayer().dblclick()
       .get(`[data-aid="btn-buy"]`)
