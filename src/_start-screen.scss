@@ -15,8 +15,22 @@
     box-shadow: 5px 3px 3px $cod-gray;
     cursor: pointer;
     height: 20vh;
+    min-height: 200px;
+    min-width: 200px;
     padding-top: 15px;
     text-align: center;
     width: 20vh;
+  }
+
+  &__attributions {
+    margin-top: 15px;
+  }
+  
+  &__link {
+    &:visited,
+    &:active,
+    &:hover {
+      color: $text-fg;
+    }
   }
 }

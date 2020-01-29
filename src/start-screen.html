@@ -2,9 +2,17 @@
   <require from="./main.css"></require>
 
   <div class="start-screen">
-    <h1 class="start-screen__title">Enforted - A board game made with Aurelia</h1>
+    <h1 class="start-screen__title"><a class="start-screen__link"
+         href="https://github.com/zewa666/enforted">Enforted</a> - A board game made with Aurelia</h1>
     <div class="start-screen__icon"
          data-aid="btn_start-game"
          click.trigger="startGame()">Start your journey</div>
+
+    <p class="start-screen__attributions">All icons from <a class="start-screen__link"
+         href="https://game-icons.net/">game-icons.net</a>, for details see the
+      <a class="start-screen__link"
+         href="../assets/icons/attribution.json"
+         target="_blank"> attributions file</a>
+    </p>
   </div>
 </template>
