@@ -61,9 +61,22 @@ async function rollUntilRound(round: number): Promise<void> {
 }
 
 describe("Enforted base playthrough in order to achieve one of all outer buildings", () => {
+
+  beforeEach(() => {
+    if (window.navigator && navigator.serviceWorker) {
+      navigator.serviceWorker.getRegistrations()
+        .then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister();
+          });
+        });
+    }
+  });
+
   it("should manage to gather all buildings before 6 round", async () => {
     cy.visit("/");
 
+    cy.get("[data-aid='input-player-name']").type("Tester");
     cy.get("[data-aid='btn-start-game']").click();
 
     await rollUntilTileType("wood");

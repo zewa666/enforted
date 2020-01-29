@@ -107,3 +107,13 @@ export function buyFortressBuilding(state: State, type: AvailableFortressBuildin
     }
   } as State;
 }
+
+export function addPlayer(state: State, name: string): State {
+  return {
+    ...state,
+    players: [{
+      currentTileId: state.tiles[0].id,
+      name
+    }]
+  };
+}

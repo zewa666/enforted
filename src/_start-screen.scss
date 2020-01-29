@@ -33,4 +33,10 @@
       color: $text-fg;
     }
   }
+
+  &__name {
+    border: none;
+    font-family: $defaultFont;
+    padding: 3px 5px;
+  }
 }
