@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.3",
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bem": "^0.3.0",
     "aurelia-bootstrapper": "^2.3.2",

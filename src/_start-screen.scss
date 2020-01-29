@@ -39,4 +39,10 @@
     font-family: $defaultFont;
     padding: 3px 5px;
   }
+
+  &__github {
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+  }
 }

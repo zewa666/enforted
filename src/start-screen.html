@@ -6,10 +6,18 @@
          href="https://github.com/zewa666/enforted">Enforted</a> - A board game made with Aurelia</h1>
     <div class="start-screen__icon"
          data-aid="btn-start-game"
-         click.trigger="startGame($event)">Start your journey <input class="start-screen__name"
+         click.trigger="startGame($event)">Start your journey
+      <input class="start-screen__name"
              value.bind="playerName"
              data-aid="input-player-name"
-             placeholder="Enter your name" /></div>
+             placeholder="Enter your name" />
+    </div>
+    <div class="start-screen__oauth">
+      or login with
+      <img src="assets/github-logo.png"
+           class="start-screen__github"
+           click.trigger="loginWithGithub()" />
+    </div>
 
     <p class="start-screen__attributions">All icons from <a class="start-screen__link"
          href="https://game-icons.net/">game-icons.net</a>, for details see the
