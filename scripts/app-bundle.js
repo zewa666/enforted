@@ -1358,7 +1358,7 @@ define('main',["require", "exports", "aurelia-store", "./environment", "./store/
     Object.defineProperty(exports, "__esModule", { value: true });
     environment_1 = __importDefault(environment_1);
     if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/enforted/sw.js", { scope: "./" }).then(function (reg) {
+        navigator.serviceWorker.register("/enforted/sw.js", { scope: "." }).then(function (reg) {
             console.log("Successfully registered service worker. Scope is " + reg.scope);
         }).catch(function (error) {
             console.log("Failed registering service worker " + error);
