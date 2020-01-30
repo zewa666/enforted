@@ -2,8 +2,8 @@ console.log("inside service worker");
 const CACHE_NAME = 'static-cache-v1';
 
 const FILES_TO_CACHE = [
-  // "/",
-  // "/index.html",
+  "/",
+  "/index.html",
   // "/scripts/app-bundle.js",
   // "/scripts/vendor-bundle.js",
   // "/assets/favicon.png",
