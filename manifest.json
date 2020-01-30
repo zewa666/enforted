@@ -1,6 +1,6 @@
 {
   "start_url": "/",
-  "scope": "/enforted/",
+  "scope": ".",
   "orientation":  "landscape",
   "display": "standalone",
   "name": "Enforted Game",
