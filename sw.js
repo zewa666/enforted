@@ -57,10 +57,10 @@ const FILES_TO_CACHE = [
   "/enforted/assets/icons/vortex.svg",
   "/enforted/assets/icons/wheat.svg",
   "/enforted/assets/icons/windmill.svg",
-  // "/enforted/assets/icons/monsters/half-body-crawling.svg",
-  // "/enforted/assets/icons/monsters/harry-potter-skull.svg",
-  // "/enforted/assets/icons/monsters/rock-golem.svg",
-  // "/enforted/assets/icons/monsters/spiked-dragon-head.svg"
+  "/enforted/assets/icons/monsters/half-body-crawling.svg",
+  "/enforted/assets/icons/monsters/harry-potter-skull.svg",
+  "/enforted/assets/icons/monsters/rock-golem.svg",
+  "/enforted/assets/icons/monsters/spiked-dragon-head.svg"
 ];
 
 self.addEventListener("install", function (event) {
