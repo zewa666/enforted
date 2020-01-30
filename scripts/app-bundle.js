@@ -1364,6 +1364,9 @@ define('main',["require", "exports", "aurelia-store", "./environment", "./store/
             console.log("Failed registering service worker " + error);
         });
     }
+    window.addEventListener("beforeinstallprompt", function (e) {
+        e.prompt();
+    });
     function configure(aurelia) {
         return __awaiter(this, void 0, void 0, function () {
             var storage;

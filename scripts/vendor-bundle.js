@@ -9243,7 +9243,7 @@ exports.newInstance = newInstance;
           var dialogOverlay = this.dialogOverlay = aureliaPal.DOM.createElement(overlayTagName);
           var zIndex = typeof dialogController.settings.startingZIndex === 'number'
               ? dialogController.settings.startingZIndex + ''
-              : 'auto';
+              : null;
           dialogOverlay.style.zIndex = zIndex;
           dialogContainer.style.zIndex = zIndex;
           var host = this.host;
@@ -9279,21 +9279,19 @@ exports.newInstance = newInstance;
           this.dialogOverlay.classList.remove('active');
           this.dialogContainer.classList.remove('active');
       };
-      DialogRenderer.prototype.setupEventHandling = function (dialogController) {
+      DialogRenderer.prototype.setupClickHandling = function (dialogController) {
           this.stopPropagation = function (e) { e._aureliaDialogHostClicked = true; };
           this.closeDialogClick = function (e) {
               if (dialogController.settings.overlayDismiss && !e._aureliaDialogHostClicked) {
                   dialogController.cancel();
               }
           };
-          var mouseEvent = dialogController.settings.mouseEvent || 'click';
-          this.dialogContainer.addEventListener(mouseEvent, this.closeDialogClick);
-          this.anchor.addEventListener(mouseEvent, this.stopPropagation);
+          this.dialogContainer.addEventListener('click', this.closeDialogClick);
+          this.anchor.addEventListener('click', this.stopPropagation);
       };
-      DialogRenderer.prototype.clearEventHandling = function (dialogController) {
-          var mouseEvent = dialogController.settings.mouseEvent || 'click';
-          this.dialogContainer.removeEventListener(mouseEvent, this.closeDialogClick);
-          this.anchor.removeEventListener(mouseEvent, this.stopPropagation);
+      DialogRenderer.prototype.clearClickHandling = function () {
+          this.dialogContainer.removeEventListener('click', this.closeDialogClick);
+          this.anchor.removeEventListener('click', this.stopPropagation);
       };
       DialogRenderer.prototype.centerDialog = function () {
           var child = this.dialogContainer.children[0];
@@ -9345,12 +9343,12 @@ exports.newInstance = newInstance;
               this.centerDialog();
           }
           DialogRenderer.trackController(dialogController);
-          this.setupEventHandling(dialogController);
+          this.setupClickHandling(dialogController);
           return this.awaitTransition(function () { return _this.setAsActive(); }, dialogController.settings.ignoreTransitions);
       };
       DialogRenderer.prototype.hideDialog = function (dialogController) {
           var _this = this;
-          this.clearEventHandling(dialogController);
+          this.clearClickHandling();
           DialogRenderer.untrackController(dialogController);
           return this.awaitTransition(function () { return _this.setAsInactive(); }, dialogController.settings.ignoreTransitions)
               .then(function () { _this.detach(dialogController); });
@@ -9494,16 +9492,14 @@ exports.newInstance = newInstance;
                   e.preventDefault();
               }
           };
-          var mouseEvent = dialogController.settings.mouseEvent || 'click';
-          this.dialogContainer.addEventListener(mouseEvent, this.closeDialogClick);
+          this.dialogContainer.addEventListener('click', this.closeDialogClick);
           this.dialogContainer.addEventListener('cancel', this.dialogCancel);
-          this.anchor.addEventListener(mouseEvent, this.stopPropagation);
+          this.anchor.addEventListener('click', this.stopPropagation);
       };
-      NativeDialogRenderer.prototype.clearEventHandling = function (dialogController) {
-          var mouseEvent = dialogController.settings.mouseEvent || 'click';
-          this.dialogContainer.removeEventListener(mouseEvent, this.closeDialogClick);
+      NativeDialogRenderer.prototype.clearEventHandling = function () {
+          this.dialogContainer.removeEventListener('click', this.closeDialogClick);
           this.dialogContainer.removeEventListener('cancel', this.dialogCancel);
-          this.anchor.removeEventListener(mouseEvent, this.stopPropagation);
+          this.anchor.removeEventListener('click', this.stopPropagation);
       };
       NativeDialogRenderer.prototype.awaitTransition = function (setActiveInactive, ignore) {
           var _this = this;
@@ -9551,7 +9547,7 @@ exports.newInstance = newInstance;
       };
       NativeDialogRenderer.prototype.hideDialog = function (dialogController) {
           var _this = this;
-          this.clearEventHandling(dialogController);
+          this.clearEventHandling();
           NativeDialogRenderer_1.untrackController(dialogController);
           return this.awaitTransition(function () { return _this.setAsInactive(); }, dialogController.settings.ignoreTransitions)
               .then(function () { _this.detach(dialogController); });
@@ -47618,11 +47614,7 @@ define('rxjs/_esm5/internal/operators/catchError',["exports", "tslib", "../Outer
 
         var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
         this.add(innerSubscriber);
-        var innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, result, undefined, undefined, innerSubscriber);
-
-        if (innerSubscription !== innerSubscriber) {
-          this.add(innerSubscription);
-        }
+        (0, _subscribeToResult.subscribeToResult)(this, result, undefined, undefined, innerSubscriber);
       }
     };
 
@@ -48893,14 +48885,10 @@ define('rxjs/_esm5/internal/operators/exhaustMap',["exports", "tslib", "../Outer
     };
 
     ExhaustMapSubscriber.prototype._innerSub = function (result, value, index) {
-      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, value, index);
+      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
       var destination = this.destination;
       destination.add(innerSubscriber);
-      var innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, result, undefined, undefined, innerSubscriber);
-
-      if (innerSubscription !== innerSubscriber) {
-        destination.add(innerSubscription);
-      }
+      (0, _subscribeToResult.subscribeToResult)(this, result, value, index, innerSubscriber);
     };
 
     ExhaustMapSubscriber.prototype._complete = function () {
@@ -50025,14 +50013,10 @@ define('rxjs/_esm5/internal/operators/mergeMap',["exports", "tslib", "../util/su
     };
 
     MergeMapSubscriber.prototype._innerSub = function (ish, value, index) {
-      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, value, index);
+      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
       var destination = this.destination;
       destination.add(innerSubscriber);
-      var innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, ish, undefined, undefined, innerSubscriber);
-
-      if (innerSubscription !== innerSubscriber) {
-        destination.add(innerSubscription);
-      }
+      (0, _subscribeToResult.subscribeToResult)(this, ish, value, index, innerSubscriber);
     };
 
     MergeMapSubscriber.prototype._complete = function () {
@@ -50175,14 +50159,10 @@ define('rxjs/_esm5/internal/operators/mergeScan',["exports", "tslib", "../util/s
     };
 
     MergeScanSubscriber.prototype._innerSub = function (ish, value, index) {
-      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, value, index);
+      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
       var destination = this.destination;
       destination.add(innerSubscriber);
-      var innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, ish, undefined, undefined, innerSubscriber);
-
-      if (innerSubscription !== innerSubscriber) {
-        destination.add(innerSubscription);
-      }
+      (0, _subscribeToResult.subscribeToResult)(this, ish, value, index, innerSubscriber);
     };
 
     MergeScanSubscriber.prototype._complete = function () {
@@ -50499,11 +50479,7 @@ define('rxjs/_esm5/internal/operators/onErrorResumeNext',["exports", "tslib", ".
         var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
         var destination = this.destination;
         destination.add(innerSubscriber);
-        var innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, next, undefined, undefined, innerSubscriber);
-
-        if (innerSubscription !== innerSubscriber) {
-          destination.add(innerSubscription);
-        }
+        (0, _subscribeToResult.subscribeToResult)(this, next, undefined, undefined, innerSubscriber);
       } else {
         this.destination.complete();
       }
@@ -51671,7 +51647,6 @@ define('rxjs/_esm5/internal/operators/shareReplay',["exports", "../ReplaySubject
           },
           complete: function () {
             isComplete = true;
-            subscription = undefined;
             subject.complete();
           }
         });
@@ -51954,14 +51929,7 @@ define('rxjs/_esm5/internal/operators/skipUntil',["exports", "tslib", "../OuterS
       _this.add(innerSubscriber);
 
       _this.innerSubscription = innerSubscriber;
-      var innerSubscription = (0, _subscribeToResult.subscribeToResult)(_this, notifier, undefined, undefined, innerSubscriber);
-
-      if (innerSubscription !== innerSubscriber) {
-        _this.add(innerSubscription);
-
-        _this.innerSubscription = innerSubscription;
-      }
-
+      (0, _subscribeToResult.subscribeToResult)(_this, notifier, undefined, undefined, innerSubscriber);
       return _this;
     }
 
@@ -52201,14 +52169,10 @@ define('rxjs/_esm5/internal/operators/switchMap',["exports", "tslib", "../OuterS
         innerSubscription.unsubscribe();
       }
 
-      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, value, index);
+      var innerSubscriber = new _InnerSubscriber.InnerSubscriber(this, undefined, undefined);
       var destination = this.destination;
       destination.add(innerSubscriber);
-      this.innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, result, undefined, undefined, innerSubscriber);
-
-      if (this.innerSubscription !== innerSubscriber) {
-        destination.add(this.innerSubscription);
-      }
+      this.innerSubscription = (0, _subscribeToResult.subscribeToResult)(this, result, value, index, innerSubscriber);
     };
 
     SwitchMapSubscriber.prototype._complete = function () {
@@ -55100,51 +55064,34 @@ define('rxjs/_esm5/internal/util/Immediate',["exports"], function (_exports) {
   "use strict";
 
   _exports.__esModule = true;
-  _exports.TestTools = _exports.Immediate = void 0;
+  _exports.Immediate = void 0;
 
   /** PURE_IMPORTS_START  PURE_IMPORTS_END */
   var nextHandle = 1;
+  var tasksByHandle = {};
 
-  var RESOLVED =
-  /*@__PURE__*/
-  function () {
-    return (
-      /*@__PURE__*/
-      Promise.resolve()
-    );
-  }();
+  function runIfPresent(handle) {
+    var cb = tasksByHandle[handle];
 
-  var activeHandles = {};
-
-  function findAndClearHandle(handle) {
-    if (handle in activeHandles) {
-      delete activeHandles[handle];
-      return true;
+    if (cb) {
+      cb();
     }
-
-    return false;
   }
 
   var Immediate = {
     setImmediate: function (cb) {
       var handle = nextHandle++;
-      activeHandles[handle] = true;
-      RESOLVED.then(function () {
-        return findAndClearHandle(handle) && cb();
+      tasksByHandle[handle] = cb;
+      Promise.resolve().then(function () {
+        return runIfPresent(handle);
       });
       return handle;
     },
     clearImmediate: function (handle) {
-      findAndClearHandle(handle);
+      delete tasksByHandle[handle];
     }
   };
   _exports.Immediate = Immediate;
-  var TestTools = {
-    pending: function () {
-      return Object.keys(activeHandles).length;
-    }
-  };
-  _exports.TestTools = TestTools;
 });;
 define('rxjs/_esm5/internal/util/ObjectUnsubscribedError',["exports"], function (_exports) {
   "use strict";
@@ -55601,20 +55548,20 @@ define('rxjs/_esm5/internal/util/subscribeToResult',["exports", "../InnerSubscri
   _exports.subscribeToResult = subscribeToResult;
 
   /** PURE_IMPORTS_START _InnerSubscriber,_subscribeTo,_Observable PURE_IMPORTS_END */
-  function subscribeToResult(outerSubscriber, result, outerValue, outerIndex, innerSubscriber) {
-    if (innerSubscriber === void 0) {
-      innerSubscriber = new _InnerSubscriber.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
+  function subscribeToResult(outerSubscriber, result, outerValue, outerIndex, destination) {
+    if (destination === void 0) {
+      destination = new _InnerSubscriber.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
     }
 
-    if (innerSubscriber.closed) {
+    if (destination.closed) {
       return undefined;
     }
 
     if (result instanceof _Observable.Observable) {
-      return result.subscribe(innerSubscriber);
+      return result.subscribe(destination);
     }
 
-    return (0, _subscribeTo.subscribeTo)(result)(innerSubscriber);
+    return (0, _subscribeTo.subscribeTo)(result)(destination);
   }
 });;
 define('rxjs/_esm5/internal/util/toSubscriber',["exports", "../Subscriber", "../symbol/rxSubscriber", "../Observer"], function (_exports, _Subscriber, _rxSubscriber, _Observer) {
