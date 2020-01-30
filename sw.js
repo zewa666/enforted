@@ -4,8 +4,8 @@ const CACHE_NAME = 'static-cache-v1';
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
-  // "/scripts/app-bundle.js",
-  // "/scripts/vendor-bundle.js",
+  "/scripts/app-bundle.js",
+  "/scripts/vendor-bundle.js",
   // "/assets/favicon.png",
   // "/assets/favicon_apple_touch.png",
   // "/assets/favicon_maskable.png",
