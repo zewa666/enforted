@@ -7,7 +7,7 @@ import environment from "./environment";
 import { initialState, LOCALSTORAGE_SAVE_KEY, State } from "./store/index";
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js", { scope: "./" }).then((reg) => {
+  navigator.serviceWorker.register("/enforted/sw.js", { scope: "." }).then((reg) => {
     // tslint:disable-next-line:no-console
     console.log("Successfully registered service worker. Scope is " + reg.scope);
   }).catch((error) => {
