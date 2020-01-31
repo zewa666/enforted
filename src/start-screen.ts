@@ -30,7 +30,7 @@ export class StartScreen {
   }
 
   public startGame($event?: MouseEvent) {
-    if (($event?.target as HTMLElement).tagName === "INPUT" || !this.playerName || this.playerName.trim() === "") {
+    if (($event?.target as HTMLElement)?.tagName === "INPUT" || !this.playerName || this.playerName.trim() === "") {
       return false;
     }
 

@@ -4,14 +4,17 @@
   <div class="start-screen">
     <h1 class="start-screen__title"><a class="start-screen__link"
          href="https://github.com/zewa666/enforted">Enforted</a> - A board game made with Aurelia</h1>
-    <div class="start-screen__icon"
-         data-aid="btn-start-game"
-         click.trigger="startGame($event)">Start your journey
-      <input class="start-screen__name"
-             value.bind="playerName"
-             data-aid="input-player-name"
-             placeholder="Enter your name" />
-    </div>
+    <form submit.delegate="startGame()"
+          click.delegate="startGame($event)">
+      <div class="start-screen__icon"
+           data-aid="btn-start-game">Start your journey
+
+        <input class="start-screen__name"
+               value.bind="playerName"
+               data-aid="input-player-name"
+               placeholder="Enter your name" />
+      </div>
+    </form>
     <div class="start-screen__oauth">
       or login with
       <img src="assets/github-logo.png"
