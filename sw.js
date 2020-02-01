@@ -1,4 +1,4 @@
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'static-cache-v2';
 
 const FILES_TO_CACHE = [
   "/",
@@ -8,6 +8,7 @@ const FILES_TO_CACHE = [
   "/enforted/assets/favicon.png",
   "/enforted/assets/favicon_apple_touch.png",
   "/enforted/assets/favicon_maskable.png",
+  "/enforted/assets/favicon_maskable_192.png",
   "/enforted/assets/github-logo.png",
   "/enforted/assets/icons/anvil.svg",
   "/enforted/assets/icons/attribution.json",
