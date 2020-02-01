@@ -2009,8 +2009,8 @@ define('start-screen',["require", "exports", "@auth0/auth0-spa-js", "aurelia-fra
             });
         };
         StartScreen.prototype.startGame = function ($event) {
-            var _a;
-            if (((_a = $event) === null || _a === void 0 ? void 0 : _a.target).tagName === "INPUT" || !this.playerName || this.playerName.trim() === "") {
+            var _a, _b;
+            if (((_b = (_a = $event) === null || _a === void 0 ? void 0 : _a.target) === null || _b === void 0 ? void 0 : _b.tagName) === "INPUT" || !this.playerName || this.playerName.trim() === "") {
                 return false;
             }
             this.start(this.playerName);
@@ -2033,7 +2033,7 @@ define('start-screen',["require", "exports", "@auth0/auth0-spa-js", "aurelia-fra
     exports.startGame = startGame;
 });
 ;
-define('text!start-screen.html',[],function(){return "<template>\n  <require from=\"./main.css\"></require>\n\n  <div class=\"start-screen\">\n    <h1 class=\"start-screen__title\"><a class=\"start-screen__link\"\n         href=\"https://github.com/zewa666/enforted\">Enforted</a> - A board game made with Aurelia</h1>\n    <div class=\"start-screen__icon\"\n         data-aid=\"btn-start-game\"\n         click.trigger=\"startGame($event)\">Start your journey\n      <input class=\"start-screen__name\"\n             value.bind=\"playerName\"\n             data-aid=\"input-player-name\"\n             placeholder=\"Enter your name\" />\n    </div>\n    <div class=\"start-screen__oauth\">\n      or login with\n      <img src=\"assets/github-logo.png\"\n           class=\"start-screen__github\"\n           click.trigger=\"loginWithGithub()\" />\n    </div>\n\n    <p class=\"start-screen__attributions\">All icons from <a class=\"start-screen__link\"\n         href=\"https://game-icons.net/\">game-icons.net</a>, for details see the\n      <a class=\"start-screen__link\"\n         href=\"assets/icons/attribution.json\"\n         target=\"_blank\"> attributions file</a>\n    </p>\n  </div>\n</template>\n";});;
+define('text!start-screen.html',[],function(){return "<template>\n  <require from=\"./main.css\"></require>\n\n  <div class=\"start-screen\">\n    <h1 class=\"start-screen__title\"><a class=\"start-screen__link\"\n         href=\"https://github.com/zewa666/enforted\">Enforted</a> - A board game made with Aurelia</h1>\n    <form submit.delegate=\"startGame()\"\n          click.delegate=\"startGame($event)\">\n      <div class=\"start-screen__icon\"\n           data-aid=\"btn-start-game\">Start your journey\n\n        <input class=\"start-screen__name\"\n               value.bind=\"playerName\"\n               data-aid=\"input-player-name\"\n               placeholder=\"Enter your name\" />\n      </div>\n    </form>\n    <div class=\"start-screen__oauth\">\n      or login with\n      <img src=\"assets/github-logo.png\"\n           class=\"start-screen__github\"\n           click.trigger=\"loginWithGithub()\" />\n    </div>\n\n    <p class=\"start-screen__attributions\">All icons from <a class=\"start-screen__link\"\n         href=\"https://game-icons.net/\">game-icons.net</a>, for details see the\n      <a class=\"start-screen__link\"\n         href=\"assets/icons/attribution.json\"\n         target=\"_blank\"> attributions file</a>\n    </p>\n  </div>\n</template>\n";});;
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {

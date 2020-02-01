@@ -6,7 +6,7 @@
   "short_name": "Enforted",
   "icons": [
     {
-      "src": "/assets/favicon_maskable.png",
+      "src": "/enforted/assets/favicon_maskable.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

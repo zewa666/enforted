@@ -85,6 +85,9 @@ self.addEventListener("activate", function (event) {
 self.addEventListener("fetch", function (e) {
   e.respondWith(
     caches.match(e.request).then(function (response) {
+      if (response) {
+        console.log("Loaded from cache", response);
+      }
       return response || fetch(e.request);
     }).catch((e) => console.log("Error fetching: ", e))
   );
