@@ -1,4 +1,4 @@
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'static-cache-v2';
 
 const FILES_TO_CACHE = [
   "/",
@@ -86,11 +86,6 @@ self.addEventListener("activate", function (event) {
 self.addEventListener("fetch", function (e) {
   e.respondWith(
     caches.match(e.request).then(function (response) {
-      if (response) {
-        console.log("Loaded from cache", response);
-      } else {
-        console.warn("Did not find: ", e.request);
-      }
       return response || fetch(e.request);
     }).catch((e) => console.log("Error fetching: ", e))
   );
