@@ -8,6 +8,7 @@ const FILES_TO_CACHE = [
   "/enforted/assets/favicon.png",
   "/enforted/assets/favicon_apple_touch.png",
   "/enforted/assets/favicon_maskable.png",
+  "/enforted/assets/favicon_maskable_192.png",
   "/enforted/assets/github-logo.png",
   "/enforted/assets/icons/anvil.svg",
   "/enforted/assets/icons/attribution.json",
@@ -87,6 +88,8 @@ self.addEventListener("fetch", function (e) {
     caches.match(e.request).then(function (response) {
       if (response) {
         console.log("Loaded from cache", response);
+      } else {
+        console.warn("Did not find: ", e.request);
       }
       return response || fetch(e.request);
     }).catch((e) => console.log("Error fetching: ", e))
