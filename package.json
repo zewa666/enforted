@@ -34,6 +34,7 @@
     "@types/jest": "^24.0.9",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.11.6",
+    "@types/puppeteer": "^2.0.1",
     "@types/web-animations-js": "^2.2.8",
     "aurelia-cli": "^1.0.2",
     "aurelia-loader-nodejs": "^1.0.1",
@@ -63,6 +64,9 @@
     "jest-transform-stub": "^2.0.0",
     "minimatch": "^3.0.4",
     "promise-polyfill": "^8.1.0",
+    "puppeteer": "^2.1.1",
+    "puppeteer-extra": "^3.1.9",
+    "puppeteer-extra-plugin-aurelia-store": "^0.1.0",
     "requirejs": "^2.3.6",
     "rimraf": "^3.0.0",
     "stylelint": "^13.0.0",
@@ -89,7 +93,8 @@
     "e2e:headless": "au cypress --start --run",
     "docker:build": "docker build -t enforted:0.1.0 -t enforted:latest .",
     "docker:start": "docker-compose up -d",
-    "docker:stop": "docker-compose down"
+    "docker:stop": "docker-compose down",
+    "puppeteer": "jest --config=test/jest-puppeteer.conf.json ./test/puppeteer/"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -112,7 +117,9 @@
       "^.+\\.(css|less|sass|scss|styl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
       "^.+\\.ts$": "ts-jest"
     },
-    "testRegex": "\\.spec\\.(ts|js)$",
+    "testMatch": [
+      "<rootDir>/test/unit/**/*.spec.ts"
+    ],
     "setupFiles": [
       "<rootDir>/test/jest-pretest.ts",
       "jest-localstorage-mock"

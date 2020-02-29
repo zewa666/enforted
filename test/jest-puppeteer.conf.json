@@ -1,0 +1,19 @@
+{
+  "modulePaths": [
+    "<rootDir>/src",
+    "<rootDir>/node_modules"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "testMatch": [
+    "<rootDir>/test/puppeteer/**/*.spec.ts"
+  ],
+  "testEnvironment": "node",
+  "collectCoverage": false
+}
