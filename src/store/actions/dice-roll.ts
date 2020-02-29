@@ -51,7 +51,7 @@ export function rollDice(state: State, diceOverload?: number): State {
   }, isNextRound);
 }
 
-export function gatherFortressBuilding(state: State, isNextRound: boolean): State {
+function gatherFortressBuilding(state: State, isNextRound: boolean): State {
   if (!isNextRound) {
     return state;
   }
@@ -98,7 +98,7 @@ export function gatherFortressBuilding(state: State, isNextRound: boolean): Stat
 }
 
 export const PRODUCED_RESOURCES_PER_ROUND = 3;
-export function gatherResources(state: State): State {
+function gatherResources(state: State): State {
   const shrines = state.tileBuildings
     .filter((b) => b.type === "shrine");
   const resourcesProduced = PRODUCED_RESOURCES_PER_ROUND
@@ -138,7 +138,7 @@ export function gatherResources(state: State): State {
   });
 }
 
-export function gatherShrineResources(state: State) {
+function gatherShrineResources(state: State) {
   const shrines = state.tileBuildings
     .filter((b) => b.type === "shrine");
   if (!shrines) {
