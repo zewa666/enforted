@@ -6,6 +6,8 @@ import { WebAnimationAnimator } from "./animator/animator";
 import environment from "./environment";
 import { initialState, LOCALSTORAGE_SAVE_KEY, State } from "./store/index";
 
+import * as actionCreators from "./store/actions/index";
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/enforted/sw.js", { scope: "." }).then((reg) => {
     // tslint:disable-next-line:no-console
@@ -21,7 +23,10 @@ export async function configure(aurelia: Aurelia) {
     .standardConfiguration()
     .plugin("aurelia-bem")
     .plugin("aurelia-store", {
-      initialState
+      devToolsOptions: {
+        actionCreators
+      },
+      initialState,
     })
     .plugin("aurelia-dialog")
     .feature("board")
