@@ -14,7 +14,7 @@ describe("a round", () => {
     });
 
     const page = await browser.newPage();
-    await (page as any).connectToStore();
+    await page.connectToStore();
 
     await page.goto("http://localhost:9000");
     await page.waitForSelector(SEL_PLAYERNAME);
@@ -25,7 +25,7 @@ describe("a round", () => {
     await page.waitForSelector(SEL_ROUND);
 
     while (await page.$eval(SEL_ROUND, (el) => el.textContent) !== "Round 2") {
-      await (page as any).dispatch("rollDice", 7);
+      await page.dispatch("rollDice", 7);
     }
 
     expect(await page.$eval(SEL_ROUND, (el) => el.textContent)).toBe("Round 2");

@@ -66,7 +66,7 @@
     "promise-polyfill": "^8.1.0",
     "puppeteer": "^2.1.1",
     "puppeteer-extra": "^3.1.9",
-    "puppeteer-extra-plugin-aurelia-store": "^0.1.0",
+    "puppeteer-extra-plugin-aurelia-store": "^0.1.1",
     "requirejs": "^2.3.6",
     "rimraf": "^3.0.0",
     "stylelint": "^13.0.0",
