@@ -1,4 +1,4 @@
-const CACHE_NAME = 'static-cache-v3';
+const CACHE_NAME = 'static-cache-v4';
 
 const FILES_TO_CACHE = [
   "/",
@@ -65,7 +65,10 @@ const FILES_TO_CACHE = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(FILES_TO_CACHE);
+      
+      return cache.addAll(self.location.host.startsWith("localhost")
+        ? FILES_TO_CACHE.map(i => i.replace("/enforted/", "/"))
+        : FILES_TO_CACHE);
     })
   );
 });

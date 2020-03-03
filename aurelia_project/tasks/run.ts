@@ -22,6 +22,15 @@ let serve = gulp.series(
         middleware: [historyApiFallback(), function(req, res, next) {
           res.setHeader('Access-Control-Allow-Origin', '*');
           next();
+        }, function(req, res, next) {
+          if (req.url === '/manifest.json') {
+            res.writeHead(302, {
+                location: "/manifest_dev.json"
+            });
+            res.end("Redirecting!");
+          } else {
+            next();
+          }
         }]
       }
     }, function (err, bs) {

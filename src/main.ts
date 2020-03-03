@@ -9,7 +9,10 @@ import { initialState, LOCALSTORAGE_SAVE_KEY, State } from "./store/index";
 import * as actionCreators from "./store/actions/index";
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/enforted/sw.js", { scope: "." }).then((reg) => {
+  navigator.serviceWorker.register(
+    `${!window.location.host.startsWith("localhost") ? "/enforted" : "" }/sw.js`,
+    { scope: "." })
+  .then((reg) => {
     // tslint:disable-next-line:no-console
     console.log("Successfully registered service worker. Scope is " + reg.scope);
   }).catch((error) => {
