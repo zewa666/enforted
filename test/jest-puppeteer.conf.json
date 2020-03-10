@@ -12,7 +12,7 @@
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
   "testMatch": [
-    "<rootDir>/test/puppeteer/**/*.spec.ts"
+    "<rootDir>/puppeteer/**/*.spec.ts"
   ],
   "testEnvironment": "node",
   "collectCoverage": false
