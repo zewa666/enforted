@@ -24,7 +24,7 @@
     "aurelia-bem": "^0.3.0",
     "aurelia-bootstrapper": "^2.3.2",
     "aurelia-dialog": "^2.0.0-rc.8",
-    "aurelia-store": "^1.5.0",
+    "aurelia-store": "^1.6.0",
     "lodash": "^4.17.15",
     "rxjs": "^6.5.3",
     "web-animations-js": "^2.3.2"
