@@ -10,7 +10,7 @@ const SEL_ROUND = `[data-aid="current-round"]`;
 describe("a round", () => {
   it("is finished when the player passes the start tile", async () => {
     const browser = await puppeteer.launch({
-      headless: false
+      headless: process.env?.HEADLESS === "true"
     });
 
     const page = await browser.newPage();

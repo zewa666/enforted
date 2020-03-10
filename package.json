@@ -44,6 +44,7 @@
     "browser-sync": "^2.26.3",
     "connect-history-api-fallback": "^1.6.0",
     "copyfiles": "^2.1.1",
+    "cross-env": "^7.0.2",
     "cypress": "^3.2.0",
     "debounce": "^1.2.0",
     "gh-pages": "^2.1.1",
@@ -94,7 +95,8 @@
     "docker:build": "docker build -t enforted:0.1.0 -t enforted:latest .",
     "docker:start": "docker-compose up -d",
     "docker:stop": "docker-compose down",
-    "puppeteer": "jest --config=test/jest-puppeteer.conf.json ./test/puppeteer/"
+    "puppeteer": "jest --config=test/jest-puppeteer.conf.json",
+    "puppeteer-headless": "cross-env HEADLESS=true jest --config=test/jest-puppeteer.conf.json"
   },
   "engines": {
     "node": ">=8.9.0"
